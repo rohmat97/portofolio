@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/portofolio/static/css/main.158c3e09.css",
-    "main.js": "/portofolio/static/js/main.b3a7128c.js",
+    "main.js": "/portofolio/static/js/main.df632420.js",
     "static/media/realestate.jpg": "/portofolio/static/media/realestate.44fd19f4c6872731149c.jpg",
     "static/media/expressjs.png": "/portofolio/static/media/expressjs.ea43790c98ff35b6779f.png",
     "static/media/Android.png": "/portofolio/static/media/Android.fd93460fa2725ab90607.png",
@@ -19,13 +19,14 @@
     "static/media/css.png": "/portofolio/static/media/css.69a82c2d9e45c933a9cb.png",
     "static/media/ReactNativeIcon.png": "/portofolio/static/media/ReactNativeIcon.20ec11c4799854e3803d.png",
     "static/media/firebase.png": "/portofolio/static/media/firebase.209703cedf1b1a96bc52.png",
+    "static/media/mysql.png": "/portofolio/static/media/mysql.4676ad983d6bd3e9fac9.png",
     "static/media/javascript.png": "/portofolio/static/media/javascript.1ccd6ef9bb1f9c84ef00.png",
     "index.html": "/portofolio/index.html",
     "main.158c3e09.css.map": "/portofolio/static/css/main.158c3e09.css.map",
-    "main.b3a7128c.js.map": "/portofolio/static/js/main.b3a7128c.js.map"
+    "main.df632420.js.map": "/portofolio/static/js/main.df632420.js.map"
   },
   "entrypoints": [
     "static/css/main.158c3e09.css",
-    "static/js/main.b3a7128c.js"
+    "static/js/main.df632420.js"
   ]
 }
