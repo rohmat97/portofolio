@@ -15,6 +15,7 @@ import ExpressJS from '../assets/expressjs.png';
 import Android from '../assets/Android.png';
 import IOS from '../assets/ios.png';
 import SDK from '../assets/sdk.png';
+import MYSQL from '../assets/mysql.png';
 
 const Skills = () => {
   return (
@@ -55,12 +56,16 @@ const Skills = () => {
                     <p className="my-4">MONGODB</p>
                 </div>
                 <div className="shadow-md shadow-[#040c16] hover:scale-110 duration-500">
-                    <img className="w-20 mx-auto" src={AWS} alt="HTML icon" />
-                    <p className="my-4">AWS</p>
-                </div>
-                <div className="shadow-md shadow-[#040c16] hover:scale-110 duration-500">
                     <img className="w-20 mx-auto" src={FireBase} alt="HTML icon" />
                     <p className="my-4">FIREBASE</p>
+                </div>
+                <div className="shadow-md shadow-[#040c16] hover:scale-110 duration-500">
+                    <img className="w-20 mx-auto" src={MYSQL} alt="HTML icon" />
+                    <p className="my-4">MYSQL</p>
+                </div>
+                <div className="shadow-md shadow-[#040c16] hover:scale-110 duration-500">
+                    <img className="w-20 mx-auto" src={AWS} alt="HTML icon" />
+                    <p className="my-4">AWS</p>
                 </div>
                 <div className="shadow-md shadow-[#040c16] hover:scale-110 duration-500">
                     <img className="w-20 mx-auto" src={Tailwind} alt="HTML icon" />

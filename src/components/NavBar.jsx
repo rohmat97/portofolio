@@ -30,11 +30,11 @@ const NavBar = () => {
             Skills
           </Link>
         </li>
-        <li>
+        {/* <li>
           <Link to='work' smooth={true} duration={500}>
             Work
           </Link>
-        </li>
+        </li> */}
         <li>
           <Link to='contact' smooth={true} duration={500}>
             Contact
@@ -94,28 +94,28 @@ const NavBar = () => {
           <li className='w-[160px] h-[60px] flex justify-between items-center ml-[-100px] hover:ml-0 duration-300 bg-blue-600'>
             <a 
               className='flex justify-between items-center w-full text-gray-300'
-              href="/">
+              onClick={()=>window.open("https://www.linkedin.com/in/rohmat-dasuki-7ab950128/", "_blank")}>
               LinkedIn <FaLinkedin  size={30}/>
             </a>
           </li>
           <li className='w-[160px] h-[60px] flex justify-between items-center ml-[-100px] hover:ml-0 duration-300 bg-[#333333]'>
             <a 
               className='flex justify-between items-center w-full text-gray-300'
-              href="/">
+              onClick={()=>window.open("https://github.com/rohmat97", "_blank")}>
               Github <FaGithub  size={30}/>
             </a>
           </li>
           <li className='w-[160px] h-[60px] flex justify-between items-center ml-[-100px] hover:ml-0 duration-300 bg-[#6FC2B0]'>
             <a 
               className='flex justify-between items-center w-full text-gray-300'
-              href="/">
+              onClick={()=>window.open("mailto:rohmat661@gmail.com")}>
               Email <HiOutlineMail  size={30}/>
             </a>
           </li>
           <li className='w-[160px] h-[60px] flex justify-between items-center ml-[-100px] hover:ml-0 duration-300 bg-[#565F69]'>
             <a 
               className='flex justify-between items-center w-full text-gray-300'
-              href="/">
+              onClick={()=>window.open("https://docs.google.com/document/d/1pq3ax6UcJU0n7ucPM8n7AhQzyJ8RKaMn8J2QyiOfIvM/edit?usp=sharing", "_blank")}>
               Resume <BsFillPersonLinesFill  size={30}/>
             </a>
           </li>
