@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Logo from '../assets/logo.png';
-import { FaBars, FaTimes, FaGithub, FaLinkedin, FaFacebook  } from 'react-icons/fa';
+import { FaBars, FaTimes, FaGithub, FaLinkedin  } from 'react-icons/fa';
 import { HiOutlineMail } from "react-icons/hi";
 import { BsFillPersonLinesFill } from "react-icons/bs";
 import { Link } from "react-scroll";
@@ -30,11 +30,11 @@ const NavBar = () => {
             Skills
           </Link>
         </li>
-        {/* <li>
-          <Link to='work' smooth={true} duration={500}>
-            Work
+        <li>
+          <Link to='journey' smooth={true} duration={500}>
+            Journey
           </Link>
-        </li> */}
+        </li>
         <li>
           <Link to='contact' smooth={true} duration={500}>
             Contact
