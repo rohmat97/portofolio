@@ -23,6 +23,22 @@ const About = () => {
                     </p>
                 </div>
             </div>
+            <div className="max-w-[1000px] w-full px-4 grid grid-cols-2 gap-8 pt-8">
+                <div className="sm:text-right pb-8 pl-4">
+                    <p className="text-4xl font-bold inline border-b-4 border-pink-600">Education</p>
+                </div>
+            </div>
+            <div className="max-w-[1000px] w-full grid sm:grid-cols-2 gap-8 px-4 ">
+                <div className="sm:text-right text-2xl font-bold">
+                    <p>Bandung Polytechnic State University (POLBAN)</p>
+                </div>
+                <div className='text-2xl'>
+                    <p>
+                        Informatics Engineering Associate's Degree
+                    </p>
+                    <p>2016-2020</p>
+                </div>
+            </div>
         </div>
     </div>
   )
