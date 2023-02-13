@@ -3,21 +3,9 @@ import React from "react";
 const Journey = () => {
   const experience = [
     {
-      name: "Revive Technologies FZE",
-      role: "Senior Software Developer",
-      duration: "December 2022– Present",
-      status: "Full-Time",
-    },
-    {
-      name: "KopiDate",
-      role: "Front-End Developer",
-      duration: "December 2022 – Present",
-      status: "part-time",
-    },
-    {
       name: "PT Bina Investama Infonet (PASAR DANA)",
       role: "React-Native Developer (Android & IOS)",
-      duration: "Januari 2022– Present",
+      duration: "Januari 2022 – Present",
       status: "Freelancer",
     },
     {
