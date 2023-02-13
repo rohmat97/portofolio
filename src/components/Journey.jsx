@@ -16,7 +16,7 @@ const Journey = () => {
     },
     {
       name: "PT Telekomunikasi Indonesia Tbk (Telkom Indonesia)",
-      role: "React-Native Developer (Android & IOS)/ SDK Engineer",
+      role: "Software Developer",
       duration: "June 2020– 30 November 2022",
       status: "Full-Time",
     },
