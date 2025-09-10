@@ -12,6 +12,18 @@
         @apply px-4;
         @apply cursor-pointer
     }
+    a:focus-visible, button:focus-visible {
+        @apply outline-none ring-2 ring-pink-500 ring-offset-2 ring-offset-[#0a192f] rounded;
+    }
+}
+
+/* Global smooth scrolling */
+html { scroll-behavior: smooth; }
+
+/* Text selection styling */
+::selection {
+  background: #ec489a33; /* pink-500 @ ~20% */
+  color: #ffffff;
 }
 
 .content-div {
