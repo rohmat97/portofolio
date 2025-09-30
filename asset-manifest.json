@@ -1,17 +1,16 @@
 {
   "files": {
-    "main.css": "/portofolio/static/css/main.16d0e749.css",
-    "main.js": "/portofolio/static/js/main.1cd42628.js",
-    "static/media/realestate.jpg": "/portofolio/static/media/realestate.44fd19f4c6872731149c.jpg",
+    "main.css": "/portofolio/static/css/main.16373cd2.css",
+    "main.js": "/portofolio/static/js/main.379bfcc8.js",
     "static/media/Profile.jpg": "/portofolio/static/media/Profile.bc9606574d278b444f1e.jpg",
-    "static/media/workImg.jpeg": "/portofolio/static/media/workImg.e4c66be6ae2ae4f83608.jpeg",
     "static/media/logo.png": "/portofolio/static/media/logo.7ed42caf1761f7568a18.png",
     "index.html": "/portofolio/index.html",
-    "main.16d0e749.css.map": "/portofolio/static/css/main.16d0e749.css.map",
-    "main.1cd42628.js.map": "/portofolio/static/js/main.1cd42628.js.map"
+    "static/media/nfp-logo.svg": "/portofolio/static/media/nfp-logo.dcbddb0899f659ad862223ac442e5c1c.svg",
+    "main.16373cd2.css.map": "/portofolio/static/css/main.16373cd2.css.map",
+    "main.379bfcc8.js.map": "/portofolio/static/js/main.379bfcc8.js.map"
   },
   "entrypoints": [
-    "static/css/main.16d0e749.css",
-    "static/js/main.1cd42628.js"
+    "static/css/main.16373cd2.css",
+    "static/js/main.379bfcc8.js"
   ]
 }
