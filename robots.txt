@@ -1,3 +1,4 @@
 # https://www.robotstxt.org/robotstxt.html
+Sitemap: https://rohmat97.github.io/portofolio/sitemap.xml
 User-agent: *
 Disallow:
