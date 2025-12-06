@@ -2,9 +2,14 @@ import React from "react";
 import { HiArrowNarrowRight } from "react-icons/hi";
 import { Link } from "react-scroll";
 import Profile from "../assets/Profile.jpg";
+import { RESUME_URL } from "../constants/links";
 const Home = () => {
   return (
-    <div className="w-full min-h-screen bg-[#0a192f]" name="home" aria-label="Home section">
+    <div
+      className="w-full min-h-screen bg-[#0a192f]"
+      name="home"
+      aria-label="Home section"
+    >
       {/* Container */}
       <div className="max-w-[1100px] mx-auto px-6 sm:px-8 py-20 sm:py-32 flex flex-col-reverse md:flex-row items-center gap-8 sm:gap-10">
         <div className="flex-1 w-full">
@@ -16,13 +21,19 @@ const Home = () => {
             Senior Software Engineer
           </h2>
           <p className="text-[#8892b0] py-6 max-w-[700px] text-base sm:text-lg">
-            I build cross‑platform mobile and web applications with a focus on performance,
-            accessibility, and great user experience. My recent work spans React Native for
-            Android & iOS, and modern web apps with React and Tailwind CSS. I’m comfortable
-            working across the stack with Node.js and Spring Boot when needed.
+            I build cross‑platform mobile and web applications with a focus on
+            performance, accessibility, and great user experience. My recent
+            work spans React Native for Android & iOS, and modern web apps with
+            React and Tailwind CSS. I’m comfortable working across the stack
+            with Node.js and Spring Boot when needed.
           </p>
           <div className="flex flex-wrap gap-3 items-center">
-            <Link to="about" smooth={true} duration={500} aria-label="Navigate to About section">
+            <Link
+              to="about"
+              smooth={true}
+              duration={500}
+              aria-label="Navigate to About section"
+            >
               <button className="w-full sm:w-auto justify-center text-white group border-2 border-pink-600/60 px-6 py-3 my-2 inline-flex items-center gap-2 rounded-xl hover:bg-pink-600 hover:border-pink-600 transition-colors">
                 View more
                 <span className="group-hover:translate-x-1 transition-transform">
@@ -31,7 +42,7 @@ const Home = () => {
               </button>
             </Link>
             <a
-              href="https://drive.google.com/file/d/15iAqjDgYe59dtvlmyyMjWjVtFWGD2rMP/view?usp=sharing"
+              href={RESUME_URL}
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Open resume in a new tab"

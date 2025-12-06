@@ -1,0 +1,10 @@
+export const RESUME_URL = 'https://drive.google.com/file/d/1z30UHMhNz0wPdnd1LuTchffPfCglFz-y/view?usp=sharing';
+export const LINKEDIN_URL = 'https://www.linkedin.com/in/rohmat-dasuki-7ab950128/';
+export const GITHUB_URL = 'https://github.com/rohmat97';
+export const EMAIL = 'rohmat661@gmail.com';
+export const MAILTO = `mailto:${EMAIL}`;
+export const PHONE_ID = '+6281221483613';
+export const PHONE_MY = '+60179490797';
+export const TEL_ID = `tel:${PHONE_ID}`;
+export const TEL_MY = `tel:${PHONE_MY}`;
+export const PORTFOLIO_URL = 'https://rohmat97.github.io/portofolio/';
