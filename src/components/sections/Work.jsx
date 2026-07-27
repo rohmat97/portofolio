@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import { FaSearch, FaLayerGroup } from "react-icons/fa";
+import { FaSearch, FaLayerGroup, FaGamepad } from "react-icons/fa";
 import { PROJECTS_DATA, PROJECT_CATEGORIES } from "../../data/projectsData";
 import ProjectCard from "../ui/ProjectCard";
 import ProjectModal from "../ui/ProjectModal";
+import { playHoverSound, playClickSound } from "../../utils/audioEffects";
 
 const Work = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -23,14 +24,14 @@ const Work = () => {
     <section
       name="projects"
       aria-label="Projects section"
-      className="w-full bg-transparent text-slate-300 py-20 sm:py-28 border-t border-slate-900 scroll-mt-20"
+      className="w-full bg-transparent text-slate-300 py-20 sm:py-24 border-t border-slate-900 scroll-mt-20"
     >
-      <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-[1100px] mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header */}
         <div className="pb-8 text-left">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-cyan-950/60 border border-cyan-500/30 text-cyan-400 text-xs font-mono uppercase tracking-widest mb-3">
-            Selected Works
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-cyan-950/80 border border-cyan-500/40 text-cyan-400 text-xs font-mono uppercase tracking-widest mb-3 shadow-md">
+            <FaGamepad className="text-cyan-400 text-xs" /> QUEST LOG: SELECTED WORKS
           </div>
           <h2 className="text-3xl sm:text-5xl font-extrabold text-slate-100 tracking-tight">
             Projects <span className="gradient-text">Showcase</span>
@@ -48,10 +49,14 @@ const Work = () => {
             {PROJECT_CATEGORIES.map((cat) => (
               <button
                 key={cat}
-                onClick={() => setSelectedCategory(cat)}
-                className={`px-4 py-2 text-xs sm:text-sm font-semibold rounded-xl transition-all cursor-pointer ${
+                onMouseEnter={playHoverSound}
+                onClick={() => {
+                  playClickSound();
+                  setSelectedCategory(cat);
+                }}
+                className={`px-4 py-2 text-xs sm:text-sm font-semibold font-mono rounded-xl transition-all cursor-pointer ${
                   selectedCategory === cat
-                    ? "bg-cyan-600 text-white shadow-lg shadow-cyan-500/30"
+                    ? "bg-cyan-600 text-white shadow-lg shadow-cyan-500/30 border border-cyan-400"
                     : "bg-slate-900/80 text-slate-400 hover:text-slate-200 border border-slate-800"
                 }`}
               >
@@ -68,20 +73,24 @@ const Work = () => {
               placeholder="Search projects or tech..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-10 pr-4 py-2.5 bg-slate-900/80 border border-slate-800 rounded-xl text-slate-200 text-sm placeholder:text-slate-500 focus:outline-none focus:border-cyan-500 transition-colors"
+              className="w-full pl-10 pr-4 py-2.5 bg-slate-900/90 border border-slate-800 rounded-xl text-slate-200 text-sm placeholder:text-slate-500 focus:outline-none focus:border-cyan-500 transition-colors font-mono"
             />
           </div>
 
         </div>
 
         {/* Projects Grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredProjects.map((p) => (
-            <ProjectCard
-              key={p.title}
-              project={p}
-              onSelectProject={setActiveModalProject}
-            />
+            <div key={p.title} onMouseEnter={playHoverSound}>
+              <ProjectCard
+                project={p}
+                onSelectProject={(project) => {
+                  playClickSound();
+                  setActiveModalProject(project);
+                }}
+              />
+            </div>
           ))}
         </div>
 
@@ -89,7 +98,7 @@ const Work = () => {
         {filteredProjects.length === 0 && (
           <div className="glass-card p-12 rounded-3xl text-center border border-slate-800">
             <FaLayerGroup className="mx-auto text-4xl text-slate-600 mb-3" />
-            <p className="text-lg text-slate-300 font-semibold">No projects found</p>
+            <p className="text-lg text-slate-300 font-semibold font-mono">No quest logs found</p>
             <p className="text-sm text-slate-500 mt-1">
               Try clearing your search query or switching categories.
             </p>
@@ -99,7 +108,10 @@ const Work = () => {
         {/* Project Detail Modal */}
         <ProjectModal
           project={activeModalProject}
-          onClose={() => setActiveModalProject(null)}
+          onClose={() => {
+            playClickSound();
+            setActiveModalProject(null);
+          }}
         />
 
       </div>

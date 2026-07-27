@@ -1,5 +1,7 @@
 import React, { useState } from "react";
+import { FaGamepad } from "react-icons/fa";
 import { SKILLS_DATA } from "../../data/skillsData";
+import { playHoverSound, playClickSound } from "../../utils/audioEffects";
 
 const Skills = () => {
   const [activeTab, setActiveTab] = useState("All");
@@ -10,17 +12,17 @@ const Skills = () => {
     <section
       name="skills"
       aria-label="Skills and tools section"
-      className="relative w-full bg-transparent text-slate-300 py-20 sm:py-28 border-t border-slate-900 scroll-mt-20 theme-violet overflow-hidden"
+      className="relative w-full bg-transparent text-slate-300 py-20 sm:py-24 border-t border-slate-900 scroll-mt-20 theme-violet overflow-hidden"
     >
       {/* Ambient Violet Glow */}
       <div className="ambient-glow animate-pulse-glow top-1/3 left-10 w-[450px] h-[450px] bg-purple-600/15 no-print" />
 
-      <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="max-w-[1100px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Header */}
         <div className="pb-8 text-left">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-purple-950/60 border border-purple-500/30 text-purple-400 text-xs font-mono uppercase tracking-widest mb-3">
-            Technical Skills Matrix
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-purple-950/80 border border-purple-500/40 text-purple-400 text-xs font-mono uppercase tracking-widest mb-3 shadow-md">
+            <FaGamepad className="text-purple-400 text-xs" /> SKILL TREE MATRIX
           </div>
           <h2 className="text-3xl sm:text-5xl font-extrabold text-slate-100 tracking-tight">
             Skills & <span className="gradient-text-violet">Technologies</span>
@@ -35,10 +37,14 @@ const Skills = () => {
           {tabs.map((tab) => (
             <button
               key={tab}
-              onClick={() => setActiveTab(tab)}
-              className={`px-4 py-2 text-xs sm:text-sm font-semibold rounded-xl transition-all cursor-pointer ${
+              onMouseEnter={playHoverSound}
+              onClick={() => {
+                playClickSound();
+                setActiveTab(tab);
+              }}
+              className={`px-4 py-2 text-xs sm:text-sm font-semibold font-mono rounded-xl transition-all cursor-pointer ${
                 activeTab === tab
-                  ? "bg-purple-600 text-white shadow-lg shadow-purple-500/30"
+                  ? "bg-purple-600 text-white shadow-lg shadow-purple-500/30 border border-purple-400"
                   : "bg-slate-900/80 text-slate-400 hover:text-slate-200 border border-slate-800"
               }`}
             >
@@ -51,9 +57,13 @@ const Skills = () => {
         {activeTab === "All" ? (
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {SKILLS_DATA.map((cat) => (
-              <div key={cat.category} className="glass-card p-6 rounded-3xl border border-slate-800 hover:border-purple-500/30 transition-colors flex flex-col justify-between">
+              <div
+                key={cat.category}
+                onMouseEnter={playHoverSound}
+                className="glass-card p-6 rounded-3xl border border-slate-800 hover:border-purple-500/40 transition-colors flex flex-col justify-between"
+              >
                 <div>
-                  <h3 className="text-lg font-bold text-slate-100 mb-4 pb-2 border-b border-slate-800 flex items-center justify-between">
+                  <h3 className="text-lg font-bold text-slate-100 mb-4 pb-2 border-b border-slate-800 flex items-center justify-between font-mono">
                     <span>{cat.category}</span>
                     <span className="text-xs font-mono text-purple-400 bg-slate-900 px-2 py-0.5 rounded border border-slate-800">
                       {cat.skills.length}
@@ -94,7 +104,8 @@ const Skills = () => {
                 return (
                   <div
                     key={s.name}
-                    className="glass-card glass-card-hover p-5 rounded-2xl border border-slate-800 text-center flex flex-col items-center justify-center gap-3 group hover:border-purple-500/40"
+                    onMouseEnter={playHoverSound}
+                    className="glass-card glass-card-hover p-5 rounded-2xl border border-slate-800 text-center flex flex-col items-center justify-center gap-3 group hover:border-purple-500/40 cursor-pointer"
                   >
                     {IconComp ? (
                       <IconComp size={42} style={{ color: s.color || '#c084fc' }} />

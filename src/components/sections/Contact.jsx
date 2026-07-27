@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FaEnvelope, FaPhoneAlt, FaMapMarkerAlt, FaCopy, FaCheck, FaPaperPlane } from 'react-icons/fa';
+import { FaEnvelope, FaPhoneAlt, FaMapMarkerAlt, FaCopy, FaCheck, FaPaperPlane, FaGamepad } from 'react-icons/fa';
 import {
   MAILTO,
   TEL_ID,
@@ -8,11 +8,13 @@ import {
   PHONE_MY,
   EMAIL,
 } from "../../constants/links";
+import { playHoverSound, playClickSound } from "../../utils/audioEffects";
 
 const Contact = () => {
   const [copiedType, setCopiedType] = useState(null);
 
   const handleCopy = (text, type) => {
+    playClickSound();
     navigator.clipboard.writeText(text);
     setCopiedType(type);
     setTimeout(() => setCopiedType(null), 2500);
@@ -22,17 +24,17 @@ const Contact = () => {
     <section
       name="contact"
       aria-label="Contact section"
-      className="relative w-full bg-transparent text-slate-300 py-20 sm:py-28 border-t border-slate-900 scroll-mt-20 theme-teal overflow-hidden"
+      className="relative w-full bg-transparent text-slate-300 py-20 sm:py-24 border-t border-slate-900 scroll-mt-20 theme-teal overflow-hidden"
     >
       {/* Ambient Teal Glow */}
       <div className="ambient-glow animate-pulse-glow bottom-10 right-1/3 w-[450px] h-[450px] bg-teal-500/15 no-print" />
 
-      <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="max-w-[1100px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Header */}
-        <div className="pb-12 text-left">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-teal-950/60 border border-teal-500/30 text-teal-400 text-xs font-mono uppercase tracking-widest mb-3">
-            Get In Touch
+        <div className="pb-10 text-left">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-teal-950/80 border border-teal-500/40 text-teal-400 text-xs font-mono uppercase tracking-widest mb-3 shadow-md">
+            <FaGamepad className="text-teal-400 text-xs" /> PLAYER INVENTORY: CONTACT CHANNELS
           </div>
           <h2 className="text-3xl sm:text-5xl font-extrabold text-slate-100 tracking-tight">
             Contact <span className="gradient-text">Information</span>
@@ -49,19 +51,19 @@ const Contact = () => {
             
             {/* Quick Copy Contact Card */}
             <div className="glass-card p-6 sm:p-8 rounded-3xl border border-slate-800 space-y-6 hover:border-teal-500/30 transition-colors">
-              <h3 className="text-xl font-bold text-slate-100 pb-3 border-b border-slate-800">
-                Direct Contact Channels
+              <h3 className="text-xl font-bold text-slate-100 pb-3 border-b border-slate-800 font-mono">
+                Direct Channels
               </h3>
 
               {/* Email Row */}
-              <div className="flex items-start justify-between gap-4 p-4 rounded-2xl bg-slate-900/80 border border-slate-800/80">
+              <div onMouseEnter={playHoverSound} className="flex items-start justify-between gap-4 p-4 rounded-2xl bg-slate-900/80 border border-slate-800/80">
                 <div className="flex items-center gap-3">
                   <div className="p-3 rounded-xl bg-teal-950 text-teal-400 border border-teal-500/30">
                     <FaEnvelope size={18} />
                   </div>
                   <div>
                     <span className="text-xs font-mono text-slate-400 block">Email Address</span>
-                    <a href={MAILTO} className="text-sm sm:text-base font-semibold text-slate-100 hover:text-teal-400 transition-colors">
+                    <a href={MAILTO} className="text-sm sm:text-base font-semibold text-slate-100 hover:text-teal-400 transition-colors font-mono">
                       {EMAIL}
                     </a>
                   </div>
@@ -77,7 +79,7 @@ const Contact = () => {
               </div>
 
               {/* Phone Malaysia Row */}
-              <div className="flex items-start justify-between gap-4 p-4 rounded-2xl bg-slate-900/80 border border-slate-800/80">
+              <div onMouseEnter={playHoverSound} className="flex items-start justify-between gap-4 p-4 rounded-2xl bg-slate-900/80 border border-slate-800/80">
                 <div className="flex items-center gap-3">
                   <div className="p-3 rounded-xl bg-indigo-950 text-indigo-400 border border-indigo-500/30">
                     <FaPhoneAlt size={18} />
@@ -100,7 +102,7 @@ const Contact = () => {
               </div>
 
               {/* Phone Indonesia Row */}
-              <div className="flex items-start justify-between gap-4 p-4 rounded-2xl bg-slate-900/80 border border-slate-800/80">
+              <div onMouseEnter={playHoverSound} className="flex items-start justify-between gap-4 p-4 rounded-2xl bg-slate-900/80 border border-slate-800/80">
                 <div className="flex items-center gap-3">
                   <div className="p-3 rounded-xl bg-purple-950 text-purple-400 border border-purple-500/30">
                     <FaPhoneAlt size={18} />
@@ -123,7 +125,7 @@ const Contact = () => {
               </div>
 
               {/* Location Row */}
-              <div className="flex items-center gap-3 p-4 rounded-2xl bg-slate-900/80 border border-slate-800/80">
+              <div onMouseEnter={playHoverSound} className="flex items-center gap-3 p-4 rounded-2xl bg-slate-900/80 border border-slate-800/80">
                 <div className="p-3 rounded-xl bg-slate-800 text-slate-300">
                   <FaMapMarkerAlt size={18} />
                 </div>
@@ -139,14 +141,15 @@ const Contact = () => {
 
           {/* Right Column: Interactive Send Message Form */}
           <div className="glass-card p-6 sm:p-8 rounded-3xl border border-slate-800 no-print hover:border-teal-500/30 transition-colors">
-            <h3 className="text-xl font-bold text-slate-100 mb-6">
-              Send a Direct Message
+            <h3 className="text-xl font-bold text-slate-100 mb-6 font-mono">
+              Send Direct Message
             </h3>
 
             <form
               method="POST"
               action="https://getform.io/f/8b32dafc-5b4d-4ec0-8625-93188b890d34"
               className="flex flex-col gap-4"
+              onSubmit={playClickSound}
             >
               <div>
                 <label htmlFor="name" className="block text-xs font-mono text-slate-400 mb-1.5">
@@ -158,7 +161,7 @@ const Contact = () => {
                   type="text"
                   placeholder="e.g. Alex Smith"
                   required
-                  className="w-full p-3.5 bg-slate-900/90 border border-slate-800 rounded-xl text-slate-100 placeholder:text-slate-600 focus:outline-none focus:border-teal-500 transition-colors text-sm"
+                  className="w-full p-3.5 bg-slate-900/90 border border-slate-800 rounded-xl text-slate-100 placeholder:text-slate-600 focus:outline-none focus:border-teal-500 transition-colors text-sm font-mono"
                 />
               </div>
 
@@ -172,7 +175,7 @@ const Contact = () => {
                   type="email"
                   placeholder="e.g. alex@company.com"
                   required
-                  className="w-full p-3.5 bg-slate-900/90 border border-slate-800 rounded-xl text-slate-100 placeholder:text-slate-600 focus:outline-none focus:border-teal-500 transition-colors text-sm"
+                  className="w-full p-3.5 bg-slate-900/90 border border-slate-800 rounded-xl text-slate-100 placeholder:text-slate-600 focus:outline-none focus:border-teal-500 transition-colors text-sm font-mono"
                 />
               </div>
 
@@ -183,7 +186,7 @@ const Contact = () => {
                 <textarea
                   id="message"
                   name="message"
-                  rows="5"
+                  rows="4"
                   placeholder="Write your project requirements or job opportunity..."
                   required
                   className="w-full p-3.5 bg-slate-900/90 border border-slate-800 rounded-xl text-slate-100 placeholder:text-slate-600 focus:outline-none focus:border-teal-500 transition-colors text-sm resize-none"
@@ -192,10 +195,11 @@ const Contact = () => {
 
               <button
                 type="submit"
+                onMouseEnter={playHoverSound}
                 className="w-full py-3.5 px-6 font-semibold text-white bg-gradient-to-r from-teal-500 via-cyan-600 to-indigo-600 hover:from-teal-400 hover:to-indigo-500 rounded-xl shadow-lg shadow-teal-500/20 transition-all flex items-center justify-center gap-2 cursor-pointer mt-2"
               >
                 <FaPaperPlane className="text-sm" />
-                <span>Send Message</span>
+                <span>Transmit Message</span>
               </button>
             </form>
           </div>
