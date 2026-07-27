@@ -10,9 +10,12 @@ const Skills = () => {
     <section
       name="skills"
       aria-label="Skills and tools section"
-      className="w-full bg-transparent text-slate-300 py-20 sm:py-28 border-t border-slate-900 scroll-mt-20"
+      className="relative w-full bg-transparent text-slate-300 py-20 sm:py-28 border-t border-slate-900 scroll-mt-20 theme-violet overflow-hidden"
     >
-      <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Ambient Violet Glow */}
+      <div className="ambient-glow animate-pulse-glow top-1/3 left-10 w-[450px] h-[450px] bg-purple-600/15 no-print" />
+
+      <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Header */}
         <div className="pb-8 text-left">
@@ -20,7 +23,7 @@ const Skills = () => {
             Technical Skills Matrix
           </div>
           <h2 className="text-3xl sm:text-5xl font-extrabold text-slate-100 tracking-tight">
-            Skills & <span className="gradient-text">Technologies</span>
+            Skills & <span className="gradient-text-violet">Technologies</span>
           </h2>
           <p className="mt-3 text-slate-400 text-base sm:text-lg max-w-2xl">
             A comprehensive overview of languages, frameworks, cloud services, and testing frameworks I use in production.
@@ -48,11 +51,11 @@ const Skills = () => {
         {activeTab === "All" ? (
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {SKILLS_DATA.map((cat) => (
-              <div key={cat.category} className="glass-card p-6 rounded-3xl border border-slate-800 flex flex-col justify-between">
+              <div key={cat.category} className="glass-card p-6 rounded-3xl border border-slate-800 hover:border-purple-500/30 transition-colors flex flex-col justify-between">
                 <div>
                   <h3 className="text-lg font-bold text-slate-100 mb-4 pb-2 border-b border-slate-800 flex items-center justify-between">
                     <span>{cat.category}</span>
-                    <span className="text-xs font-mono text-cyan-400 bg-slate-900 px-2 py-0.5 rounded border border-slate-800">
+                    <span className="text-xs font-mono text-purple-400 bg-slate-900 px-2 py-0.5 rounded border border-slate-800">
                       {cat.skills.length}
                     </span>
                   </h3>
@@ -68,7 +71,7 @@ const Skills = () => {
                               e.currentTarget.style.display = 'none';
                             }}
                           />
-                          <span className="text-sm text-slate-200 group-hover:text-cyan-400 transition-colors font-medium">
+                          <span className="text-sm text-slate-200 group-hover:text-purple-400 transition-colors font-medium">
                             {s.name}
                           </span>
                         </div>
@@ -91,10 +94,10 @@ const Skills = () => {
                 return (
                   <div
                     key={s.name}
-                    className="glass-card glass-card-hover p-5 rounded-2xl border border-slate-800 text-center flex flex-col items-center justify-center gap-3 group"
+                    className="glass-card glass-card-hover p-5 rounded-2xl border border-slate-800 text-center flex flex-col items-center justify-center gap-3 group hover:border-purple-500/40"
                   >
                     {IconComp ? (
-                      <IconComp size={42} style={{ color: s.color || '#38BDF8' }} />
+                      <IconComp size={42} style={{ color: s.color || '#c084fc' }} />
                     ) : (
                       <img
                         src={s.url}
@@ -103,7 +106,7 @@ const Skills = () => {
                       />
                     )}
                     <div>
-                      <p className="text-sm font-semibold text-slate-200 group-hover:text-cyan-400 transition-colors">{s.name}</p>
+                      <p className="text-sm font-semibold text-slate-200 group-hover:text-purple-400 transition-colors">{s.name}</p>
                       <p className="text-[11px] font-mono text-slate-400 mt-0.5">{s.level}</p>
                     </div>
                   </div>

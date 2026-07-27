@@ -22,13 +22,16 @@ const Contact = () => {
     <section
       name="contact"
       aria-label="Contact section"
-      className="w-full bg-transparent text-slate-300 py-20 sm:py-28 border-t border-slate-900 scroll-mt-20"
+      className="relative w-full bg-transparent text-slate-300 py-20 sm:py-28 border-t border-slate-900 scroll-mt-20 theme-teal overflow-hidden"
     >
-      <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Ambient Teal Glow */}
+      <div className="ambient-glow animate-pulse-glow bottom-10 right-1/3 w-[450px] h-[450px] bg-teal-500/15 no-print" />
+
+      <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Header */}
         <div className="pb-12 text-left">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-cyan-950/60 border border-cyan-500/30 text-cyan-400 text-xs font-mono uppercase tracking-widest mb-3">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-teal-950/60 border border-teal-500/30 text-teal-400 text-xs font-mono uppercase tracking-widest mb-3">
             Get In Touch
           </div>
           <h2 className="text-3xl sm:text-5xl font-extrabold text-slate-100 tracking-tight">
@@ -45,7 +48,7 @@ const Contact = () => {
           <div className="space-y-6">
             
             {/* Quick Copy Contact Card */}
-            <div className="glass-card p-6 sm:p-8 rounded-3xl border border-slate-800 space-y-6">
+            <div className="glass-card p-6 sm:p-8 rounded-3xl border border-slate-800 space-y-6 hover:border-teal-500/30 transition-colors">
               <h3 className="text-xl font-bold text-slate-100 pb-3 border-b border-slate-800">
                 Direct Contact Channels
               </h3>
@@ -53,19 +56,19 @@ const Contact = () => {
               {/* Email Row */}
               <div className="flex items-start justify-between gap-4 p-4 rounded-2xl bg-slate-900/80 border border-slate-800/80">
                 <div className="flex items-center gap-3">
-                  <div className="p-3 rounded-xl bg-cyan-950 text-cyan-400 border border-cyan-500/30">
+                  <div className="p-3 rounded-xl bg-teal-950 text-teal-400 border border-teal-500/30">
                     <FaEnvelope size={18} />
                   </div>
                   <div>
                     <span className="text-xs font-mono text-slate-400 block">Email Address</span>
-                    <a href={MAILTO} className="text-sm sm:text-base font-semibold text-slate-100 hover:text-cyan-400 transition-colors">
+                    <a href={MAILTO} className="text-sm sm:text-base font-semibold text-slate-100 hover:text-teal-400 transition-colors">
                       {EMAIL}
                     </a>
                   </div>
                 </div>
                 <button
                   onClick={() => handleCopy(EMAIL, 'email')}
-                  className="p-2.5 text-xs text-slate-300 hover:text-cyan-400 bg-slate-800 hover:bg-slate-700 rounded-xl transition-all flex items-center gap-1.5 cursor-pointer no-print"
+                  className="p-2.5 text-xs text-slate-300 hover:text-teal-400 bg-slate-800 hover:bg-slate-700 rounded-xl transition-all flex items-center gap-1.5 cursor-pointer no-print"
                   title="Copy email to clipboard"
                 >
                   {copiedType === 'email' ? <FaCheck className="text-emerald-400" /> : <FaCopy />}
@@ -81,14 +84,14 @@ const Contact = () => {
                   </div>
                   <div>
                     <span className="text-xs font-mono text-slate-400 block">Phone (Malaysia)</span>
-                    <a href={TEL_MY} className="text-sm sm:text-base font-semibold text-slate-100 hover:text-cyan-400 transition-colors font-mono">
+                    <a href={TEL_MY} className="text-sm sm:text-base font-semibold text-slate-100 hover:text-teal-400 transition-colors font-mono">
                       +60 17-949-0797
                     </a>
                   </div>
                 </div>
                 <button
                   onClick={() => handleCopy(PHONE_MY, 'phone_my')}
-                  className="p-2.5 text-xs text-slate-300 hover:text-cyan-400 bg-slate-800 hover:bg-slate-700 rounded-xl transition-all flex items-center gap-1.5 cursor-pointer no-print"
+                  className="p-2.5 text-xs text-slate-300 hover:text-teal-400 bg-slate-800 hover:bg-slate-700 rounded-xl transition-all flex items-center gap-1.5 cursor-pointer no-print"
                   title="Copy MY phone to clipboard"
                 >
                   {copiedType === 'phone_my' ? <FaCheck className="text-emerald-400" /> : <FaCopy />}
@@ -104,14 +107,14 @@ const Contact = () => {
                   </div>
                   <div>
                     <span className="text-xs font-mono text-slate-400 block">Phone (Indonesia)</span>
-                    <a href={TEL_ID} className="text-sm sm:text-base font-semibold text-slate-100 hover:text-cyan-400 transition-colors font-mono">
+                    <a href={TEL_ID} className="text-sm sm:text-base font-semibold text-slate-100 hover:text-teal-400 transition-colors font-mono">
                       +62 812-2148-3613
                     </a>
                   </div>
                 </div>
                 <button
                   onClick={() => handleCopy(PHONE_ID, 'phone_id')}
-                  className="p-2.5 text-xs text-slate-300 hover:text-cyan-400 bg-slate-800 hover:bg-slate-700 rounded-xl transition-all flex items-center gap-1.5 cursor-pointer no-print"
+                  className="p-2.5 text-xs text-slate-300 hover:text-teal-400 bg-slate-800 hover:bg-slate-700 rounded-xl transition-all flex items-center gap-1.5 cursor-pointer no-print"
                   title="Copy ID phone to clipboard"
                 >
                   {copiedType === 'phone_id' ? <FaCheck className="text-emerald-400" /> : <FaCopy />}
@@ -135,7 +138,7 @@ const Contact = () => {
           </div>
 
           {/* Right Column: Interactive Send Message Form */}
-          <div className="glass-card p-6 sm:p-8 rounded-3xl border border-slate-800 no-print">
+          <div className="glass-card p-6 sm:p-8 rounded-3xl border border-slate-800 no-print hover:border-teal-500/30 transition-colors">
             <h3 className="text-xl font-bold text-slate-100 mb-6">
               Send a Direct Message
             </h3>
@@ -155,7 +158,7 @@ const Contact = () => {
                   type="text"
                   placeholder="e.g. Alex Smith"
                   required
-                  className="w-full p-3.5 bg-slate-900/90 border border-slate-800 rounded-xl text-slate-100 placeholder:text-slate-600 focus:outline-none focus:border-cyan-500 transition-colors text-sm"
+                  className="w-full p-3.5 bg-slate-900/90 border border-slate-800 rounded-xl text-slate-100 placeholder:text-slate-600 focus:outline-none focus:border-teal-500 transition-colors text-sm"
                 />
               </div>
 
@@ -169,7 +172,7 @@ const Contact = () => {
                   type="email"
                   placeholder="e.g. alex@company.com"
                   required
-                  className="w-full p-3.5 bg-slate-900/90 border border-slate-800 rounded-xl text-slate-100 placeholder:text-slate-600 focus:outline-none focus:border-cyan-500 transition-colors text-sm"
+                  className="w-full p-3.5 bg-slate-900/90 border border-slate-800 rounded-xl text-slate-100 placeholder:text-slate-600 focus:outline-none focus:border-teal-500 transition-colors text-sm"
                 />
               </div>
 
@@ -183,13 +186,13 @@ const Contact = () => {
                   rows="5"
                   placeholder="Write your project requirements or job opportunity..."
                   required
-                  className="w-full p-3.5 bg-slate-900/90 border border-slate-800 rounded-xl text-slate-100 placeholder:text-slate-600 focus:outline-none focus:border-cyan-500 transition-colors text-sm resize-none"
+                  className="w-full p-3.5 bg-slate-900/90 border border-slate-800 rounded-xl text-slate-100 placeholder:text-slate-600 focus:outline-none focus:border-teal-500 transition-colors text-sm resize-none"
                 ></textarea>
               </div>
 
               <button
                 type="submit"
-                className="w-full py-3.5 px-6 font-semibold text-white bg-gradient-to-r from-cyan-500 via-indigo-500 to-purple-600 hover:from-cyan-400 hover:to-purple-500 rounded-xl shadow-lg shadow-cyan-500/20 transition-all flex items-center justify-center gap-2 cursor-pointer mt-2"
+                className="w-full py-3.5 px-6 font-semibold text-white bg-gradient-to-r from-teal-500 via-cyan-600 to-indigo-600 hover:from-teal-400 hover:to-indigo-500 rounded-xl shadow-lg shadow-teal-500/20 transition-all flex items-center justify-center gap-2 cursor-pointer mt-2"
               >
                 <FaPaperPlane className="text-sm" />
                 <span>Send Message</span>

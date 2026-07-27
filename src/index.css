@@ -42,6 +42,37 @@
   background: #334155;
 }
 
+/* Section Multi-Theme Glows & Accents */
+.theme-cyber {
+  --section-glow: rgba(6, 182, 212, 0.18);
+  --section-border: rgba(6, 182, 212, 0.25);
+}
+
+.theme-emerald {
+  --section-glow: rgba(16, 185, 129, 0.18);
+  --section-border: rgba(16, 185, 129, 0.25);
+}
+
+.theme-violet {
+  --section-glow: rgba(168, 85, 247, 0.18);
+  --section-border: rgba(168, 85, 247, 0.25);
+}
+
+.theme-obsidian {
+  --section-glow: rgba(99, 102, 241, 0.18);
+  --section-border: rgba(99, 102, 241, 0.25);
+}
+
+.theme-indigo {
+  --section-glow: rgba(79, 70, 229, 0.18);
+  --section-border: rgba(79, 70, 229, 0.25);
+}
+
+.theme-teal {
+  --section-glow: rgba(20, 184, 166, 0.18);
+  --section-border: rgba(20, 184, 166, 0.25);
+}
+
 /* Animations inspired by bamlab.ch & Cosmic Sparkling Sky */
 @keyframes float {
   0%, 100% { transform: translateY(0px) rotate(0deg); }
@@ -129,6 +160,24 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   animation: gradientShift 6s ease infinite;
+}
+
+.gradient-text-emerald {
+  background: linear-gradient(135deg, #34d399 0%, #10b981 50%, #059669 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gradient-text-violet {
+  background: linear-gradient(135deg, #c084fc 0%, #a855f7 50%, #7e22ce 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gradient-text-indigo {
+  background: linear-gradient(135deg, #818cf8 0%, #6366f1 50%, #4338ca 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .shimmer-btn {

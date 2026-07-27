@@ -15,6 +15,7 @@ import CustomCursor from "./components/ui/CustomCursor";
 import MouseSpotlight from "./components/ui/MouseSpotlight";
 import MarqueeTicker from "./components/ui/MarqueeTicker";
 import ThemeCustomizer from "./components/ui/ThemeCustomizer";
+import ScrollProgress from "./components/ui/ScrollProgress";
 
 import PrintCV from "./components/print/PrintCV";
 
@@ -28,6 +29,9 @@ function App() {
         Skip to main content
       </a>
       
+      {/* Top Scroll Progress Bar */}
+      <ScrollProgress />
+
       {/* Cosmic Sparkling Background, Cursor & Mouse Spotlight */}
       <StarBackground />
       <CustomCursor />
@@ -36,7 +40,7 @@ function App() {
       {/* Web Navigation */}
       <NavBar />
       
-      {/* Web Portfolio View */}
+      {/* Web Portfolio View with Multi-Theme Section Experience */}
       <main id="main" className="no-print relative z-10">
         <Home />
         <MarqueeTicker />

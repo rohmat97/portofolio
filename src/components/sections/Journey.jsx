@@ -15,9 +15,12 @@ const Journey = () => {
     <section
       name="experience"
       aria-label="Professional experience section"
-      className="w-full bg-transparent text-slate-300 py-20 sm:py-28 border-t border-slate-900 scroll-mt-20"
+      className="relative w-full bg-transparent text-slate-300 py-20 sm:py-28 border-t border-slate-900 scroll-mt-20 theme-indigo overflow-hidden"
     >
-      <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Ambient Indigo Glow */}
+      <div className="ambient-glow animate-pulse-glow bottom-20 left-1/4 w-[500px] h-[500px] bg-indigo-600/15 no-print" />
+
+      <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
         <div className="pb-8 text-left">
@@ -25,7 +28,7 @@ const Journey = () => {
             Career Timeline
           </div>
           <h2 className="text-3xl sm:text-5xl font-extrabold text-slate-100 tracking-tight">
-            Work <span className="gradient-text">Experience</span>
+            Work <span className="gradient-text-indigo">Experience</span>
           </h2>
           <p className="mt-3 text-slate-400 text-base sm:text-lg max-w-2xl">
             A comprehensive record of my engineering roles, quantified achievements, and impact.
@@ -53,7 +56,7 @@ const Journey = () => {
         </div>
 
         {/* Experience Timeline Stream */}
-        <div className="relative border-l-2 border-slate-800 pl-6 sm:pl-10 space-y-12 ml-2 sm:ml-4">
+        <div className="relative border-l-2 border-indigo-900/80 pl-6 sm:pl-10 space-y-12 ml-2 sm:ml-4">
           {filteredExperiences.map((exp, idx) => (
             <ExperienceCard
               key={`${exp.company}-${exp.title}-${idx}`}
