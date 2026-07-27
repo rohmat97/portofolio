@@ -1,6 +1,7 @@
 import React, { useMemo } from 'react';
 import { useActiveSection } from '../../hooks/useActiveSection';
 import SectionVideoCanvas from './SectionVideoCanvas';
+import BigMeteor from './BigMeteor';
 
 const DynamicSectionBackground = () => {
   const activeSection = useActiveSection();
@@ -21,7 +22,11 @@ const DynamicSectionBackground = () => {
       {/* Bottom Gradient Shield to Ensure Crisp Text Legibility Above Footer */}
       <div className="absolute bottom-0 left-0 right-0 h-64 bg-gradient-to-t from-[#080c14] via-[#080c14]/80 to-transparent z-10 pointer-events-none" />
 
-      {/* CONTINUOUS PERIODIC PASSING METEORS (EVERY 3.5 SECONDS) */}
+      {/* GIANT 500x500px FLAMING ASTEROID METEOR (Shooting every 4-5 seconds) */}
+      <BigMeteor delay="0s" />
+      <BigMeteor delay="4.5s" />
+
+      {/* CONTINUOUS PERIODIC PASSING METEORS */}
       {periodicMeteors.map((m) => (
         <div
           key={m.id}

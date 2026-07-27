@@ -131,6 +131,29 @@
   animation: planetRotate 45s linear infinite;
 }
 
+@keyframes bigMeteorFlight {
+  0% {
+    transform: translate3d(600px, -400px, 0) scale(0.7) rotate(-35deg);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.85;
+  }
+  85% {
+    opacity: 0.85;
+  }
+  100% {
+    transform: translate3d(-1400px, 1400px, 0) scale(1.2) rotate(-35deg);
+    opacity: 0;
+  }
+}
+
+.animate-big-meteor {
+  position: absolute;
+  pointer-events: none;
+  animation: bigMeteorFlight var(--duration, 5s) ease-in-out infinite var(--delay, 0s);
+}
+
 .animate-meteor {
   position: absolute;
   height: 3px;
