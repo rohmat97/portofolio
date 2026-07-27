@@ -4,34 +4,79 @@ const BigMeteor = ({ delay = '0s' }) => {
   return (
     <div
       className="animate-big-meteor top-[-150px] right-[-150px] no-print z-0"
-      style={{ '--delay': delay, '--duration': '5s' }}
+      style={{ '--delay': delay, '--duration': '4.5s' }}
     >
-      {/* REAL 500x500px FLAMING METEOR ASTEROID */}
-      <div className="relative w-[450px] h-[450px] sm:w-[550px] sm:h-[550px] flex items-center justify-center pointer-events-none select-none">
+      {/* 500x500px Cartoon / Game Vector Flaming Meteor (Matching User's Reference Image) */}
+      <div className="relative w-[400px] h-[400px] sm:w-[500px] sm:h-[500px] flex items-center justify-center pointer-events-none select-none filter drop-shadow-[0_0_30px_rgba(249,115,22,0.8)]">
         
-        {/* Blazing Fire Tail Particle Stream */}
-        <div className="absolute top-[80px] right-[-60px] w-[550px] h-[140px] bg-gradient-to-l from-transparent via-amber-500/80 to-red-600/90 blur-md rounded-full rotate-[-35deg] shadow-[0_0_50px_#f97316]" />
-        <div className="absolute top-[100px] right-[-40px] w-[450px] h-[70px] bg-gradient-to-l from-transparent via-yellow-300 to-amber-500 blur-sm rounded-full rotate-[-35deg]" />
+        <svg
+          viewBox="0 0 500 500"
+          className="w-full h-full transform -rotate-12"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          {/* Outer Red/Orange Flaming Tail & Spiky Flame Edges */}
+          <path
+            d="M 460,40 C 380,120 300,160 200,220 C 140,256 90,300 70,360 C 50,420 80,470 140,480 C 220,490 280,440 330,370 C 380,300 420,200 460,40 Z"
+            fill="url(#outerFlame)"
+          />
+          <path
+            d="M 440,60 C 370,130 290,180 210,235 C 160,270 110,310 95,360 C 80,410 110,450 160,455 C 230,460 280,415 325,355 C 370,290 405,190 440,60 Z"
+            fill="url(#innerFlame)"
+          />
 
-        {/* Real Burning Magma Asteroid Rock Core */}
-        <div className="relative w-[280px] h-[280px] sm:w-[340px] sm:h-[340px] rounded-full bg-gradient-to-tr from-[#1a0800] via-[#5c1d00] to-[#f97316] shadow-[0_0_100px_#f97316,0_0_160px_#ef4444,inset_-35px_-35px_70px_rgba(0,0,0,0.95)] border-2 border-amber-400/60 overflow-hidden flex items-center justify-center">
-          
-          {/* Scorched Cratering & Molten Magma Veins */}
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,#fde047_0%,#f97316_30%,#7c2d12_70%,#000000_100%)] mix-blend-hard-light opacity-90" />
-          
-          {/* Molten Magma Sparks & Vein Details */}
-          <div className="absolute top-10 left-12 w-24 h-24 rounded-full border-4 border-amber-950/80 bg-amber-900/60 shadow-inner rotate-12" />
-          <div className="absolute bottom-12 right-10 w-32 h-32 rounded-full border-4 border-red-950/90 bg-orange-950/70 shadow-inner" />
-          <div className="absolute top-1/2 left-1/3 w-16 h-16 rounded-full border-2 border-yellow-500/50 bg-amber-500/30 blur-[1px]" />
-          
-          {/* Atmospheric Entry Shockwave Glow */}
-          <div className="absolute inset-0 bg-gradient-to-tr from-amber-400/30 via-orange-500/20 to-transparent animate-pulse" />
-        </div>
+          {/* Yellow Inner Fire Aura Wrap */}
+          <path
+            d="M 400,100 C 340,160 270,200 200,250 C 150,285 115,320 110,365 C 105,405 130,435 175,435 C 235,435 275,395 315,340 C 355,280 380,180 400,100 Z"
+            fill="#FACC15"
+          />
 
-        {/* Trailing Fire Embers */}
-        <div className="absolute top-[160px] right-[100px] w-4 h-4 rounded-full bg-amber-400 shadow-[0_0_15px_#fde047] animate-ping" />
-        <div className="absolute top-[220px] right-[180px] w-3 h-3 rounded-full bg-orange-500 shadow-[0_0_12px_#f97316] animate-ping" />
-        <div className="absolute top-[280px] right-[260px] w-5 h-5 rounded-full bg-red-500 shadow-[0_0_20px_#ef4444] animate-ping" />
+          {/* Cratered Olive/Gray Asteroid Rock Core */}
+          <g>
+            {/* Main Rock Base */}
+            <path
+              d="M 120,320 C 100,350 110,390 140,420 C 180,450 230,440 260,410 C 290,380 300,340 280,300 C 250,250 200,240 160,260 C 130,275 125,295 120,320 Z"
+              fill="#8A8A5C"
+              stroke="#5C5C3D"
+              strokeWidth="6"
+            />
+            {/* Rock Shading Highlight */}
+            <path
+              d="M 140,270 C 175,255 220,265 245,305 C 265,340 255,375 230,395 C 205,370 180,330 140,270 Z"
+              fill="#A3A375"
+            />
+
+            {/* Craters with Inner Rim Shading */}
+            <ellipse cx="160" cy="315" rx="22" ry="15" fill="#5C5C3D" stroke="#3D3D29" strokeWidth="4" />
+            <ellipse cx="156" cy="313" rx="17" ry="11" fill="#47472B" />
+
+            <ellipse cx="215" cy="350" rx="28" ry="18" fill="#5C5C3D" stroke="#3D3D29" strokeWidth="5" />
+            <ellipse cx="210" cy="347" rx="22" ry="13" fill="#47472B" />
+
+            <ellipse cx="210" cy="290" rx="18" ry="12" fill="#5C5C3D" stroke="#3D3D29" strokeWidth="4" />
+            <ellipse cx="207" cy="288" rx="13" ry="8" fill="#47472B" />
+
+            <ellipse cx="250" cy="325" rx="16" ry="10" fill="#5C5C3D" stroke="#3D3D29" strokeWidth="3" />
+
+            <ellipse cx="170" cy="390" rx="20" ry="12" fill="#5C5C3D" stroke="#3D3D29" strokeWidth="4" />
+            <ellipse cx="166" cy="388" rx="15" ry="8" fill="#47472B" />
+          </g>
+
+          {/* Gradients Definition */}
+          <defs>
+            <linearGradient id="outerFlame" x1="460" y1="40" x2="100" y2="400" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stopColor="#DC2626" />
+              <stop offset="50%" stopColor="#EA580C" />
+              <stop offset="100%" stopColor="#F97316" />
+            </linearGradient>
+
+            <linearGradient id="innerFlame" x1="440" y1="60" x2="120" y2="380" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stopColor="#EA580C" />
+              <stop offset="60%" stopColor="#F59E0B" />
+              <stop offset="100%" stopColor="#FACC15" />
+            </linearGradient>
+          </defs>
+        </svg>
 
       </div>
     </div>
