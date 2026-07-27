@@ -133,7 +133,7 @@
 
 @keyframes bigMeteorFlight {
   0% {
-    transform: translate3d(700px, -400px, 0) scale(0.6) rotate(15deg);
+    transform: translate3d(700px, -400px, 0) scale(0.6);
     opacity: 0;
   }
   15% {
@@ -143,7 +143,7 @@
     opacity: 0.9;
   }
   100% {
-    transform: translate3d(-1200px, 1100px, 0) scale(1.1) rotate(15deg);
+    transform: translate3d(-1200px, 1100px, 0) scale(1.1);
     opacity: 0;
   }
 }

@@ -6,12 +6,12 @@ const BigMeteor = ({ delay = '0s' }) => {
       className="animate-big-meteor top-[-100px] right-[-100px] no-print z-0"
       style={{ '--delay': delay, '--duration': '4.5s' }}
     >
-      {/* 500x500px Vector Flaming Meteor (Rock Leading Down-Left, Fire Tail Trailing Up-Right) */}
+      {/* 500x500px Vector Flaming Meteor (Rock Leading Down-Left at 225°, Fire Tail Trailing Up-Right at 45°) */}
       <div className="relative w-[380px] h-[380px] sm:w-[480px] sm:h-[480px] flex items-center justify-center pointer-events-none select-none filter drop-shadow-[0_0_35px_rgba(249,115,22,0.85)]">
         
         <svg
           viewBox="0 0 500 500"
-          className="w-full h-full transform rotate-[-45deg]"
+          className="w-full h-full"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >
