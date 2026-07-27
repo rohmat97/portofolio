@@ -116,6 +116,30 @@
   100% { transform: translateY(-100px); opacity: 0; }
 }
 
+@keyframes planetRotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes meteorPass {
+  0% { transform: translateX(300px) translateY(-150px) rotate(-40deg); opacity: 0; width: 0px; }
+  30% { opacity: 1; width: 180px; }
+  100% { transform: translateX(-900px) translateY(700px) rotate(-40deg); opacity: 0; width: 0px; }
+}
+
+.animate-planet-rotate {
+  animation: planetRotate 45s linear infinite;
+}
+
+.animate-meteor {
+  position: absolute;
+  height: 3px;
+  border-radius: 9999px;
+  background: linear-gradient(-45deg, rgba(255, 255, 255, 1), rgba(56, 189, 248, 0));
+  filter: drop-shadow(0 0 12px #38bdf8);
+  animation: meteorPass var(--duration, 6s) ease-in-out infinite var(--delay, 0s);
+}
+
 .animate-matrix-fall {
   animation: matrixFall var(--duration, 6s) linear infinite;
 }
