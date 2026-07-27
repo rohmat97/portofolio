@@ -23,9 +23,9 @@ const Home = () => {
       aria-label="Home section"
       className="relative w-full min-h-screen pt-28 sm:pt-36 pb-20 flex items-center bg-[#080c14] overflow-hidden"
     >
-      {/* Background Ambient Glows */}
-      <div className="ambient-glow top-10 left-1/4 w-[400px] h-[400px] bg-cyan-500/20 no-print" />
-      <div className="ambient-glow bottom-10 right-1/4 w-[500px] h-[500px] bg-indigo-600/15 no-print" />
+      {/* Background Animated Ambient Glows */}
+      <div className="ambient-glow animate-pulse-glow top-10 left-1/4 w-[450px] h-[450px] bg-cyan-500/20 no-print" />
+      <div className="ambient-glow animate-pulse-glow top-1/2 right-1/4 w-[550px] h-[550px] bg-indigo-600/15 no-print" />
 
       {/* PRINT-ONLY Formal Resume Header */}
       <div className="hidden print:block w-full border-b-2 border-slate-900 pb-4 mb-6">
@@ -58,7 +58,7 @@ const Home = () => {
             </div>
 
             <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold text-slate-100 tracking-tight leading-[1.1] no-print">
-              Hi, I'm <span className="gradient-text">Rohmat Dasuki</span>
+              Hi, I'm <span className="gradient-text-animate">Rohmat Dasuki</span>
             </h1>
 
             <h2 className="text-xl sm:text-3xl font-semibold text-slate-300 mt-3 sm:mt-4 flex flex-wrap items-center gap-2 no-print">
@@ -86,9 +86,9 @@ const Home = () => {
                 offset={-80}
                 aria-label="View Projects Section"
               >
-                <button className="group px-6 py-3.5 text-sm sm:text-base font-semibold text-white bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 rounded-xl shadow-lg shadow-cyan-500/25 transition-all inline-flex items-center gap-2 cursor-pointer">
+                <button className="group shimmer-btn px-6 py-3.5 text-sm sm:text-base font-semibold text-white bg-gradient-to-r from-cyan-500 via-blue-600 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 rounded-xl shadow-lg shadow-cyan-500/25 transition-all inline-flex items-center gap-2 cursor-pointer">
                   <span>Explore Showcase</span>
-                  <HiArrowNarrowRight className="group-hover:translate-x-1 transition-transform" />
+                  <HiArrowNarrowRight className="group-hover:translate-x-1.5 transition-transform duration-300" />
                 </button>
               </Link>
 
@@ -130,12 +130,12 @@ const Home = () => {
 
           </div>
 
-          {/* Profile Card & Avatar (Web-Only) */}
+          {/* Floating Profile Card & Avatar (Web-Only) */}
           <div className="flex-1 flex justify-center w-full lg:w-auto no-print">
-            <div className="relative group">
+            <div className="relative group animate-float">
               
               {/* Outer Glowing Decorative Ring */}
-              <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500 via-indigo-500 to-purple-600 rounded-3xl blur-md opacity-50 group-hover:opacity-80 transition duration-500 no-print" />
+              <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500 via-indigo-500 to-purple-600 rounded-3xl blur-md opacity-60 group-hover:opacity-90 transition duration-500 no-print" />
               
               {/* Profile Card Box */}
               <div className="relative glass-card p-4 sm:p-6 rounded-3xl flex flex-col items-center text-center max-w-[320px] sm:max-w-[360px] border border-slate-800">
@@ -180,7 +180,7 @@ const Home = () => {
                 className="glass-card glass-card-hover p-4 sm:p-6 rounded-2xl border border-slate-800/80 text-left flex flex-col justify-between"
               >
                 <div>
-                  <div className="text-2xl sm:text-4xl font-extrabold gradient-text tracking-tight">
+                  <div className="text-2xl sm:text-4xl font-extrabold gradient-text-animate tracking-tight">
                     {m.value}
                   </div>
                   <div className="text-sm font-semibold text-slate-200 mt-1">
