@@ -1,6 +1,6 @@
 {
   "name": "portofolio",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "homepage": "https://rohmat97.github.io/portofolio",
   "private": true,
   "dependencies": {
@@ -15,7 +15,7 @@
     "react-icons": "^4.3.1",
     "react-scripts": "5.0.1",
     "react-scroll": "^1.8.7",
-    "tailwindcss": "^4.1.13",
+    "tailwindcss": "3.4.17",
     "web-vitals": "^2.1.0"
   },
   "scripts": {

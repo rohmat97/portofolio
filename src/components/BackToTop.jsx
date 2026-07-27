@@ -18,11 +18,13 @@ const BackToTop = () => {
       type="button"
       onClick={scrollTop}
       aria-label="Back to top"
-      className={`fixed bottom-6 right-6 z-40 rounded-full p-3 shadow-lg transition-all border-2 ${
-        visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 pointer-events-none'
-      } bg-pink-600/90 hover:bg-pink-600 border-pink-600 text-white`}
+      className={`fixed bottom-6 right-6 z-40 p-3.5 rounded-2xl shadow-xl transition-all duration-300 border no-print cursor-pointer ${
+        visible
+          ? 'opacity-100 translate-y-0 pointer-events-auto'
+          : 'opacity-0 translate-y-4 pointer-events-none'
+      } bg-cyan-600 hover:bg-cyan-500 border-cyan-400/40 text-white shadow-cyan-500/20`}
     >
-      <FaArrowUp />
+      <FaArrowUp size={16} />
     </button>
   );
 };

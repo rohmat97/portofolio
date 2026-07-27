@@ -1,4 +1,5 @@
 export const RESUME_URL = 'https://drive.google.com/file/d/1d8Mskqx8MIBCGBSln3Qix0h1uK98cMii/view?usp=sharing';
+export const CERTIFICATIONS_DRIVE_URL = 'https://drive.google.com/drive/folders/1fBPytOkcafSo99EAssbB9KsvYZRylsp5?usp=sharing';
 export const LINKEDIN_URL = 'https://www.linkedin.com/in/rohmat-dasuki-7ab950128/';
 export const GITHUB_URL = 'https://github.com/rohmat97';
 export const EMAIL = 'rohmat661@gmail.com';

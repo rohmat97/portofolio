@@ -1,3 +1,4 @@
+import React from "react";
 import About from "./components/About";
 import Contact from "./components/Contact";
 import Home from "./components/Home";
@@ -7,13 +8,23 @@ import Skills from "./components/Skills";
 import Work from "./components/Work";
 import Footer from "./components/Footer";
 import BackToTop from "./components/BackToTop";
+import PrintCV from "./components/PrintCV";
 
 function App() {
   return (
-    <div className="App">
-      <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[9999] bg-pink-600 text-white px-4 py-2 rounded">Skip to content</a>
+    <div className="App min-h-screen bg-[#080c14] text-slate-100 selection:bg-cyan-500/20 selection:text-cyan-300 font-sans">
+      <a
+        href="#main"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[9999] bg-cyan-600 text-white px-4 py-2 rounded-lg font-semibold shadow-lg no-print"
+      >
+        Skip to main content
+      </a>
+      
+      {/* Web Navigation */}
       <NavBar />
-      <main id="main">
+      
+      {/* Web Portfolio View */}
+      <main id="main" className="no-print">
         <Home />
         <About />
         <Skills />
@@ -21,8 +32,13 @@ function App() {
         <Journey />
         <Contact />
       </main>
+      
+      {/* Web Footer & Back to top */}
       <Footer />
       <BackToTop />
+
+      {/* Print / Export PDF Formal Resume View */}
+      <PrintCV />
     </div>
   );
 }

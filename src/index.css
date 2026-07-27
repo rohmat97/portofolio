@@ -2,41 +2,117 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700;800;900&display=swap');
-
 @layer base {
-    body {
-        @apply font-[Raleway];
-    }
-    li {
-        @apply px-4;
-        @apply cursor-pointer
-    }
-    a:focus-visible, button:focus-visible {
-        @apply outline-none ring-2 ring-pink-500 ring-offset-2 ring-offset-[#0a192f] rounded;
-    }
+  html {
+    scroll-behavior: smooth;
+    color-scheme: dark;
+  }
+  body {
+    font-family: 'Inter', sans-serif;
+    background-color: #080c14;
+    color: #f1f5f9;
+    overflow-x: hidden;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Outfit', sans-serif;
+  }
+  a:focus-visible, button:focus-visible {
+    @apply outline-none ring-2 ring-cyan-400 ring-offset-2 ring-offset-slate-950 rounded-lg;
+  }
 }
 
-/* Global smooth scrolling */
-html { scroll-behavior: smooth; }
-
-/* Text selection styling */
+/* Custom Selection */
 ::selection {
-  background: #ec489a33; /* pink-500 @ ~20% */
-  color: #ffffff;
+  background: rgba(6, 182, 212, 0.25);
+  color: #38bdf8;
 }
 
-.content-div {
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    height: 250px;
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #080c14;
+}
+::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #334155;
 }
 
-.content-div:hover{
-    background-image: linear-gradient(
-        to right,
-        rgba(112,157,255,0.8),
-        hsla(242,74%,61%,0.8)
-    );
+/* Glassmorphism & Utilities */
+.glass-card {
+  background: rgba(15, 23, 42, 0.65);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.glass-card-hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.glass-card-hover:hover {
+  transform: translateY(-4px);
+  border-color: rgba(56, 189, 248, 0.3);
+  box-shadow: 0 12px 30px -10px rgba(6, 182, 212, 0.15);
+}
+
+.glass-nav {
+  background: rgba(8, 12, 20, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #38bdf8 0%, #818cf8 50%, #c084fc 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.ambient-glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  pointer-events: none;
+  opacity: 0.15;
+}
+
+/* Pristine 2-Page Executive Resume Print Stylesheet */
+@media print {
+  @page {
+    margin: 1.2cm 1.5cm 1.2cm 1.5cm;
+    size: portrait;
+  }
+
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    text-shadow: none !important;
+    box-shadow: none !important;
+  }
+
+  html, body, .App {
+    background: #ffffff !important;
+    background-color: #ffffff !important;
+    color: #0f172a !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    min-height: 0 !important;
+    height: auto !important;
+    border: none !important;
+    overflow: visible !important;
+  }
+
+  /* Hide interactive Web UI in Print */
+  .no-print, nav, footer, main, .ambient-glow, button, .back-to-top, .social-sidebar, input, form {
+    display: none !important;
+  }
+
+  /* Force PrintCV component to render crisply */
+  .print\:block {
+    display: block !important;
+  }
 }
