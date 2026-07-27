@@ -9,6 +9,7 @@ import Work from "./components/Work";
 import Footer from "./components/Footer";
 import BackToTop from "./components/BackToTop";
 import PrintCV from "./components/PrintCV";
+import ThemeCustomizer from "./components/ThemeCustomizer";
 
 function App() {
   return (
@@ -33,9 +34,10 @@ function App() {
         <Contact />
       </main>
       
-      {/* Web Footer & Back to top */}
+      {/* Web Footer, Back to top & Theme Customizer */}
       <Footer />
       <BackToTop />
+      <ThemeCustomizer />
 
       {/* Print / Export PDF Formal Resume View */}
       <PrintCV />
