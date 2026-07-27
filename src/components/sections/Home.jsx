@@ -7,6 +7,7 @@ import { RESUME_URL, CERTIFICATIONS_DRIVE_URL, EMAIL, PHONE_ID, PHONE_MY } from 
 import { HERO_METRICS_DATA } from "../../data/metricsData";
 import { playHoverSound, playClickSound } from "../../utils/audioEffects";
 import ShinyText from "../ui/ShinyText";
+import GravityWells from "../ui/GravityWells";
 
 const Home = () => {
   const handlePrint = () => {
@@ -20,6 +21,9 @@ const Home = () => {
       aria-label="Home section"
       className="relative w-full min-h-screen pt-28 sm:pt-36 pb-20 flex items-center bg-transparent overflow-hidden"
     >
+      {/* ReactOmega Gravity Wells Component (Home Only) */}
+      <GravityWells />
+
       {/* Background Animated Ambient Glows */}
       <div className="ambient-glow animate-pulse-glow top-10 left-1/4 w-[450px] h-[450px] bg-cyan-500/20 no-print" />
       <div className="ambient-glow animate-pulse-glow top-1/2 right-1/4 w-[550px] h-[550px] bg-indigo-600/15 no-print" />
