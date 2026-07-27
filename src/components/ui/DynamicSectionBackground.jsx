@@ -1,18 +1,17 @@
 import React, { useMemo } from 'react';
 import { useActiveSection } from '../../hooks/useActiveSection';
 import SectionVideoCanvas from './SectionVideoCanvas';
-import BigMeteor from './BigMeteor';
 
 const DynamicSectionBackground = () => {
   const activeSection = useActiveSection();
 
-  // Periodic Meteors firing every 3-5 seconds across the sky
+  // Periodic Passing Meteors
   const periodicMeteors = useMemo(() => {
     return [
       { id: 1, top: '12%', right: '10%', duration: '4s', delay: '0s', color: '#38bdf8' },
-      { id: 2, top: '28%', right: '25%', duration: '4.5s', delay: '3.5s', color: '#fde047' },
-      { id: 3, top: '50%', right: '15%', duration: '4s', delay: '7s', color: '#c084fc' },
-      { id: 4, top: '72%', right: '35%', duration: '4.2s', delay: '10.5s', color: '#34d399' },
+      { id: 2, top: '28%', right: '25%', duration: '4.5s', delay: '2s', color: '#fde047' },
+      { id: 3, top: '50%', right: '15%', duration: '4s', delay: '4s', color: '#c084fc' },
+      { id: 4, top: '72%', right: '35%', duration: '4.2s', delay: '6s', color: '#34d399' },
     ];
   }, []);
 
@@ -22,11 +21,7 @@ const DynamicSectionBackground = () => {
       {/* Bottom Gradient Shield to Ensure Crisp Text Legibility Above Footer */}
       <div className="absolute bottom-0 left-0 right-0 h-64 bg-gradient-to-t from-[#080c14] via-[#080c14]/80 to-transparent z-10 pointer-events-none" />
 
-      {/* GIANT 500x500px FLAMING ASTEROID METEOR (Shooting every 4-5 seconds) */}
-      <BigMeteor delay="0s" />
-      <BigMeteor delay="4.5s" />
-
-      {/* CONTINUOUS PERIODIC PASSING METEORS */}
+      {/* CONTINUOUS PASSING METEORS (EVERY 2-4 SECONDS) */}
       {periodicMeteors.map((m) => (
         <div
           key={m.id}
