@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { FaSearch, FaLayerGroup, FaGamepad } from "react-icons/fa";
+import { FaSearch, FaLayerGroup, FaGamepad, FaChevronDown, FaChevronUp } from "react-icons/fa";
 import { PROJECTS_DATA, PROJECT_CATEGORIES } from "../../data/projectsData";
 import ProjectCard from "../ui/ProjectCard";
 import ProjectModal from "../ui/ProjectModal";
@@ -9,6 +9,7 @@ const Work = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [activeModalProject, setActiveModalProject] = useState(null);
+  const [showAllProjects, setShowAllProjects] = useState(false);
 
   const filteredProjects = PROJECTS_DATA.filter((p) => {
     const matchesCategory =
@@ -19,6 +20,11 @@ const Work = () => {
       p.tech.some((t) => t.toLowerCase().includes(searchQuery.toLowerCase()));
     return matchesCategory && matchesSearch;
   });
+
+  // Progressive Disclosure: Show top 6 featured projects by default unless searching or toggled
+  const displayedProjects = (showAllProjects || searchQuery.length > 0)
+    ? filteredProjects
+    : filteredProjects.slice(0, 6);
 
   return (
     <section
@@ -81,7 +87,7 @@ const Work = () => {
 
         {/* Projects Grid */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredProjects.map((p) => (
+          {displayedProjects.map((p) => (
             <div key={p.title} onMouseEnter={playHoverSound}>
               <ProjectCard
                 project={p}
@@ -93,6 +99,27 @@ const Work = () => {
             </div>
           ))}
         </div>
+
+        {/* Progressive Disclosure Toggle Button */}
+        {filteredProjects.length > 6 && searchQuery.length === 0 && (
+          <div className="mt-12 text-center no-print">
+            <button
+              onMouseEnter={playHoverSound}
+              onClick={() => {
+                playClickSound();
+                setShowAllProjects(!showAllProjects);
+              }}
+              className="px-6 py-3.5 text-sm font-semibold text-cyan-300 bg-slate-900 hover:bg-slate-800 border border-cyan-500/40 hover:border-cyan-400 rounded-xl transition-all inline-flex items-center gap-2 cursor-pointer shadow-lg shadow-cyan-500/10 font-mono"
+            >
+              <span>
+                {showAllProjects
+                  ? "Show Featured Projects Only"
+                  : `Explore All ${filteredProjects.length} Projects Showcase`}
+              </span>
+              {showAllProjects ? <FaChevronUp className="text-xs" /> : <FaChevronDown className="text-xs" />}
+            </button>
+          </div>
+        )}
 
         {/* Empty Search Fallback */}
         {filteredProjects.length === 0 && (

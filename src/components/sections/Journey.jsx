@@ -1,16 +1,22 @@
 import React, { useState } from "react";
-import { FaFilter, FaGamepad } from "react-icons/fa";
+import { FaFilter, FaChevronDown, FaChevronUp, FaGamepad } from "react-icons/fa";
 import { EXPERIENCES_DATA, EXPERIENCE_CATEGORIES } from "../../data/experiencesData";
 import ExperienceCard from "../ui/ExperienceCard";
 import { playHoverSound, playClickSound } from "../../utils/audioEffects";
 
 const Journey = () => {
   const [activeCategory, setActiveCategory] = useState("All");
+  const [showAllRoles, setShowAllRoles] = useState(false);
 
   const filteredExperiences =
     activeCategory === "All"
       ? EXPERIENCES_DATA
       : EXPERIENCES_DATA.filter((e) => e.category === activeCategory);
+
+  // Progressive Disclosure: Show top 4 roles by default unless toggled
+  const displayedExperiences = showAllRoles
+    ? filteredExperiences
+    : filteredExperiences.slice(0, 4);
 
   return (
     <section
@@ -37,7 +43,7 @@ const Journey = () => {
         </div>
 
         {/* Category Filter Tabs */}
-        <div className="flex flex-wrap gap-2 mb-12 no-print">
+        <div className="flex flex-wrap gap-2 mb-10 no-print">
           <div className="flex items-center gap-2 text-xs font-mono text-slate-400 mr-2 py-2">
             <FaFilter className="text-indigo-400" /> Filter Domain:
           </div>
@@ -61,13 +67,34 @@ const Journey = () => {
         </div>
 
         {/* Experience Timeline Stream */}
-        <div className="relative border-l-2 border-indigo-900/80 pl-6 sm:pl-10 space-y-12 ml-2 sm:ml-4">
-          {filteredExperiences.map((exp, idx) => (
+        <div className="relative border-l-2 border-indigo-900/80 pl-6 sm:pl-10 space-y-10 ml-2 sm:ml-4">
+          {displayedExperiences.map((exp, idx) => (
             <div key={`${exp.company}-${exp.title}-${idx}`} onMouseEnter={playHoverSound}>
               <ExperienceCard exp={exp} />
             </div>
           ))}
         </div>
+
+        {/* Progressive Disclosure Toggle Button */}
+        {filteredExperiences.length > 4 && (
+          <div className="mt-12 text-center no-print">
+            <button
+              onMouseEnter={playHoverSound}
+              onClick={() => {
+                playClickSound();
+                setShowAllRoles(!showAllRoles);
+              }}
+              className="px-6 py-3.5 text-sm font-semibold text-indigo-300 bg-slate-900 hover:bg-slate-800 border border-indigo-500/40 hover:border-indigo-400 rounded-xl transition-all inline-flex items-center gap-2 cursor-pointer shadow-lg shadow-indigo-500/10 font-mono"
+            >
+              <span>
+                {showAllRoles
+                  ? "Show Top Highlights Only"
+                  : `View Complete Career History (${filteredExperiences.length - 4} Additional Roles)`}
+              </span>
+              {showAllRoles ? <FaChevronUp className="text-xs" /> : <FaChevronDown className="text-xs" />}
+            </button>
+          </div>
+        )}
 
       </div>
     </section>
