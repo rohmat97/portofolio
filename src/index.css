@@ -154,6 +154,20 @@
   animation: bigMeteorFlight var(--duration, 5s) ease-in-out infinite var(--delay, 0s);
 }
 
+@keyframes borderBeam {
+  0% {
+    offset-distance: 0%;
+  }
+  100% {
+    offset-distance: 100%;
+  }
+}
+
+.animate-border-beam {
+  offset-path: rect(0 auto auto 0 round 1.5rem);
+  animation: borderBeam var(--duration, 6s) linear infinite var(--delay, 0s);
+}
+
 .animate-meteor {
   position: absolute;
   height: 3px;

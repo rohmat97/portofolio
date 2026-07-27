@@ -1,10 +1,15 @@
 import React from "react";
 import { FaExternalLinkAlt } from "react-icons/fa";
 import { FALLBACK_PROJECT_IMAGE } from "../../data/projectsData";
+import BorderBeam from "./BorderBeam";
 
 const ProjectCard = ({ project, onSelectProject }) => {
   return (
-    <article className="glass-card glass-card-hover rounded-3xl overflow-hidden border border-slate-800/90 flex flex-col justify-between group">
+    <article className="relative glass-card glass-card-hover rounded-3xl overflow-hidden border border-slate-800/90 flex flex-col justify-between group">
+      
+      {/* ReactOmega Border Beam Effect */}
+      <BorderBeam size={160} duration={7} delay={0} colorFrom="#38bdf8" colorTo="#a855f7" />
+
       <div>
         {/* Image Container */}
         <div className="relative h-48 w-full bg-slate-950 overflow-hidden">
