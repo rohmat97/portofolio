@@ -1,0 +1,153 @@
+export const EXPERIENCE_CATEGORIES = [
+  "All",
+  "FinTech & Banking",
+  "Mobile Apps",
+  "Enterprise & Web",
+];
+
+export const EXPERIENCES_DATA = [
+  {
+    company: "PayNet (Payments Network Malaysia)",
+    location: "Kuala Lumpur, Malaysia",
+    title: "Senior Software Engineer",
+    period: "March 2024 — Present",
+    category: "FinTech & Banking",
+    bullets: [
+      "Frontend Engineering: Architected high-availability payment system web portals using Nuxt.js, Pinia, and DaisyUI, reducing render latency and improving UX scores.",
+      "Backend Scalability: Engineered enterprise microservices with Java/Spring Boot, ensuring 100% compliance with national banking standards and high transaction throughput.",
+      "Data Integrity: Enforced end-to-end type safety with TypeScript and Zod across the full stack, resulting in a measurable decrease in runtime errors.",
+      "Quality Assurance: Modernized testing workflows by implementing Vitest and automated API integration suites, streamlining cross-functional delivery cycles.",
+    ],
+    tech: ["Nuxt.js", "Java", "Spring Boot", "TypeScript", "Zod", "Pinia", "Vitest", "DaisyUI", "Postman", "SQL"],
+  },
+  {
+    company: "PasarDana",
+    location: "Jakarta, Indonesia",
+    title: "Software Engineer (Long-Term Freelance)",
+    period: "June 2023 — September 2024",
+    category: "FinTech & Banking",
+    bullets: [
+      "System Architecture: Engineered core business logic and database interfaces for fintech applications, improving transaction processing efficiency by 20%.",
+      "Full-Stack Optimization: Refactored multi-tier applications leveraging Java, Spring Boot, and React Native, significantly reducing system downtime during high-traffic periods.",
+    ],
+    tech: ["Java", "Spring Boot", "React Native", "SQL", "RESTful APIs"],
+  },
+  {
+    company: "Vox Teneo Asia",
+    location: "Bandung, Indonesia",
+    title: "Frontend Engineer (Project-Based)",
+    period: "September 2023 — February 2024",
+    category: "Mobile Apps",
+    bullets: [
+      "Product Development: Led development for 'Leapsy,' a language-learning mobile app, resulting in a 15% increase in user retention through intuitive UI/UX design.",
+      "Performance Optimization: Integrated fluid animations and interactive components using React Native, improving cross-platform UX consistency.",
+    ],
+    tech: ["React Native", "Redux", "TypeScript", "UI/UX Animations"],
+  },
+  {
+    company: "SQE (Sinarmas Quantum Engine)",
+    location: "Jakarta, Indonesia",
+    title: "Frontend Engineer (Project-Based)",
+    period: "March 2023 — October 2023",
+    category: "FinTech & Banking",
+    bullets: [
+      "Banking Application: Built the SMMF mobile application for multi-finance management, utilizing React Native and React Context to support thousands of active users.",
+      "Data Security: Integrated Zodios to enforce strict runtime type safety, ensuring 100% secure handling of sensitive financial transactions.",
+    ],
+    tech: ["React Native", "React Context", "TypeScript", "Zodios", "Jest"],
+  },
+  {
+    company: "PT GITS Indonesia",
+    location: "Bandung, Indonesia",
+    title: "React Native Developer (Project-Based)",
+    period: "April 2023 — July 2023",
+    category: "FinTech & Banking",
+    bullets: [
+      "UI/UX Revamp: Spearheaded total UI overhaul of the Ipractice banking application, significantly enhancing user satisfaction scores.",
+      "Feature Integration: Developed an interactive, real-time chat module that increased user collaboration and customer engagement.",
+    ],
+    tech: ["React Native", "TypeScript", "WebSocket", "Real-Time Chat"],
+  },
+  {
+    company: "PasarDana",
+    location: "Jakarta, Indonesia",
+    title: "React Native Developer (Long-Term Freelance)",
+    period: "January 2022 — June 2023",
+    category: "FinTech & Banking",
+    bullets: [
+      "Fintech Engineering: Built a real-time stock monitoring application with interactive price charts and automated alerts, delivering sub-second updates to end-users.",
+      "Performance Tuning: Optimized mobile application rendering and network polling, resulting in a smoother user experience during market volatility.",
+    ],
+    tech: ["React Native", "TypeScript", "Redux", "Axios", "Price Charts"],
+  },
+  {
+    company: "Vodjo",
+    location: "Bandung, Indonesia",
+    title: "React Native Developer (Project-Based)",
+    period: "June 2021 — January 2022",
+    category: "Mobile Apps",
+    bullets: [
+      "Platform Engineering: Engineered 'Santooi,' a guided meditation mobile platform, successfully launching personalized dashboards and audio streaming modules.",
+      "Feature Development: Integrated community engagement features that boosted daily active usage by 10%.",
+    ],
+    tech: ["React Native", "Redux-Saga", "Audio Streaming", "Mobile UX"],
+  },
+  {
+    company: "PT Telekomunikasi Indonesia Tbk",
+    location: "Bandung, Indonesia",
+    title: "Software Developer",
+    period: "June 2020 — November 2022",
+    category: "Enterprise & Web",
+    bullets: [
+      "Enterprise Collaboration: Developed UMeetMe, a video conferencing solution, scaling infrastructure to support enterprise-level concurrent video calls.",
+      "Real-Time Communication: Integrated WebRTC and Firebase for multi-participant audio-video calls and real-time screen sharing, ensuring high service stability.",
+    ],
+    tech: ["React Native", "React", "WebRTC", "Firebase", "Spring Boot"],
+  },
+  {
+    company: "Atur Toko",
+    location: "Jakarta, Indonesia",
+    title: "React Native Developer",
+    period: "April 2020 — December 2021",
+    category: "Enterprise & Web",
+    bullets: [
+      "Retail Tech: Developed the SRC retail management app, automating complex inventory tracking and sales analytics for thousands of merchants.",
+      "Data Visualization: Built automated sales reporting modules that streamlined decision-making for end-users.",
+    ],
+    tech: ["React Native", "Redux", "Redux-Saga", "Sales Analytics"],
+  },
+  {
+    company: "Prudential",
+    location: "Jakarta, Indonesia",
+    title: "React Native Developer (Part-Time)",
+    period: "July 2019 — October 2019",
+    category: "FinTech & Banking",
+    bullets: [
+      "Application Development: Built single-page web applications (SPA) and supporting mobile interfaces to drive a 15% increase in user engagement metrics.",
+    ],
+    tech: ["React", "Redux", "Single-Page Apps"],
+  },
+  {
+    company: "Vox Teneo Asia",
+    location: "Bandung, Indonesia",
+    title: "QA Engineer (Project-Based)",
+    period: "November 2018 — February 2019",
+    category: "Enterprise & Web",
+    bullets: [
+      "Quality Assurance: Established structured QA test plans and execution frameworks, reducing post-release bug reports by 25%.",
+    ],
+    tech: ["QA Testing", "Automated Testing", "Bug Reduction"],
+  },
+  {
+    company: "BIMS",
+    location: "Bandung, Indonesia",
+    title: "Software Developer Intern",
+    period: "March 2018 — September 2018",
+    category: "Enterprise & Web",
+    bullets: [
+      "Web Development: Developed secure PHP web modules for real-time order processing.",
+      "Legacy Refactoring: Optimized legacy codebases to improve maintainability and successfully integrated CRM tracking tools.",
+    ],
+    tech: ["PHP", "MySQL", "CRM"],
+  },
+];

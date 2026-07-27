@@ -9,7 +9,7 @@ import {
   GITHUB_URL,
   MAILTO,
   EMAIL,
-} from '../constants/links';
+} from '../../constants/links';
 
 const NavBar = () => {
   const [nav, setNav] = useState(false);

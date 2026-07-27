@@ -10,7 +10,7 @@ import {
   TEL_ID,
   TEL_MY,
   EMAIL,
-} from "../constants/links";
+} from "../../constants/links";
 
 const Footer = () => {
   const handlePrint = () => {

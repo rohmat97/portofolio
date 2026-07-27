@@ -7,7 +7,7 @@ import {
   PHONE_ID,
   PHONE_MY,
   EMAIL,
-} from "../constants/links";
+} from "../../constants/links";
 
 const Contact = () => {
   const [copiedType, setCopiedType] = useState(null);

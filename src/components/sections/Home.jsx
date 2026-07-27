@@ -1,21 +1,15 @@
 import React from "react";
 import { HiArrowNarrowRight } from "react-icons/hi";
-import { FaPrint, FaDownload, FaMapMarkerAlt, FaBriefcase, FaCodeBranch, FaExternalLinkAlt } from "react-icons/fa";
+import { FaPrint, FaDownload, FaExternalLinkAlt } from "react-icons/fa";
 import { Link } from "react-scroll";
-import Profile from "../assets/profile.png";
-import { RESUME_URL, CERTIFICATIONS_DRIVE_URL, EMAIL, PHONE_ID, PHONE_MY } from "../constants/links";
+import Profile from "../../assets/profile.png";
+import { RESUME_URL, CERTIFICATIONS_DRIVE_URL, EMAIL, PHONE_ID, PHONE_MY } from "../../constants/links";
+import { HERO_METRICS_DATA } from "../../data/metricsData";
 
 const Home = () => {
   const handlePrint = () => {
     window.print();
   };
-
-  const metrics = [
-    { label: "Years Experience", value: "5+", icon: FaBriefcase, highlight: "Mobile & Full-Stack" },
-    { label: "Production Products", value: "13+", icon: FaCodeBranch, highlight: "PayNet, Telkom, Prudential" },
-    { label: "Key Impact", value: "20%+", highlight: "Efficiency & Retention Boost" },
-    { label: "Current Location", value: "Kuala Lumpur", icon: FaMapMarkerAlt, highlight: "Malaysia & Indonesia" },
-  ];
 
   return (
     <section
@@ -173,7 +167,7 @@ const Home = () => {
 
         {/* Executive Metrics Highlight Grid */}
         <div className="mt-16 sm:mt-24 grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 no-print">
-          {metrics.map((m, idx) => {
+          {HERO_METRICS_DATA.map((m, idx) => {
             return (
               <div
                 key={idx}

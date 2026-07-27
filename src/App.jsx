@@ -1,19 +1,22 @@
 import React from "react";
-import About from "./components/About";
-import Contact from "./components/Contact";
-import Home from "./components/Home";
-import Journey from "./components/Journey";
-import NavBar from "./components/NavBar";
-import Skills from "./components/Skills";
-import Work from "./components/Work";
-import Footer from "./components/Footer";
-import BackToTop from "./components/BackToTop";
-import PrintCV from "./components/PrintCV";
-import ThemeCustomizer from "./components/ThemeCustomizer";
-import CustomCursor from "./components/CustomCursor";
-import MouseSpotlight from "./components/MouseSpotlight";
-import MarqueeTicker from "./components/MarqueeTicker";
-import StarBackground from "./components/StarBackground";
+import NavBar from "./components/layout/NavBar";
+import Footer from "./components/layout/Footer";
+import BackToTop from "./components/layout/BackToTop";
+
+import Home from "./components/sections/Home";
+import About from "./components/sections/About";
+import Skills from "./components/sections/Skills";
+import Work from "./components/sections/Work";
+import Journey from "./components/sections/Journey";
+import Contact from "./components/sections/Contact";
+
+import StarBackground from "./components/ui/StarBackground";
+import CustomCursor from "./components/ui/CustomCursor";
+import MouseSpotlight from "./components/ui/MouseSpotlight";
+import MarqueeTicker from "./components/ui/MarqueeTicker";
+import ThemeCustomizer from "./components/ui/ThemeCustomizer";
+
+import PrintCV from "./components/print/PrintCV";
 
 function App() {
   return (

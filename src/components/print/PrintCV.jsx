@@ -1,11 +1,11 @@
 import React from 'react';
-import Profile from '../assets/profile.png';
+import Profile from '../../assets/profile.png';
 import {
   EMAIL,
   PHONE_ID,
   PHONE_MY,
   CERTIFICATIONS_DRIVE_URL,
-} from '../constants/links';
+} from '../../constants/links';
 
 const PrintCV = () => {
   return (

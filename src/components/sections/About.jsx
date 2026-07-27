@@ -1,6 +1,6 @@
 import React from 'react';
 import { FaGraduationCap, FaCertificate, FaMapMarkerAlt, FaUserCheck, FaExternalLinkAlt } from 'react-icons/fa';
-import { EMAIL, TEL_ID, TEL_MY, CERTIFICATIONS_DRIVE_URL } from '../constants/links';
+import { EMAIL, TEL_ID, TEL_MY, CERTIFICATIONS_DRIVE_URL } from '../../constants/links';
 
 const About = () => {
   return (
