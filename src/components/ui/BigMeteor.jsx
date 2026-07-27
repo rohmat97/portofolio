@@ -3,15 +3,15 @@ import React from 'react';
 const BigMeteor = ({ delay = '0s' }) => {
   return (
     <div
-      className="animate-big-meteor top-[-150px] right-[-150px] no-print z-0"
+      className="animate-big-meteor top-[-100px] right-[-100px] no-print z-0"
       style={{ '--delay': delay, '--duration': '4.5s' }}
     >
-      {/* 500x500px Cartoon / Game Vector Flaming Meteor (Matching User's Reference Image) */}
-      <div className="relative w-[400px] h-[400px] sm:w-[500px] sm:h-[500px] flex items-center justify-center pointer-events-none select-none filter drop-shadow-[0_0_30px_rgba(249,115,22,0.8)]">
+      {/* 500x500px Vector Flaming Meteor (Rock Leading Down-Left, Fire Tail Trailing Up-Right) */}
+      <div className="relative w-[380px] h-[380px] sm:w-[480px] sm:h-[480px] flex items-center justify-center pointer-events-none select-none filter drop-shadow-[0_0_35px_rgba(249,115,22,0.85)]">
         
         <svg
           viewBox="0 0 500 500"
-          className="w-full h-full transform -rotate-12"
+          className="w-full h-full transform rotate-[-45deg]"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >

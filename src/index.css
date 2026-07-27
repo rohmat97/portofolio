@@ -133,17 +133,17 @@
 
 @keyframes bigMeteorFlight {
   0% {
-    transform: translate3d(600px, -400px, 0) scale(0.7) rotate(-35deg);
+    transform: translate3d(700px, -400px, 0) scale(0.6) rotate(15deg);
     opacity: 0;
   }
   15% {
-    opacity: 0.85;
+    opacity: 0.9;
   }
   85% {
-    opacity: 0.85;
+    opacity: 0.9;
   }
   100% {
-    transform: translate3d(-1400px, 1400px, 0) scale(1.2) rotate(-35deg);
+    transform: translate3d(-1200px, 1100px, 0) scale(1.1) rotate(15deg);
     opacity: 0;
   }
 }
