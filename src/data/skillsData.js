@@ -2,6 +2,29 @@ import { SiTailwindcss, SiAmazonaws } from 'react-icons/si';
 
 export const SKILLS_DATA = [
   {
+    category: "Top Core Specialties",
+    skills: [
+      { name: 'React', url: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg', level: 'Expert (5+ Yrs)' },
+      { name: 'Next.js', url: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg', level: 'Expert (5+ Yrs)' },
+      { name: 'Nuxt 3 (Nuxt.js)', url: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nuxtjs/nuxtjs-original.svg', level: 'Expert (5+ Yrs)' },
+      { name: 'React Native', url: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg', level: 'Expert' },
+      { name: 'TypeScript', url: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg', level: 'Advanced' },
+      { name: 'JavaScript (ES6+)', url: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg', level: 'Expert' },
+    ],
+  },
+  {
+    category: "Frontend Development",
+    skills: [
+      { name: 'React', url: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg', level: 'Expert' },
+      { name: 'Next.js', url: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg', level: 'Expert' },
+      { name: 'Nuxt 3 (Nuxt.js)', url: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nuxtjs/nuxtjs-original.svg', level: 'Expert' },
+      { name: 'Vue.js', url: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg', level: 'Advanced' },
+      { name: 'Redux / Redux Saga', url: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redux/redux-original.svg', level: 'Advanced' },
+      { name: 'Pinia & Zustand', url: 'https://pinia.vuejs.org/logo.svg', level: 'Advanced' },
+      { name: 'Tailwind CSS & DaisyUI', Icon: SiTailwindcss, color: '#38BDF8', url: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-plain.svg', level: 'Expert' },
+    ],
+  },
+  {
     category: "Mobile Development",
     skills: [
       { name: 'React Native (Expo & Bare)', url: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg', level: 'Expert (5+ Yrs)' },
@@ -10,20 +33,6 @@ export const SKILLS_DATA = [
       { name: 'Native Modules & Linking', url: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg', level: 'Advanced' },
       { name: 'Push Notifications (APNS/FCM)', url: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg', level: 'Advanced' },
       { name: 'EAS & OTA Updates', url: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg', level: 'Advanced' },
-    ],
-  },
-  {
-    category: "Frontend Development",
-    skills: [
-      { name: 'TypeScript', url: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg', level: 'Advanced' },
-      { name: 'JavaScript (ES6+)', url: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg', level: 'Expert' },
-      { name: 'Next.js', url: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg', level: 'Advanced' },
-      { name: 'Nuxt.js (Nuxt 3)', url: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nuxtjs/nuxtjs-original.svg', level: 'Advanced' },
-      { name: 'React', url: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg', level: 'Expert' },
-      { name: 'Vue.js', url: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg', level: 'Advanced' },
-      { name: 'Redux / Redux Saga', url: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redux/redux-original.svg', level: 'Advanced' },
-      { name: 'Pinia & Zustand', url: 'https://pinia.vuejs.org/logo.svg', level: 'Advanced' },
-      { name: 'Tailwind CSS & DaisyUI', Icon: SiTailwindcss, color: '#38BDF8', url: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-plain.svg', level: 'Expert' },
     ],
   },
   {

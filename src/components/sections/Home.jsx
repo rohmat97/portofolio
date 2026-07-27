@@ -28,7 +28,7 @@ const Home = () => {
         <div className="flex items-start justify-between gap-6">
           <div>
             <h1 className="text-3xl font-extrabold text-slate-900 tracking-tight">ROHMAT DASUKI</h1>
-            <p className="text-base font-bold text-slate-800 mt-1">Senior Software Engineer</p>
+            <p className="text-base font-bold text-slate-800 mt-1">Senior Software Engineer (React, Next.js, Nuxt 3 & Full-Stack)</p>
             <p className="text-xs text-slate-700 font-mono mt-2">
               Garut, Indonesia • Kuala Lumpur, Malaysia | {PHONE_ID} | {PHONE_MY} | {EMAIL}
             </p>
@@ -50,7 +50,7 @@ const Home = () => {
             {/* Gaming HUD Status Pill */}
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cyan-950/80 border border-cyan-500/40 text-cyan-400 text-xs sm:text-sm font-mono tracking-wider mb-6 no-print shadow-lg shadow-cyan-500/10">
               <FaGamepad className="text-cyan-400 text-xs animate-bounce" />
-              <span>LVL 99 • SENIOR SOFTWARE ENGINEER</span>
+              <span>LVL 99 • REACT / NEXT.JS / NUXT 3 ARCHITECT</span>
             </div>
 
             <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold text-slate-100 tracking-tight leading-[1.1] no-print">
@@ -59,14 +59,14 @@ const Home = () => {
 
             <h2 className="text-xl sm:text-3xl font-semibold text-slate-300 mt-3 sm:mt-4 flex flex-wrap items-center gap-2 no-print">
               Senior Software Engineer
-              <span className="text-xs font-mono px-2.5 py-1 rounded-lg bg-slate-900 text-cyan-300 border border-slate-700">
-                React Native & Full-Stack
+              <span className="text-xs font-mono px-2.5 py-1 rounded-lg bg-cyan-950 text-cyan-300 border border-cyan-500/40">
+                React • Next.js • Nuxt 3
               </span>
             </h2>
 
             <div className="print:block">
               <p className="text-slate-300 py-6 print:py-1 text-base sm:text-lg print:text-sm leading-relaxed max-w-[650px] print:max-w-none">
-                Senior Software Engineer with 5+ years of experience engineering high-scale mobile (<strong className="text-cyan-300">React Native</strong>) and full-stack (<strong className="text-indigo-300">React, Next.js, Nuxt 3, Spring Boot</strong>) architectures.
+                Senior Software Engineer with 5+ years of experience engineering high-scale frontend & full-stack applications specializing in <strong className="text-cyan-300">React, Next.js, and Nuxt 3</strong>, along with React Native and Spring Boot architectures.
               </p>
             </div>
 
@@ -149,8 +149,8 @@ const Home = () => {
 
                 <div className="w-full text-left space-y-2 border-t border-slate-800/80 pt-4">
                   <div className="flex items-center justify-between text-xs text-slate-400 font-mono">
-                    <span>PLAYER CLASS</span>
-                    <span className="text-cyan-400 font-bold">LEGENDARY</span>
+                    <span>TOP SPECIALTY</span>
+                    <span className="text-cyan-400 font-bold">EXPERT</span>
                   </div>
                   <h3 className="text-lg font-bold text-slate-100">Rohmat Dasuki</h3>
                   <p className="text-xs text-slate-400 font-mono">
@@ -158,9 +158,9 @@ const Home = () => {
                   </p>
                   
                   <div className="flex flex-wrap gap-1.5 pt-2">
-                    <span className="text-[10px] px-2 py-0.5 rounded bg-slate-900 text-cyan-300 font-mono border border-slate-800">React Native</span>
-                    <span className="text-[10px] px-2 py-0.5 rounded bg-slate-900 text-indigo-300 font-mono border border-slate-800">Nuxt 3</span>
-                    <span className="text-[10px] px-2 py-0.5 rounded bg-slate-900 text-purple-300 font-mono border border-slate-800">Spring Boot</span>
+                    <span className="text-[10px] px-2 py-0.5 rounded bg-cyan-950 text-cyan-300 font-mono border border-cyan-500/40">React</span>
+                    <span className="text-[10px] px-2 py-0.5 rounded bg-indigo-950 text-indigo-300 font-mono border border-indigo-500/40">Next.js</span>
+                    <span className="text-[10px] px-2 py-0.5 rounded bg-emerald-950 text-emerald-300 font-mono border border-emerald-500/40">Nuxt 3</span>
                   </div>
                 </div>
               </div>
