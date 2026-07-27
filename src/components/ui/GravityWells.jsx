@@ -27,7 +27,7 @@ const GravityWells = () => {
       { x: width * 0.25, y: height * 0.65, mass: 1800, color: '#a855f7' },
     ];
 
-    const particles = Array.from({ length: 140 }).map(() => ({
+    const particles = Array.from({ length: 120 }).map(() => ({
       x: Math.random() * width,
       y: Math.random() * height,
       vx: (Math.random() - 0.5) * 1.5,
@@ -47,22 +47,22 @@ const GravityWells = () => {
     window.addEventListener('mousemove', handleMouseMove);
 
     const render = () => {
-      ctx.fillStyle = 'rgba(8, 12, 20, 0.25)';
-      ctx.fillRect(0, 0, width, height);
+      // CLEAR CANVAS FULLY EVERY FRAME (ZERO BLUE TINT / ZERO OVERLAY)
+      ctx.clearRect(0, 0, width, height);
 
       const allWells = mouseWell.x > 0 ? [...wells, mouseWell] : wells;
 
       // Draw Gravity Wells Glowing Attractors
       allWells.forEach((w) => {
         ctx.beginPath();
-        ctx.arc(w.x, w.y, 8, 0, Math.PI * 2);
+        ctx.arc(w.x, w.y, 6, 0, Math.PI * 2);
         ctx.fillStyle = w.color;
-        ctx.shadowBlur = 20;
+        ctx.shadowBlur = 15;
         ctx.shadowColor = w.color;
         ctx.fill();
 
         ctx.beginPath();
-        ctx.arc(w.x, w.y, 40, 0, Math.PI * 2);
+        ctx.arc(w.x, w.y, 35, 0, Math.PI * 2);
         ctx.strokeStyle = `${w.color}33`;
         ctx.lineWidth = 1;
         ctx.stroke();
@@ -117,7 +117,7 @@ const GravityWells = () => {
   return (
     <canvas
       ref={canvasRef}
-      className="absolute inset-0 w-full h-full pointer-events-none z-0 mix-blend-screen opacity-70 no-print"
+      className="absolute inset-0 w-full h-full pointer-events-none z-0 mix-blend-screen opacity-60 no-print bg-transparent"
     />
   );
 };
