@@ -16,6 +16,7 @@ import MouseSpotlight from "./components/ui/MouseSpotlight";
 import MarqueeTicker from "./components/ui/MarqueeTicker";
 import ThemeCustomizer from "./components/ui/ThemeCustomizer";
 import ScrollProgress from "./components/ui/ScrollProgress";
+import DynamicSectionBackground from "./components/ui/DynamicSectionBackground";
 
 import PrintCV from "./components/print/PrintCV";
 
@@ -32,8 +33,11 @@ function App() {
       {/* Top Scroll Progress Bar */}
       <ScrollProgress />
 
-      {/* Cosmic Sparkling Background, Cursor & Mouse Spotlight */}
+      {/* Dynamic Section Background Animations & Sparkling Stars */}
       <StarBackground />
+      <DynamicSectionBackground />
+
+      {/* Dynamic Section-Aware Magnetic Cursor & Mouse Spotlight */}
       <CustomCursor />
       <MouseSpotlight />
 
