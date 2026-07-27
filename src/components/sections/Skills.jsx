@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { FaGamepad } from "react-icons/fa";
 import { SKILLS_DATA } from "../../data/skillsData";
 import { playHoverSound, playClickSound } from "../../utils/audioEffects";
+import WaterRipple from "../ui/WaterRipple";
 
 const Skills = () => {
   const [activeTab, setActiveTab] = useState("All");
@@ -14,6 +15,9 @@ const Skills = () => {
       aria-label="Skills and tools section"
       className="relative w-full bg-transparent text-slate-300 py-20 sm:py-24 border-t border-slate-900 scroll-mt-20 theme-violet overflow-hidden"
     >
+      {/* ReactOmega WaterRipple Component (Skills & Technology Only) */}
+      <WaterRipple />
+
       {/* Ambient Violet Glow */}
       <div className="ambient-glow animate-pulse-glow top-1/3 left-10 w-[450px] h-[450px] bg-purple-600/15 no-print" />
 

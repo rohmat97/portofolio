@@ -1,6 +1,7 @@
 import React from 'react';
 import { FaGraduationCap, FaCertificate, FaMapMarkerAlt, FaUserCheck, FaExternalLinkAlt } from 'react-icons/fa';
 import { EMAIL, TEL_ID, TEL_MY, CERTIFICATIONS_DRIVE_URL } from '../../constants/links';
+import Metaballs from '../ui/Metaballs';
 
 const About = () => {
   return (
@@ -9,6 +10,9 @@ const About = () => {
       aria-label="About section"
       className="relative w-full bg-transparent text-slate-300 py-20 sm:py-28 border-t border-slate-900 scroll-mt-20 theme-emerald overflow-hidden"
     >
+      {/* ReactOmega Metaballs Component (About Me Only) */}
+      <Metaballs />
+
       {/* Ambient Emerald Glow */}
       <div className="ambient-glow animate-pulse-glow top-20 right-10 w-[400px] h-[400px] bg-emerald-500/15 no-print" />
 
