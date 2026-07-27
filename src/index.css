@@ -42,7 +42,7 @@
   background: #334155;
 }
 
-/* Animations */
+/* Animations inspired by bamlab.ch */
 @keyframes float {
   0%, 100% { transform: translateY(0px) rotate(0deg); }
   50% { transform: translateY(-14px) rotate(2deg); }
@@ -63,12 +63,21 @@
   100% { transform: translateX(100%); }
 }
 
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-33.333%); }
+}
+
 .animate-float {
   animation: float 6s ease-in-out infinite;
 }
 
 .animate-pulse-glow {
   animation: pulseGlow 8s ease-in-out infinite;
+}
+
+.animate-marquee {
+  animation: marquee 25s linear infinite;
 }
 
 .gradient-text-animate {
