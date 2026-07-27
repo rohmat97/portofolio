@@ -42,7 +42,7 @@
   background: #334155;
 }
 
-/* Animations inspired by bamlab.ch */
+/* Animations inspired by bamlab.ch & Cosmic Sparkling Sky */
 @keyframes float {
   0%, 100% { transform: translateY(0px) rotate(0deg); }
   50% { transform: translateY(-14px) rotate(2deg); }
@@ -66,6 +66,42 @@
 @keyframes marquee {
   0% { transform: translateX(0%); }
   100% { transform: translateX(-33.333%); }
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.15; transform: scale(0.8); }
+  50% { opacity: 1; transform: scale(1.4); }
+}
+
+@keyframes shooting {
+  0% {
+    transform: translateX(0) translateY(0) rotate(-45deg);
+    opacity: 1;
+    width: 0px;
+  }
+  30% {
+    width: 140px;
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(-800px) translateY(800px) rotate(-45deg);
+    opacity: 0;
+    width: 0px;
+  }
+}
+
+.star {
+  position: absolute;
+  border-radius: 50%;
+  animation: twinkle var(--duration, 4s) ease-in-out infinite var(--delay, 0s);
+}
+
+.shooting-star {
+  position: absolute;
+  height: 2px;
+  background: linear-gradient(-45deg, rgba(56, 189, 248, 1), rgba(255, 255, 255, 0));
+  filter: drop-shadow(0 0 6px #38bdf8);
+  animation: shooting 7s ease-in-out infinite var(--delay, 0s);
 }
 
 .animate-float {

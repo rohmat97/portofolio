@@ -13,6 +13,7 @@ import ThemeCustomizer from "./components/ThemeCustomizer";
 import CustomCursor from "./components/CustomCursor";
 import MouseSpotlight from "./components/MouseSpotlight";
 import MarqueeTicker from "./components/MarqueeTicker";
+import StarBackground from "./components/StarBackground";
 
 function App() {
   return (
@@ -24,7 +25,8 @@ function App() {
         Skip to main content
       </a>
       
-      {/* Interactive Cursor & Mouse Spotlight (inspired by bamlab.ch) */}
+      {/* Cosmic Sparkling Background, Cursor & Mouse Spotlight */}
+      <StarBackground />
       <CustomCursor />
       <MouseSpotlight />
 
@@ -32,7 +34,7 @@ function App() {
       <NavBar />
       
       {/* Web Portfolio View */}
-      <main id="main" className="no-print">
+      <main id="main" className="no-print relative z-10">
         <Home />
         <MarqueeTicker />
         <About />
