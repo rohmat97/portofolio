@@ -22,7 +22,7 @@ const Contact = () => {
     <section
       name="contact"
       aria-label="Contact section"
-      className="w-full bg-[#080c14] text-slate-300 py-20 sm:py-28 border-t border-slate-900 scroll-mt-20"
+      className="w-full bg-transparent text-slate-300 py-20 sm:py-28 border-t border-slate-900 scroll-mt-20"
     >
       <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
         

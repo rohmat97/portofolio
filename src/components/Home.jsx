@@ -21,7 +21,7 @@ const Home = () => {
     <section
       name="home"
       aria-label="Home section"
-      className="relative w-full min-h-screen pt-28 sm:pt-36 pb-20 flex items-center bg-[#080c14] overflow-hidden"
+      className="relative w-full min-h-screen pt-28 sm:pt-36 pb-20 flex items-center bg-transparent overflow-hidden"
     >
       {/* Background Animated Ambient Glows */}
       <div className="ambient-glow animate-pulse-glow top-10 left-1/4 w-[450px] h-[450px] bg-cyan-500/20 no-print" />
