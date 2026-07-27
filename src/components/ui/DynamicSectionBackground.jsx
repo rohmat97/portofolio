@@ -1,15 +1,41 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { useActiveSection } from '../../hooks/useActiveSection';
 import SectionVideoCanvas from './SectionVideoCanvas';
 
 const DynamicSectionBackground = () => {
   const activeSection = useActiveSection();
 
+  // Periodic Meteors firing every 3-5 seconds across the sky
+  const periodicMeteors = useMemo(() => {
+    return [
+      { id: 1, top: '12%', right: '10%', duration: '4s', delay: '0s', color: '#38bdf8' },
+      { id: 2, top: '28%', right: '25%', duration: '4.5s', delay: '3.5s', color: '#fde047' },
+      { id: 3, top: '50%', right: '15%', duration: '4s', delay: '7s', color: '#c084fc' },
+      { id: 4, top: '72%', right: '35%', duration: '4.2s', delay: '10.5s', color: '#34d399' },
+    ];
+  }, []);
+
   return (
     <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden no-print transition-all duration-700">
       
       {/* Bottom Gradient Shield to Ensure Crisp Text Legibility Above Footer */}
       <div className="absolute bottom-0 left-0 right-0 h-64 bg-gradient-to-t from-[#080c14] via-[#080c14]/80 to-transparent z-10 pointer-events-none" />
+
+      {/* CONTINUOUS PERIODIC PASSING METEORS (EVERY 3.5 SECONDS) */}
+      {periodicMeteors.map((m) => (
+        <div
+          key={m.id}
+          className="animate-meteor"
+          style={{
+            top: m.top,
+            right: m.right,
+            '--duration': m.duration,
+            '--delay': m.delay,
+            background: `linear-gradient(-45deg, ${m.color}, rgba(255,255,255,0))`,
+            filter: `drop-shadow(0 0 12px ${m.color})`,
+          }}
+        />
+      ))}
 
       {/* 1. HERO SECTION (HOME): 60FPS Cyber Cosmic Warp */}
       <div
