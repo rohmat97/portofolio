@@ -1,92 +1,78 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 import { useActiveSection } from '../../hooks/useActiveSection';
-import PlanetCyberCyan from './PlanetCyberCyan';
-import PlanetEmeraldMatrix from './PlanetEmeraldMatrix';
-import PlanetVioletNebula from './PlanetVioletNebula';
+import SectionVideoCanvas from './SectionVideoCanvas';
 
 const DynamicSectionBackground = () => {
   const activeSection = useActiveSection();
 
-  // Meteors array for shower effect
-  const meteors = useMemo(() => {
-    return Array.from({ length: 10 }).map((_, i) => ({
-      id: i,
-      top: `${Math.random() * 80}%`,
-      right: `${Math.random() * 35}%`,
-      duration: `${Math.random() * 4 + 3}s`,
-      delay: `${Math.random() * 5}s`,
-    }));
-  }, []);
-
   return (
     <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden no-print transition-all duration-700">
       
-      {/* GLOBAL CELESTIAL PASSING METEORS */}
-      {meteors.map((m) => (
-        <div
-          key={m.id}
-          className="animate-meteor"
-          style={{
-            top: m.top,
-            right: m.right,
-            '--duration': m.duration,
-            '--delay': m.delay,
-          }}
-        />
-      ))}
+      {/* Bottom Gradient Shield to Ensure Crisp Text Legibility Above Footer */}
+      <div className="absolute bottom-0 left-0 right-0 h-64 bg-gradient-to-t from-[#080c14] via-[#080c14]/80 to-transparent z-10 pointer-events-none" />
 
-      {/* 1. HERO SECTION (HOME): 3D Ringed Cyber Cyan Planet */}
+      {/* 1. HERO SECTION (HOME): 60FPS Cyber Cosmic Warp */}
       <div
-        className={`absolute top-[6%] right-[-6%] transition-opacity duration-1000 ${
-          activeSection === 'home' ? 'opacity-100' : 'opacity-0'
+        className={`absolute top-[5%] right-[-5%] w-[450px] h-[450px] sm:w-[600px] sm:h-[600px] transition-opacity duration-1000 ${
+          activeSection === 'home' ? 'opacity-80' : 'opacity-0'
         }`}
       >
-        <PlanetCyberCyan />
+        <div className="relative w-full h-full [mask-image:radial-gradient(circle_at_center,black_35%,transparent_70%)]">
+          <SectionVideoCanvas section="home" />
+        </div>
       </div>
 
-      {/* 2. ABOUT SECTION: 3D Emerald Matrix Planet & Moons */}
-      <div
-        className={`absolute top-[15%] left-[-6%] transition-opacity duration-1000 ${
-          activeSection === 'about' ? 'opacity-100' : 'opacity-0'
-        }`}
-      >
-        <PlanetEmeraldMatrix />
-      </div>
-
-      {/* 3. SKILLS SECTION: 3D Violet Nebula Planet & Cosmic Belt */}
-      <div
-        className={`absolute top-[12%] right-[-5%] transition-opacity duration-1000 ${
-          activeSection === 'skills' ? 'opacity-100' : 'opacity-0'
-        }`}
-      >
-        <PlanetVioletNebula />
-      </div>
-
-      {/* 4. PROJECTS SECTION: Deep Supernova Core */}
+      {/* 2. ABOUT SECTION: 60FPS Matrix Green Code Rain Animation */}
       <div
         className={`absolute inset-0 transition-opacity duration-1000 ${
-          activeSection === 'projects' ? 'opacity-100' : 'opacity-0'
+          activeSection === 'about' ? 'opacity-60' : 'opacity-0'
         }`}
       >
-        <div className="absolute top-[25%] left-[15%] w-[500px] h-[500px] rounded-full bg-gradient-to-r from-indigo-600/20 via-purple-600/20 to-cyan-500/20 blur-3xl animate-pulse" />
+        <div className="relative w-full h-full [mask-image:radial-gradient(circle_at_center,black_40%,transparent_75%)]">
+          <SectionVideoCanvas section="about" />
+        </div>
       </div>
 
-      {/* 5. EXPERIENCE SECTION: Ice Planet & Energy Corona */}
+      {/* 3. SKILLS SECTION: 60FPS Swirling Black Hole Event Horizon Animation */}
       <div
-        className={`absolute bottom-[8%] right-[-6%] transition-opacity duration-1000 ${
-          activeSection === 'experience' ? 'opacity-100' : 'opacity-0'
+        className={`absolute top-[8%] right-[-5%] w-[450px] h-[450px] sm:w-[600px] sm:h-[600px] transition-opacity duration-1000 ${
+          activeSection === 'skills' ? 'opacity-80' : 'opacity-0'
         }`}
       >
-        <PlanetCyberCyan />
+        <div className="relative w-full h-full [mask-image:radial-gradient(circle_at_center,black_35%,transparent_75%)]">
+          <SectionVideoCanvas section="skills" />
+        </div>
       </div>
 
-      {/* 6. CONTACT SECTION: Cyber Beacon Planet */}
+      {/* 4. PROJECTS SECTION: 60FPS Meteor Shower & Comet Flight Animation */}
       <div
-        className={`absolute bottom-[10%] left-[-6%] transition-opacity duration-1000 ${
-          activeSection === 'contact' ? 'opacity-100' : 'opacity-0'
+        className={`absolute inset-0 transition-opacity duration-1000 ${
+          activeSection === 'projects' ? 'opacity-70' : 'opacity-0'
         }`}
       >
-        <PlanetEmeraldMatrix />
+        <SectionVideoCanvas section="projects" />
+      </div>
+
+      {/* 5. EXPERIENCE SECTION: 60FPS Quasar Pulsar Laser Beam Animation */}
+      <div
+        className={`absolute bottom-[10%] right-[-5%] w-[450px] h-[450px] sm:w-[600px] sm:h-[600px] transition-opacity duration-1000 ${
+          activeSection === 'experience' ? 'opacity-80' : 'opacity-0'
+        }`}
+      >
+        <div className="relative w-full h-full [mask-image:radial-gradient(circle_at_center,black_30%,transparent_70%)]">
+          <SectionVideoCanvas section="experience" />
+        </div>
+      </div>
+
+      {/* 6. CONTACT SECTION: 60FPS Cyber Tech Scan Animation */}
+      <div
+        className={`absolute bottom-[10%] left-[-5%] w-[400px] h-[400px] sm:w-[500px] sm:h-[500px] transition-opacity duration-1000 ${
+          activeSection === 'contact' ? 'opacity-70' : 'opacity-0'
+        }`}
+      >
+        <div className="relative w-full h-full [mask-image:radial-gradient(circle_at_center,black_30%,transparent_70%)]">
+          <SectionVideoCanvas section="contact" />
+        </div>
       </div>
 
     </div>
