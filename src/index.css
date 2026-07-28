@@ -323,6 +323,21 @@
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 }
 
+/* Floating Social Dock Hardware-Accelerated Smooth Animations */
+.social-dock-item {
+  transform: translateX(-106px) translateY(0) scale(1);
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+              background 0.4s ease,
+              border-color 0.4s ease,
+              box-shadow 0.4s ease;
+  will-change: transform;
+}
+.social-dock-item:hover {
+  transform: translateX(0) translateY(-2px) scale(1.02);
+}
+
+
+
 .gradient-text {
   background: linear-gradient(135deg, #38bdf8 0%, #818cf8 50%, #c084fc 100%);
   -webkit-background-clip: text;
@@ -335,6 +350,83 @@
   filter: blur(100px);
   pointer-events: none;
 }
+
+/* Digimon World 3 Cyber Grid & Matrix Tunnel Animations */
+@keyframes cyberGridMove {
+  0% { background-position: 0 0; }
+  100% { background-position: 0 60px; }
+}
+
+.cyber-grid-bg {
+  background-image: 
+    linear-gradient(to right, rgba(6, 182, 212, 0.14) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(6, 182, 212, 0.14) 1px, transparent 1px);
+  background-size: 60px 60px;
+  animation: cyberGridMove 3s linear infinite;
+  transform: perspective(500px) rotateX(60deg) scale(2);
+  transform-origin: center top;
+}
+
+.scanlines-overlay {
+  background: linear-gradient(
+    to bottom,
+    rgba(255,255,255,0),
+    rgba(255,255,255,0) 50%,
+    rgba(0, 0, 0, 0.35) 50%,
+    rgba(0, 0, 0, 0.35)
+  );
+  background-size: 100% 4px;
+  pointer-events: none;
+}
+
+@keyframes digitalWarpOut {
+  0% {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+    filter: brightness(1) blur(0px);
+  }
+  50% {
+    opacity: 0.85;
+    transform: scale(2.2) rotate(10deg);
+    filter: brightness(3) blur(6px);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(4.5) rotate(30deg);
+    filter: brightness(8) blur(20px);
+  }
+}
+
+.animate-digital-warp-out {
+  animation: digitalWarpOut 0.85s cubic-bezier(0.7, 0, 0.3, 1) forwards;
+}
+
+/* Cyber Corner Brackets (Digimon World 3 HUD style) */
+.cyber-corner-tl {
+  position: absolute; top: 16px; left: 16px;
+  width: 28px; height: 28px;
+  border-top: 2px solid #06b6d4; border-left: 2px solid #06b6d4;
+  border-top-left-radius: 4px;
+}
+.cyber-corner-tr {
+  position: absolute; top: 16px; right: 16px;
+  width: 28px; height: 28px;
+  border-top: 2px solid #06b6d4; border-right: 2px solid #06b6d4;
+  border-top-right-radius: 4px;
+}
+.cyber-corner-bl {
+  position: absolute; bottom: 16px; left: 16px;
+  width: 28px; height: 28px;
+  border-bottom: 2px solid #06b6d4; border-left: 2px solid #06b6d4;
+  border-bottom-left-radius: 4px;
+}
+.cyber-corner-br {
+  position: absolute; bottom: 16px; right: 16px;
+  width: 28px; height: 28px;
+  border-bottom: 2px solid #06b6d4; border-right: 2px solid #06b6d4;
+  border-bottom-right-radius: 4px;
+}
+
 
 /* Pristine Executive Print & PDF Export Stylesheet */
 @media print {

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import NavBar from "./components/layout/NavBar";
 import Footer from "./components/layout/Footer";
 import BackToTop from "./components/layout/BackToTop";
@@ -17,12 +17,20 @@ import MarqueeTicker from "./components/ui/MarqueeTicker";
 import ThemeCustomizer from "./components/ui/ThemeCustomizer";
 import ScrollProgress from "./components/ui/ScrollProgress";
 import DynamicSectionBackground from "./components/ui/DynamicSectionBackground";
+import DigimonSplashGate from "./components/ui/DigimonSplashGate";
 
 import PrintCV from "./components/print/PrintCV";
 
 function App() {
+  const [showSplash, setShowSplash] = useState(true);
+
   return (
     <div className="App min-h-screen bg-[#080c14] text-slate-100 selection:bg-cyan-500/20 selection:text-cyan-300 font-sans relative overflow-x-hidden">
+      {/* Digimon World 3 Interactive Cyber Matrix Landing Gate */}
+      {showSplash && (
+        <DigimonSplashGate onEnter={() => setShowSplash(false)} />
+      )}
+
       <a
         href="#main"
         className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[9999] bg-cyan-600 text-white px-4 py-2 rounded-lg font-semibold shadow-lg no-print"
@@ -42,7 +50,7 @@ function App() {
       <MouseSpotlight />
 
       {/* Web Navigation */}
-      <NavBar />
+      <NavBar onReopenGate={() => setShowSplash(true)} />
       
       {/* Web Portfolio View with Multi-Theme Section Experience */}
       <main id="main" className="no-print relative z-10">
@@ -58,7 +66,7 @@ function App() {
       {/* Web Footer, Back to top & Theme Customizer */}
       <Footer />
       <BackToTop />
-      <ThemeCustomizer />
+      <ThemeCustomizer onReopenGate={() => setShowSplash(true)} />
 
       {/* Print / Export PDF Formal Resume View */}
       <PrintCV />
