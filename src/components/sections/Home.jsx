@@ -62,20 +62,20 @@ const Home = () => {
 
             {/* ReactOmega ScrambleText + ShinyText Main Heading */}
             <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold text-slate-100 tracking-tight leading-[1.1] no-print">
-              Hi, I'm <ShinyText><ScrambleText text="Rohmat Dasuki" /></ShinyText>
+              Hi, I'm <ShinyText>Rohmat Dasuki</ShinyText>
             </h1>
 
             <h2 className="text-xl sm:text-3xl font-semibold text-slate-300 mt-3 sm:mt-4 flex flex-wrap items-center gap-2 no-print">
               Senior Software Engineer
               {/* ReactOmega ShinyText Badge */}
               <span className="text-xs font-mono px-2.5 py-1 rounded-lg bg-cyan-950 text-cyan-300 border border-cyan-500/40">
-                <ShinyText>React • Next.js • Nuxt 3</ShinyText>
+                <ScrambleText text="React • Next.js • Nuxt 3" />
               </span>
             </h2>
 
             <div className="print:block">
               <p className="text-slate-300 py-6 print:py-1 text-base sm:text-lg print:text-sm leading-relaxed max-w-[650px] print:max-w-none">
-                Senior Software Engineer with 5+ years of experience engineering high-scale frontend & full-stack applications specializing in <strong className="text-cyan-300">React, Next.js, and Nuxt 3</strong>, along with React Native and Spring Boot architectures.
+                Senior Software Engineer with 5+ years of experience engineering high-scale frontend & full-stack applications specializing in <ShinyText className="font-bold">React, Next.js, and Nuxt 3</ShinyText>, along with React Native and Spring Boot architectures.
               </p>
             </div>
 
