@@ -1,15 +1,17 @@
 {
   "files": {
-    "main.css": "/portofolio/static/css/main.696025ea.css",
-    "main.js": "/portofolio/static/js/main.a35458a6.js",
+    "main.css": "/portofolio/static/css/main.f4a2e602.css",
+    "main.js": "/portofolio/static/js/main.239806e5.js",
+    "static/media/landingPage.webm": "/portofolio/static/media/landingPage.bba85582f9f2529f3057.webm",
+    "static/media/menuBgm.webm": "/portofolio/static/media/menuBgm.d09b44a7b0ad5f9d982f.webm",
     "static/media/profile.png": "/portofolio/static/media/profile.968ab941a11288a25326.png",
     "index.html": "/portofolio/index.html",
     "static/media/nfp-logo.svg": "/portofolio/static/media/nfp-logo.dcbddb0899f659ad862223ac442e5c1c.svg",
-    "main.696025ea.css.map": "/portofolio/static/css/main.696025ea.css.map",
-    "main.a35458a6.js.map": "/portofolio/static/js/main.a35458a6.js.map"
+    "main.f4a2e602.css.map": "/portofolio/static/css/main.f4a2e602.css.map",
+    "main.239806e5.js.map": "/portofolio/static/js/main.239806e5.js.map"
   },
   "entrypoints": [
-    "static/css/main.696025ea.css",
-    "static/js/main.a35458a6.js"
+    "static/css/main.f4a2e602.css",
+    "static/js/main.239806e5.js"
   ]
 }
