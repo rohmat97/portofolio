@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/portofolio/static/css/main.69094b2f.css",
-    "main.js": "/portofolio/static/js/main.87f1323e.js",
+    "main.css": "/portofolio/static/css/main.696025ea.css",
+    "main.js": "/portofolio/static/js/main.a35458a6.js",
     "static/media/profile.png": "/portofolio/static/media/profile.968ab941a11288a25326.png",
     "index.html": "/portofolio/index.html",
     "static/media/nfp-logo.svg": "/portofolio/static/media/nfp-logo.dcbddb0899f659ad862223ac442e5c1c.svg",
-    "main.69094b2f.css.map": "/portofolio/static/css/main.69094b2f.css.map",
-    "main.87f1323e.js.map": "/portofolio/static/js/main.87f1323e.js.map"
+    "main.696025ea.css.map": "/portofolio/static/css/main.696025ea.css.map",
+    "main.a35458a6.js.map": "/portofolio/static/js/main.a35458a6.js.map"
   },
   "entrypoints": [
-    "static/css/main.69094b2f.css",
-    "static/js/main.87f1323e.js"
+    "static/css/main.696025ea.css",
+    "static/js/main.a35458a6.js"
   ]
 }
