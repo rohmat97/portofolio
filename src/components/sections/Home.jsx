@@ -8,6 +8,7 @@ import { HERO_METRICS_DATA } from "../../data/metricsData";
 import { playHoverSound, playClickSound } from "../../utils/audioEffects";
 import ShinyText from "../ui/ShinyText";
 import GradientText from "../ui/GradientText";
+import ScrambleText from "../ui/ScrambleText";
 import GravityWells from "../ui/GravityWells";
 
 const Home = () => {
@@ -59,8 +60,9 @@ const Home = () => {
               <GradientText className="font-bold">LVL 99 • REACT / NEXT.JS / NUXT 3</GradientText>
             </div>
 
+            {/* ReactOmega ScrambleText + ShinyText Main Heading */}
             <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold text-slate-100 tracking-tight leading-[1.1] no-print">
-              Hi, I'm <ShinyText>Rohmat Dasuki</ShinyText>
+              Hi, I'm <ShinyText><ScrambleText text="Rohmat Dasuki" /></ShinyText>
             </h1>
 
             <h2 className="text-xl sm:text-3xl font-semibold text-slate-300 mt-3 sm:mt-4 flex flex-wrap items-center gap-2 no-print">
