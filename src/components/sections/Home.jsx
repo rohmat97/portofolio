@@ -7,6 +7,7 @@ import { RESUME_URL, CERTIFICATIONS_DRIVE_URL, EMAIL, PHONE_ID, PHONE_MY } from 
 import { HERO_METRICS_DATA } from "../../data/metricsData";
 import { playHoverSound, playClickSound } from "../../utils/audioEffects";
 import ShinyText from "../ui/ShinyText";
+import GradientText from "../ui/GradientText";
 import GravityWells from "../ui/GravityWells";
 
 const Home = () => {
@@ -52,10 +53,10 @@ const Home = () => {
           {/* Text Content & Introduction */}
           <div className="flex-1 w-full text-left">
             
-            {/* Gaming HUD Status Pill */}
+            {/* Gaming HUD Status Pill with ReactOmega GradientText */}
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cyan-950/80 border border-cyan-500/40 text-cyan-400 text-xs sm:text-sm font-mono tracking-wider mb-6 no-print shadow-lg shadow-cyan-500/10">
               <FaGamepad className="text-cyan-400 text-xs animate-bounce" />
-              <span>LVL 99 • REACT / NEXT.JS / NUXT 3 ARCHITECT</span>
+              <GradientText className="font-bold">LVL 99 • REACT / NEXT.JS / NUXT 3</GradientText>
             </div>
 
             <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold text-slate-100 tracking-tight leading-[1.1] no-print">
@@ -64,8 +65,9 @@ const Home = () => {
 
             <h2 className="text-xl sm:text-3xl font-semibold text-slate-300 mt-3 sm:mt-4 flex flex-wrap items-center gap-2 no-print">
               Senior Software Engineer
+              {/* ReactOmega ShinyText Badge */}
               <span className="text-xs font-mono px-2.5 py-1 rounded-lg bg-cyan-950 text-cyan-300 border border-cyan-500/40">
-                React • Next.js • Nuxt 3
+                <ShinyText>React • Next.js • Nuxt 3</ShinyText>
               </span>
             </h2>
 

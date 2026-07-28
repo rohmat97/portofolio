@@ -168,6 +168,16 @@
   animation: borderBeam var(--duration, 6s) linear infinite var(--delay, 0s);
 }
 
+@keyframes gradientText {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.animate-gradient-text {
+  animation: gradientText var(--speed, 4s) ease infinite;
+}
+
 .animate-meteor {
   position: absolute;
   height: 3px;
