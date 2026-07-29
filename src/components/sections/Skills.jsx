@@ -39,6 +39,7 @@ const Skills = () => {
   const [activeTab, setActiveTab] = useState("All");
   const [isAssembled, setIsAssembled] = useState(false);
   const gridRef = useRef(null);
+  const timerRef = useRef(null);
 
   const tabs = ["All", ...SKILLS_DATA.map((c) => c.category)];
 
@@ -69,9 +70,16 @@ const Skills = () => {
   const triggerReforge = useCallback(() => {
     playMjolnirAssembleSound();
     setIsAssembled(false);
-    setTimeout(() => {
+    if (timerRef.current) clearTimeout(timerRef.current);
+    timerRef.current = setTimeout(() => {
       setIsAssembled(true);
     }, 60);
+  }, []);
+
+  useEffect(() => {
+    return () => {
+      if (timerRef.current) clearTimeout(timerRef.current);
+    };
   }, []);
 
   const handleTabChange = (tab) => {

@@ -44,9 +44,10 @@ const WaterRipple = () => {
       if (Math.random() > 0.4) {
         const rect = canvas.getBoundingClientRect();
         addRipple(e.clientX - rect.left, e.clientY - rect.top);
+        if (ripples.length > 35) ripples.shift();
       }
     };
-    window.addEventListener('mousemove', handleMouseMove);
+    window.addEventListener('mousemove', handleMouseMove, { passive: true });
 
     const render = () => {
       ctx.clearRect(0, 0, width, height);

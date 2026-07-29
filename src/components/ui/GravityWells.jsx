@@ -61,9 +61,10 @@ const GravityWells = () => {
           size: Math.random() * 3 + 1.5,
           color: colors[Math.floor(Math.random() * colors.length)],
         });
+        if (sparkTrails.length > 35) sparkTrails.shift();
       }
     };
-    window.addEventListener('mousemove', handleMouseMove);
+    window.addEventListener('mousemove', handleMouseMove, { passive: true });
 
     const render = () => {
       ctx.clearRect(0, 0, width, height);

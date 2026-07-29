@@ -8,13 +8,18 @@ const CustomCursor = () => {
   const activeSection = useActiveSection();
   const particleIdRef = useRef(0);
 
+  // Disable custom cursor particle calculations on touch/mobile devices
+  const isPointerFine = typeof window !== 'undefined' && window.matchMedia('(pointer: fine)').matches;
+
   useEffect(() => {
+    if (!isPointerFine) return;
+
     const onMouseMove = (e) => {
       const x = e.clientX;
       const y = e.clientY;
       setPosition({ x, y });
 
-      // Spawn 2-3 cosmic sparkling dust particles on mouse movement
+      // Spawn 2 cosmic sparkling dust particles on mouse movement
       const colors = ['#38bdf8', '#c084fc', '#34d399', '#fde047', '#ffffff'];
       const symbols = ['✦', '✨', '•', '⋆'];
 
@@ -30,7 +35,7 @@ const CustomCursor = () => {
         life: 1.0,
       }));
 
-      setParticles((prev) => [...prev.slice(-35), ...newParticles]);
+      setParticles((prev) => [...prev.slice(-30), ...newParticles]);
     };
 
     const onMouseOver = (e) => {
@@ -47,17 +52,19 @@ const CustomCursor = () => {
       }
     };
 
-    window.addEventListener('mousemove', onMouseMove);
-    window.addEventListener('mouseover', onMouseOver);
+    window.addEventListener('mousemove', onMouseMove, { passive: true });
+    window.addEventListener('mouseover', onMouseOver, { passive: true });
 
     return () => {
       window.removeEventListener('mousemove', onMouseMove);
       window.removeEventListener('mouseover', onMouseOver);
     };
-  }, []);
+  }, [isPointerFine]);
 
-  // Particle decay loop
+  // Particle decay loop - only active when particles exist
   useEffect(() => {
+    if (!isPointerFine || particles.length === 0) return;
+
     const interval = setInterval(() => {
       setParticles((prev) =>
         prev
@@ -72,7 +79,9 @@ const CustomCursor = () => {
     }, 30);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [isPointerFine, particles.length]);
+
+  if (!isPointerFine) return null;
 
   // Section Cursor Ring Themes
   const getCursorTheme = () => {

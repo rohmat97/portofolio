@@ -13,13 +13,21 @@ const Work = () => {
   const [isEvolving, setIsEvolving] = useState(false);
 
   const sectionRef = useRef(null);
+  const timerRef = useRef(null);
 
   const triggerDigivolution = useCallback(() => {
     playDigitalWarpSound();
     setIsEvolving(false);
-    setTimeout(() => {
+    if (timerRef.current) clearTimeout(timerRef.current);
+    timerRef.current = setTimeout(() => {
       setIsEvolving(true);
     }, 50);
+  }, []);
+
+  useEffect(() => {
+    return () => {
+      if (timerRef.current) clearTimeout(timerRef.current);
+    };
   }, []);
 
   // IntersectionObserver to trigger Digivolution when scrolling into view
