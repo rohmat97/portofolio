@@ -141,37 +141,157 @@ const Home = () => {
 
           </div>
 
-          {/* Floating Profile RPG Card (Web-Only) */}
+          {/* Floating Profile RPG Card with 3D Flip Effect (Web-Only) */}
           <div className="flex-1 flex justify-center w-full lg:w-auto no-print">
-            <div className="relative group animate-float">
-              <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500 via-indigo-500 to-purple-600 rounded-3xl blur-md opacity-60 group-hover:opacity-90 transition duration-500 no-print" />
-              
-              <div className="relative glass-card p-5 sm:p-6 rounded-3xl flex flex-col items-center text-center max-w-[320px] sm:max-w-[350px] border border-cyan-500/30">
-                <div className="relative w-40 h-40 sm:w-44 sm:h-44 rounded-2xl overflow-hidden mb-4 ring-2 ring-cyan-500/40 shadow-xl">
-                  <img
-                    src={Profile}
-                    alt="Rohmat Dasuki - Senior Software Engineer"
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-transparent to-transparent" />
+            <div
+              onMouseEnter={playHoverSound}
+              className="relative flip-card-container group animate-float perspective-1000 w-[320px] sm:w-[350px] h-[390px] sm:h-[420px] cursor-pointer"
+            >
+              {/* Outer Ambient Glowing Aura */}
+              <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500 via-indigo-500 to-purple-600 rounded-3xl blur-md opacity-60 group-hover:opacity-100 transition duration-500 no-print" />
+
+              {/* 3D Flip Inner Card */}
+              <div className="relative flip-card-inner w-full h-full transform-style-3d">
+                
+                {/* FRONT FACE */}
+                <div className="absolute inset-0 backface-hidden glass-card p-5 sm:p-6 rounded-3xl flex flex-col items-center justify-between text-center border border-cyan-500/40 shadow-2xl">
+                  <div className="w-full flex flex-col items-center">
+                    <div className="relative w-40 h-40 sm:w-44 sm:h-44 rounded-2xl overflow-hidden mb-4 ring-2 ring-cyan-500/40 shadow-xl">
+                      <img
+                        src={Profile}
+                        alt="Rohmat Dasuki - Senior Software Engineer"
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-transparent to-transparent" />
+                    </div>
+
+                    <div className="w-full text-left space-y-2 border-t border-slate-800/80 pt-3">
+                      <div className="flex items-center justify-between text-xs text-slate-400 font-mono">
+                        <span>TOP SPECIALTY</span>
+                        <span className="text-cyan-400 font-bold">EXPERT</span>
+                      </div>
+                      <h3 className="text-lg font-bold text-slate-100">Rohmat Dasuki</h3>
+                      <p className="text-xs text-slate-400 font-mono">
+                        Associate Degree • POLBAN
+                      </p>
+                      
+                      <div className="flex flex-wrap gap-1.5 pt-1.5">
+                        <span className="text-[10px] px-2 py-0.5 rounded bg-cyan-950 text-cyan-300 font-mono border border-cyan-500/40">React</span>
+                        <span className="text-[10px] px-2 py-0.5 rounded bg-indigo-950 text-indigo-300 font-mono border border-indigo-500/40">Next.js</span>
+                        <span className="text-[10px] px-2 py-0.5 rounded bg-emerald-950 text-emerald-300 font-mono border border-emerald-500/40">Nuxt 3</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Flip Hint */}
+                  <div className="w-full text-center pt-2">
+                    <span className="text-[10px] font-mono text-cyan-400/90 bg-cyan-950/80 px-2.5 py-1 rounded-full border border-cyan-500/30 inline-flex items-center gap-1 animate-pulse">
+                      ⚡ HOVER CARD TO FLIP SKILL STATS ↻
+                    </span>
+                  </div>
                 </div>
 
-                <div className="w-full text-left space-y-2 border-t border-slate-800/80 pt-4">
-                  <div className="flex items-center justify-between text-xs text-slate-400 font-mono">
-                    <span>TOP SPECIALTY</span>
-                    <span className="text-cyan-400 font-bold">EXPERT</span>
-                  </div>
-                  <h3 className="text-lg font-bold text-slate-100">Rohmat Dasuki</h3>
-                  <p className="text-xs text-slate-400 font-mono">
-                    Associate Degree • POLBAN
-                  </p>
+                {/* BACK FACE */}
+                <div className="absolute inset-0 backface-hidden rotate-y-180 glass-card p-5 sm:p-6 rounded-3xl flex flex-col justify-between text-left border border-purple-500/50 shadow-2xl bg-slate-950/90 overflow-hidden">
                   
-                  <div className="flex flex-wrap gap-1.5 pt-2">
-                    <span className="text-[10px] px-2 py-0.5 rounded bg-cyan-950 text-cyan-300 font-mono border border-cyan-500/40">React</span>
-                    <span className="text-[10px] px-2 py-0.5 rounded bg-indigo-950 text-indigo-300 font-mono border border-indigo-500/40">Next.js</span>
-                    <span className="text-[10px] px-2 py-0.5 rounded bg-emerald-950 text-emerald-300 font-mono border border-emerald-500/40">Nuxt 3</span>
+                  {/* Cyber Grid Pattern Background */}
+                  <div className="absolute inset-0 cyber-grid-bg opacity-30 pointer-events-none" />
+
+                  <div className="relative z-10 space-y-3">
+                    {/* Header Badge */}
+                    <div className="flex items-center justify-between border-b border-cyan-500/30 pb-2">
+                      <span className="text-xs font-mono text-cyan-400 font-bold flex items-center gap-1.5">
+                        <FaGamepad className="text-xs text-cyan-400 animate-spin" />
+                        SKILL MATRIX STATS
+                      </span>
+                      <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-purple-950 text-purple-300 border border-purple-500/40">
+                        LVL 99
+                      </span>
+                    </div>
+
+                    {/* Skill Progress Bars */}
+                    <div className="space-y-2.5 pt-1">
+                      
+                      {/* React & Next.js */}
+                      <div>
+                        <div className="flex justify-between text-[11px] font-mono mb-1">
+                          <span className="text-slate-200 font-semibold">React & Next.js</span>
+                          <span className="text-cyan-400 font-bold">98% (MASTER)</span>
+                        </div>
+                        <div className="w-full h-1.5 bg-slate-900 rounded-full overflow-hidden border border-cyan-500/30">
+                          <div className="h-full bg-gradient-to-r from-cyan-500 to-indigo-500 rounded-full w-[98%]" />
+                        </div>
+                      </div>
+
+                      {/* Nuxt 3 & Vue */}
+                      <div>
+                        <div className="flex justify-between text-[11px] font-mono mb-1">
+                          <span className="text-slate-200 font-semibold">Nuxt 3 & Vue.js</span>
+                          <span className="text-emerald-400 font-bold">92% (EXPERT)</span>
+                        </div>
+                        <div className="w-full h-1.5 bg-slate-900 rounded-full overflow-hidden border border-emerald-500/30">
+                          <div className="h-full bg-gradient-to-r from-emerald-500 to-teal-400 rounded-full w-[92%]" />
+                        </div>
+                      </div>
+
+                      {/* React Native */}
+                      <div>
+                        <div className="flex justify-between text-[11px] font-mono mb-1">
+                          <span className="text-slate-200 font-semibold">React Native</span>
+                          <span className="text-indigo-400 font-bold">90% (EXPERT)</span>
+                        </div>
+                        <div className="w-full h-1.5 bg-slate-900 rounded-full overflow-hidden border border-indigo-500/30">
+                          <div className="h-full bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full w-[90%]" />
+                        </div>
+                      </div>
+
+                      {/* TypeScript & Zod */}
+                      <div>
+                        <div className="flex justify-between text-[11px] font-mono mb-1">
+                          <span className="text-slate-200 font-semibold">TypeScript & Zod</span>
+                          <span className="text-cyan-400 font-bold">94% (MASTER)</span>
+                        </div>
+                        <div className="w-full h-1.5 bg-slate-900 rounded-full overflow-hidden border border-cyan-500/30">
+                          <div className="h-full bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full w-[94%]" />
+                        </div>
+                      </div>
+
+                      {/* Spring Boot & Java */}
+                      <div>
+                        <div className="flex justify-between text-[11px] font-mono mb-1">
+                          <span className="text-slate-200 font-semibold">Spring Boot & Java</span>
+                          <span className="text-amber-400 font-bold">40% (BEGINNER)</span>
+                        </div>
+                        <div className="w-full h-1.5 bg-slate-900 rounded-full overflow-hidden border border-amber-500/30">
+                          <div className="h-full bg-gradient-to-r from-amber-500 to-orange-500 rounded-full w-[40%]" />
+                        </div>
+                      </div>
+
+                    </div>
+
+                    {/* RPG Character Info Footer */}
+                    <div className="grid grid-cols-2 gap-2 text-[10px] font-mono pt-2 border-t border-slate-800/80">
+                      <div className="bg-slate-900/80 p-1.5 rounded border border-slate-800">
+                        <span className="text-slate-400">CLASS: </span>
+                        <span className="text-cyan-300 font-bold">SR FULL-STACK</span>
+                      </div>
+                      <div className="bg-slate-900/80 p-1.5 rounded border border-slate-800">
+                        <span className="text-slate-400">EXP: </span>
+                        <span className="text-purple-300 font-bold">5+ YEARS</span>
+                      </div>
+                    </div>
+
                   </div>
+
+                  {/* Flip Back Hint */}
+                  <div className="relative z-10 text-center pt-1">
+                    <span className="text-[10px] font-mono text-purple-300/90 bg-purple-950/80 px-2.5 py-0.5 rounded-full border border-purple-500/30 inline-flex items-center gap-1">
+                      ↺ MOVE AWAY TO FLIP FRONT
+                    </span>
+                  </div>
+
                 </div>
+
               </div>
             </div>
           </div>
