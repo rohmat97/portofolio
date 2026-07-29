@@ -1,28 +1,30 @@
-# 🚀 Interactive Developer Portfolio
+# 🚀 Interactive Developer Portfolio — Rohmat Dasuki
 
-A modern, highly interactive, and responsive developer portfolio web application built with **React 18** and **Tailwind CSS**. Features a retro-futuristic **Digimon World 3 Cyber Matrix Landing Gate**, dynamic theme customization, smooth section transitions, and printable formal resume view.
+A modern, highly interactive, gaming-themed developer portfolio web application built with **React 18** and **Tailwind CSS**. Features an authentic retro-futuristic **Digimon World 3 Cyber Matrix Landing Gate**, **Digimon Digivolution Project Card Animations**, **3D Flip Profile Skill Matrix Card**, **Thor Mjolnir Skill Reassembly System**, and a printable formal resume view.
 
 🌐 **Live Demo**: [rohmat97.github.io/portofolio](https://rohmat97.github.io/portofolio)
 
 ---
 
-## ✨ Features
+## ✨ Feature Highlights
 
-- 👾 **Digimon World 3 Cyber Matrix Gate**: Interactive splash gate with retro cyber aesthetic, matrix effects, and sound toggles.
-- 🎨 **Dynamic Multi-Theme Customizer**: Real-time theme customizer supporting custom color schemes, dynamic mouse spotlight, and section-aware particle animations.
-- 💼 **Interactive Work & Projects Showcase**: Detailed filterable list of projects, live demo links, and tech stack tags.
-- 🛠️ **Categorized Skills Grid**: Interactive skill breakdown with proficiency meters and category filtering.
-- ⏳ **Career & Experience Journey**: Visual timeline of work history, accomplishments, and metrics.
-- 📄 **Print & PDF Export Resume**: Integrated `PrintCV` view optimized specifically for standard paper printing and PDF resume generation.
-- 📱 **Fully Responsive Layout**: Mobile-first design tailored with responsive Tailwind CSS utilities and smooth scroll navigation.
+- 👾 **Digimon World 3 Cyber Matrix Gate**: Interactive entrance gate with matrix digital waterfall particles, CRT scanlines, 3D cyber grid, keyboard shortcuts (`Enter`), and background music toggle.
+- ⚡ **Digimon Digivolution Project Animations**: Staggered $0.25\times \rightarrow 1.0\times$ scale-up card evolution sequence featuring rotating concentric Digi-code rings, laser scanning beams, energy burst flashes, and live evolution stage progression (`ROOKIE` $\rightarrow$ `CHAMPION` $\rightarrow$ `ULTIMATE` $\rightarrow$ `MEGA FORM`). Includes a manual **"DIGIVOLVE ALL"** button with synthesized digital warp audio.
+- 🎴 **3D Flip RPG Profile Card**: Floating profile card in the hero section that flips $180^\circ$ on hover to reveal an RPG character skill matrix with live progress meters for React/Next.js (98%), Nuxt 3/Vue (92%), React Native (90%), TypeScript (94%), and Spring Boot (40%).
+- 🔨 **Thor Mjolnir Skill Reassembly**: Skill matrix cards shatter and snap back together with electric SVG crackles and lightning audio effects upon scroll or tab filter changes.
+- 🔊 **Web Audio API Haptic Sound Effects**: Zero external audio files needed for interaction sounds — synthesized hover chirps, click tones, digital warp sweeps, and Mjolnir thunder cracks via Web Audio API.
+- 🎨 **Dynamic Multi-Theme Customizer**: Real-time theme switcher supporting Cyber, Emerald, Violet, Obsidian, Indigo, and Teal modes with dynamic cursor spotlighting.
+- 📄 **Executive Print & PDF Export Resume**: Integrated `PrintCV` view optimized specifically for standard A4 paper printing and PDF resume export.
+- 📱 **Fully Responsive Layout**: Mobile-first design tailored with responsive Tailwind CSS utilities, glassmorphism UI, and smooth-scroll navigation.
 
 ---
 
 ## 🛠️ Tech Stack
 
 - **Framework & Core**: [React 18](https://react.dev/), JavaScript (ES6+)
-- **Styling & UI**: [Tailwind CSS 3](https://tailwindcss.com/), PostCSS, Autoprefixer
+- **Styling & UI**: [Tailwind CSS 3](https://tailwindcss.com/), PostCSS, Glassmorphism, CSS 3D Transforms
 - **Icons & Navigation**: [React Icons](https://react-icons.github.io/react-icons/), [React Scroll](https://www.npmjs.com/package/react-scroll)
+- **Audio Synthesis**: Web Audio API (synthesized sound effects) + HTML5 Audio BGM
 - **Deployment**: [GitHub Pages](https://pages.github.com/) (`gh-pages`)
 
 ---
@@ -33,18 +35,17 @@ A modern, highly interactive, and responsive developer portfolio web application
 portofolio/
 ├── public/                # Static assets, HTML template, favicon
 ├── src/
-│   ├── assets/            # Project images, icons, and audio assets
+│   ├── assets/            # Project logos, profile photos, and audio files
 │   ├── components/
 │   │   ├── layout/        # Navigation bar, Footer, Back-to-top button
-│   │   ├── print/         # Printable CV component for export
+│   │   ├── print/         # Executive Printable CV component for export
 │   │   ├── sections/      # Home, About, Skills, Work, Journey, Contact
-│   │   └── ui/            # Cursor, Spotlight, Splash Gate, Theme Customizer
-│   ├── constants/         # Global constants & configurations
+│   │   └── ui/            # ProjectCard (Digivolution), Theme Customizer, Splash Gate
+│   ├── constants/         # Links, resume URLs, contact info
 │   ├── data/              # Projects, skills, experiences, & metrics data
-│   ├── hooks/             # Custom React hooks
-│   ├── utils/             # Helper utilities
-│   ├── App.jsx            # Main Application component
-│   └── index.css          # Global CSS & Tailwind directives
+│   ├── utils/             # Web Audio API synthesizer & sound effects
+│   ├── App.jsx            # Main application root
+│   └── index.css          # Core CSS design system, 3D flip, and keyframes
 ├── package.json           # Dependencies and build scripts
 └── README.md              # Project documentation
 ```
@@ -80,7 +81,7 @@ Ensure you have the following installed on your machine:
    # or
    npm start
    ```
-   Open [http://localhost:3000](http://localhost:3000) to view the application in your browser.
+   Open [http://localhost:3000/portofolio](http://localhost:3000/portofolio) to view the application in your browser.
 
 ---
 
