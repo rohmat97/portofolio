@@ -389,46 +389,38 @@
   0% {
     opacity: 1;
     transform: scale(1) rotate(0deg);
-    filter: brightness(1) blur(0px) saturate(1);
   }
   15% {
     opacity: 1;
     transform: scale(1.02) rotate(-0.5deg) translateX(3px);
-    filter: brightness(1.3) blur(0px) saturate(1.2);
   }
   25% {
     transform: scale(1.01) rotate(0.5deg) translateX(-3px);
-    filter: brightness(1.6) blur(1px) saturate(1.5);
   }
   35% {
     transform: scale(0.98) rotate(-0.3deg) translateX(2px);
-    filter: brightness(2) blur(2px) saturate(2);
   }
   50% {
     opacity: 0.95;
     transform: scale(0.92) rotate(0deg);
-    filter: brightness(3) blur(4px) saturate(3);
   }
   70% {
     opacity: 0.7;
     transform: scale(0.5) rotate(5deg);
-    filter: brightness(5) blur(10px) saturate(4);
   }
   85% {
     opacity: 0.3;
     transform: scale(0.15) rotate(15deg);
-    filter: brightness(8) blur(16px) saturate(5);
   }
   100% {
     opacity: 0;
     transform: scale(0) rotate(30deg);
-    filter: brightness(12) blur(24px) saturate(6);
   }
 }
 
 .animate-digital-warp-out {
   animation: dimensionGateImplode 1.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-  will-change: transform, opacity, filter;
+  will-change: transform, opacity;
 }
 
 /* Dimensional Warp Overlay — the vortex tunnel flash between dimensions */
@@ -460,11 +452,11 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 20px;
-  height: 20px;
+  width: 200vw;
+  height: 200vh;
   border-radius: 50%;
   transform: translate(-50%, -50%) scale(0);
-  background: radial-gradient(circle, #ffffff 0%, rgba(6, 182, 212, 0.8) 30%, rgba(99, 102, 241, 0.4) 60%, transparent 80%);
+  background: radial-gradient(circle, #ffffff 0%, rgba(6, 182, 212, 0.8) 20%, transparent 60%);
   animation: dimensionBreachFlash 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   mix-blend-mode: screen;
 }
@@ -491,24 +483,21 @@
   0% {
     transform: translate(-50%, -50%) scale(0);
     opacity: 0;
-    box-shadow: 0 0 0 0 rgba(6, 182, 212, 0);
   }
-  30% {
+  20% {
+    transform: translate(-50%, -50%) scale(0.2);
+    opacity: 1;
+  }
+  40% {
     transform: translate(-50%, -50%) scale(1);
     opacity: 1;
-    box-shadow: 0 0 60px 30px rgba(6, 182, 212, 0.6), 0 0 120px 60px rgba(99, 102, 241, 0.3);
-  }
-  60% {
-    transform: translate(-50%, -50%) scale(80);
-    opacity: 1;
-    box-shadow: 0 0 200px 100px rgba(255, 255, 255, 0.8);
   }
   80% {
-    transform: translate(-50%, -50%) scale(200);
+    transform: translate(-50%, -50%) scale(1.2);
     opacity: 1;
   }
   100% {
-    transform: translate(-50%, -50%) scale(300);
+    transform: translate(-50%, -50%) scale(1.5);
     opacity: 0;
   }
 }
@@ -604,6 +593,177 @@
   border-bottom-right-radius: 4px;
 }
 
+
+
+/* ============================================================
+   DIGIMON DIGIVOLUTION CARD ANIMATION SYSTEM
+   Slower, ultra-smooth scale-up evolution from tiny digital core to Mega form
+   ============================================================ */
+
+@keyframes digiCodeSpin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes digiCodeReverseSpin {
+  0% { transform: rotate(360deg); }
+  100% { transform: rotate(0deg); }
+}
+
+@keyframes digiRingsExpand {
+  0% { transform: scale(0.3) rotate(0deg); opacity: 0.2; }
+  30% { transform: scale(0.6) rotate(120deg); opacity: 0.8; }
+  70% { transform: scale(1.1) rotate(260deg); opacity: 0.95; }
+  100% { transform: scale(1.35) rotate(360deg); opacity: 0; }
+}
+
+@keyframes digiLaserScanSlow {
+  0% { top: -10%; opacity: 0; }
+  15% { opacity: 1; }
+  50% { top: 100%; opacity: 1; }
+  85% { opacity: 1; }
+  100% { top: -10%; opacity: 0; }
+}
+
+@keyframes digiBurstFlashSlow {
+  0% { opacity: 0; transform: scale(0.2); }
+  25% { opacity: 0.6; transform: scale(0.6); }
+  70% { opacity: 0.95; transform: scale(1.1); }
+  85% { opacity: 1; transform: scale(1.25); }
+  100% { opacity: 0; transform: scale(1.5); }
+}
+
+/* Authentic Digimon Evolution Scale-Up Motion (0.25x -> 1.0x over 2.5 seconds) */
+@keyframes digiEvolutionScaleUp {
+  0% {
+    opacity: 0;
+    transform: scale(0.25) translateY(50px) rotateX(15deg);
+    filter: brightness(4) saturate(3) blur(14px);
+    box-shadow: 0 0 60px rgba(6, 182, 212, 0.9);
+  }
+  25% {
+    opacity: 0.65;
+    transform: scale(0.55) translateY(25px) rotateX(8deg);
+    filter: brightness(2.8) saturate(2.2) blur(8px);
+    box-shadow: 0 0 50px rgba(168, 85, 247, 0.8);
+  }
+  55% {
+    opacity: 0.88;
+    transform: scale(0.82) translateY(10px) rotateX(3deg);
+    filter: brightness(1.8) saturate(1.6) blur(4px);
+    box-shadow: 0 0 40px rgba(56, 189, 248, 0.7);
+  }
+  80% {
+    opacity: 0.98;
+    transform: scale(1.06) translateY(-6px) rotateX(-2deg);
+    filter: brightness(1.4) saturate(1.3) blur(1px);
+    box-shadow: 0 0 50px rgba(255, 255, 255, 0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0) rotateX(0deg);
+    filter: brightness(1) saturate(1) blur(0px);
+    box-shadow: 0 0 0px rgba(0, 0, 0, 0);
+  }
+}
+
+@keyframes digiAuraGlow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(6, 182, 212, 0.3), inset 0 0 15px rgba(6, 182, 212, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 45px rgba(168, 85, 247, 0.6), inset 0 0 25px rgba(56, 189, 248, 0.4);
+  }
+}
+
+.animate-digi-spin {
+  animation: digiCodeSpin 14s linear infinite;
+}
+
+.animate-digi-reverse-spin {
+  animation: digiCodeReverseSpin 10s linear infinite;
+}
+
+.animate-digi-rings-expand {
+  animation: digiRingsExpand 2.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-digi-scan-slow {
+  animation: digiLaserScanSlow 2.5s ease-in-out infinite;
+}
+
+.animate-digi-burst-slow {
+  animation: digiBurstFlashSlow 2.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-digi-evolution-scale {
+  animation: digiEvolutionScaleUp 2.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  will-change: transform, opacity, filter;
+}
+
+.digi-aura-pulse {
+  animation: digiAuraGlow 3s ease-in-out infinite;
+}
+
+/* ============================================================
+   THOR MJOLNIR SKILL REASSEMBLY SYSTEM
+   Pieces scatter and snap together with electric cracks & flash
+   ============================================================ */
+
+@keyframes mjolnirCrackGlow {
+  0% {
+    opacity: 1;
+    stroke-dashoffset: 200;
+    filter: drop-shadow(0 0 8px rgba(168, 85, 247, 1)) drop-shadow(0 0 15px rgba(56, 189, 248, 0.9));
+  }
+  50% {
+    opacity: 0.95;
+    stroke-dashoffset: 0;
+    filter: drop-shadow(0 0 14px rgba(236, 72, 153, 1)) drop-shadow(0 0 22px rgba(168, 85, 247, 0.9));
+  }
+  100% {
+    opacity: 0;
+    stroke-dashoffset: 0;
+    filter: drop-shadow(0 0 2px rgba(168, 85, 247, 0));
+  }
+}
+
+@keyframes mjolnirSnapFlash {
+  0% {
+    opacity: 0;
+    box-shadow: 0 0 0 0 rgba(168, 85, 247, 0);
+  }
+  30% {
+    opacity: 1;
+    box-shadow: inset 0 0 35px 12px rgba(168, 85, 247, 0.55), 0 0 30px 10px rgba(56, 189, 248, 0.65);
+  }
+  100% {
+    opacity: 0;
+    box-shadow: 0 0 0 0 rgba(168, 85, 247, 0);
+  }
+}
+
+.mjolnir-crack-overlay {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  overflow: hidden;
+  z-index: 20;
+}
+
+.mjolnir-crack-path {
+  stroke-dasharray: 200;
+  animation: mjolnirCrackGlow 1.6s ease-out forwards;
+}
+
+.mjolnir-snap-pulse {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  animation: mjolnirSnapFlash 1.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
 
 /* Pristine Executive Print & PDF Export Stylesheet */
 @media print {

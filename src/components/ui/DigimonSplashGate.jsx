@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { FaGamepad, FaDownload, FaExternalLinkAlt, FaTerminal, FaVolumeUp, FaVolumeMute } from 'react-icons/fa';
 import { HiArrowNarrowRight } from 'react-icons/hi';
 import { RESUME_URL, CERTIFICATIONS_DRIVE_URL } from '../../constants/links';
@@ -115,7 +115,7 @@ const DigimonSplashGate = ({ onEnter }) => {
 
       const cx = w / 2;
       const cy = h / 2;
-      const speed = isWarpingRef.current ? 45 : 4;
+      const speed = isWarpingRef.current ? 12 : 4;
 
       matrixNodes.forEach((node) => {
         node.z -= speed;
@@ -152,7 +152,7 @@ const DigimonSplashGate = ({ onEnter }) => {
     };
   }, []);
 
-  const handleStartGate = () => {
+  const handleStartGate = useCallback(() => {
     if (isWarpingRef.current) return;
     isWarpingRef.current = true;
     setIsWarping(true);
@@ -163,7 +163,7 @@ const DigimonSplashGate = ({ onEnter }) => {
       startCVProfileBGM();
       onEnter();
     }, 900);
-  };
+  }, [onEnter]);
 
   // Keyboard Enter shortcut to gate in
   useEffect(() => {
@@ -174,7 +174,7 @@ const DigimonSplashGate = ({ onEnter }) => {
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, []);
+  }, [handleStartGate]);
 
   return (
     <div

@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
+
+const chars = '!@#$%^&*()_+-=[]{}|;:,.<>?/0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
 const ScrambleText = ({ text, className = '', speed = 40, scrambleOnHover = true }) => {
   const [displayText, setDisplayText] = useState(text);
-  const chars = '!@#$%^&*()_+-=[]{}|;:,.<>?/0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
-  const triggerScramble = () => {
+  const triggerScramble = useCallback(() => {
     let iteration = 0;
     const interval = setInterval(() => {
       setDisplayText(
@@ -23,11 +24,11 @@ const ScrambleText = ({ text, className = '', speed = 40, scrambleOnHover = true
       }
       iteration += 1 / 3;
     }, speed);
-  };
+  }, [text, speed]);
 
   useEffect(() => {
     triggerScramble();
-  }, [text]);
+  }, [triggerScramble]);
 
   return (
     <span

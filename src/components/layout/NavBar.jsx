@@ -10,7 +10,7 @@ import {
   MAILTO,
   EMAIL,
 } from '../../constants/links';
-import { toggleCVProfileBGM, isCVProfileBGMPlaying } from '../../utils/audioEffects';
+import { toggleCVProfileBGM } from '../../utils/audioEffects';
 
 const NavBar = ({ onReopenGate }) => {
   const [nav, setNav] = useState(false);

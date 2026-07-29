@@ -1,15 +1,55 @@
-import React, { useState } from "react";
-import { FaSearch, FaLayerGroup, FaGamepad, FaChevronDown, FaChevronUp } from "react-icons/fa";
+import React, { useState, useEffect, useRef, useCallback } from "react";
+import { FaSearch, FaLayerGroup, FaGamepad, FaChevronDown, FaChevronUp, FaSyncAlt, FaBolt } from "react-icons/fa";
 import { PROJECTS_DATA, PROJECT_CATEGORIES } from "../../data/projectsData";
 import ProjectCard from "../ui/ProjectCard";
 import ProjectModal from "../ui/ProjectModal";
-import { playHoverSound, playClickSound } from "../../utils/audioEffects";
+import { playHoverSound, playClickSound, playDigitalWarpSound } from "../../utils/audioEffects";
 
 const Work = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [activeModalProject, setActiveModalProject] = useState(null);
   const [showAllProjects, setShowAllProjects] = useState(false);
+  const [isEvolving, setIsEvolving] = useState(false);
+
+  const sectionRef = useRef(null);
+
+  const triggerDigivolution = useCallback(() => {
+    playDigitalWarpSound();
+    setIsEvolving(false);
+    setTimeout(() => {
+      setIsEvolving(true);
+    }, 50);
+  }, []);
+
+  // IntersectionObserver to trigger Digivolution when scrolling into view
+  useEffect(() => {
+    const el = sectionRef.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          triggerDigivolution();
+        } else if (entry.boundingClientRect.top > 0) {
+          setIsEvolving(false);
+        }
+      },
+      {
+        rootMargin: "0px 0px -25% 0px",
+        threshold: 0.1,
+      }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [triggerDigivolution]);
+
+  const handleCategoryChange = (cat) => {
+    playClickSound();
+    setSelectedCategory(cat);
+    triggerDigivolution();
+  };
 
   const filteredProjects = PROJECTS_DATA.filter((p) => {
     const matchesCategory =
@@ -21,30 +61,44 @@ const Work = () => {
     return matchesCategory && matchesSearch;
   });
 
-  // Progressive Disclosure: Show top 6 featured projects by default unless searching or toggled
   const displayedProjects = (showAllProjects || searchQuery.length > 0)
     ? filteredProjects
     : filteredProjects.slice(0, 6);
 
   return (
     <section
+      ref={sectionRef}
       name="projects"
       aria-label="Projects section"
-      className="w-full bg-transparent text-slate-300 py-20 sm:py-24 border-t border-slate-900 scroll-mt-20"
+      className="w-full bg-transparent text-slate-300 py-20 sm:py-24 border-t border-slate-900 scroll-mt-20 relative overflow-hidden"
     >
       <div className="max-w-[1100px] mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header */}
-        <div className="pb-8 text-left">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-cyan-950/80 border border-cyan-500/40 text-cyan-400 text-xs font-mono uppercase tracking-widest mb-3 shadow-md">
-            <FaGamepad className="text-cyan-400 text-xs" /> QUEST LOG: SELECTED WORKS
+        <div className="pb-8 text-left flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+          <div>
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-cyan-950/80 border border-cyan-500/40 text-cyan-400 text-xs font-mono uppercase tracking-widest mb-3 shadow-md">
+              <FaGamepad className="text-cyan-400 text-xs" /> QUEST LOG: SELECTED WORKS
+            </div>
+            <h2 className="text-3xl sm:text-5xl font-extrabold text-slate-100 tracking-tight">
+              Projects <span className="gradient-text">Showcase</span>
+            </h2>
+            <p className="mt-3 text-slate-400 text-base sm:text-lg max-w-2xl">
+              A portfolio of production apps, payment portals, and mobile solutions I've developed.
+            </p>
           </div>
-          <h2 className="text-3xl sm:text-5xl font-extrabold text-slate-100 tracking-tight">
-            Projects <span className="gradient-text">Showcase</span>
-          </h2>
-          <p className="mt-3 text-slate-400 text-base sm:text-lg max-w-2xl">
-            A portfolio of production apps, payment portals, and mobile solutions I've developed.
-          </p>
+
+          {/* Interactive DIGIVOLVE ALL Trigger Button */}
+          <button
+            onClick={triggerDigivolution}
+            onMouseEnter={playHoverSound}
+            title="Trigger Digimon Digivolution Matrix Sequence"
+            className="self-start sm:self-auto inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-cyan-950/90 hover:bg-cyan-900 border border-cyan-500/50 hover:border-cyan-400 text-cyan-300 font-mono text-xs font-bold transition-all shadow-lg hover:shadow-cyan-500/30 cursor-pointer group no-print"
+          >
+            <FaSyncAlt className="text-cyan-400 group-hover:rotate-180 transition-transform duration-700" />
+            <FaBolt className="text-amber-400 animate-pulse" />
+            <span>DIGIVOLVE ALL</span>
+          </button>
         </div>
 
         {/* Search & Category Filter Toolbar */}
@@ -56,10 +110,7 @@ const Work = () => {
               <button
                 key={cat}
                 onMouseEnter={playHoverSound}
-                onClick={() => {
-                  playClickSound();
-                  setSelectedCategory(cat);
-                }}
+                onClick={() => handleCategoryChange(cat)}
                 className={`px-4 py-2 text-xs sm:text-sm font-semibold font-mono rounded-xl transition-all cursor-pointer ${
                   selectedCategory === cat
                     ? "bg-cyan-600 text-white shadow-lg shadow-cyan-500/30 border border-cyan-400"
@@ -78,7 +129,10 @@ const Work = () => {
               type="text"
               placeholder="Search projects or tech..."
               value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
+              onChange={(e) => {
+                setSearchQuery(e.target.value);
+                triggerDigivolution();
+              }}
               className="w-full pl-10 pr-4 py-2.5 bg-slate-900/90 border border-slate-800 rounded-xl text-slate-200 text-sm placeholder:text-slate-500 focus:outline-none focus:border-cyan-500 transition-colors font-mono"
             />
           </div>
@@ -87,10 +141,12 @@ const Work = () => {
 
         {/* Projects Grid */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {displayedProjects.map((p) => (
+          {displayedProjects.map((p, idx) => (
             <div key={p.title} onMouseEnter={playHoverSound}>
               <ProjectCard
                 project={p}
+                index={idx}
+                isEvolving={isEvolving}
                 onSelectProject={(project) => {
                   playClickSound();
                   setActiveModalProject(project);
@@ -108,6 +164,7 @@ const Work = () => {
               onClick={() => {
                 playClickSound();
                 setShowAllProjects(!showAllProjects);
+                triggerDigivolution();
               }}
               className="px-6 py-3.5 text-sm font-semibold text-cyan-300 bg-slate-900 hover:bg-slate-800 border border-cyan-500/40 hover:border-cyan-400 rounded-xl transition-all inline-flex items-center gap-2 cursor-pointer shadow-lg shadow-cyan-500/10 font-mono"
             >
