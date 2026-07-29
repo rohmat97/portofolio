@@ -100,48 +100,114 @@ let bgmAudioElement = null;
 let cvBgmAudioElement = null;
 let isBgmPlaying = false;
 let isCvBgmPlaying = false;
+let bgmAutoplayBlocked = false;
 
-const unlockAudio = () => {
-  if (audioCtx && audioCtx.state === 'suspended') {
-    audioCtx.resume();
+const resolveAudioSrc = (asset) => {
+  if (!asset) return '';
+  if (typeof asset === 'string') return asset;
+  if (typeof asset === 'object' && asset.default && typeof asset.default === 'string') {
+    return asset.default;
   }
-  if (isBgmPlaying && bgmAudioElement && bgmAudioElement.paused) {
-    bgmAudioElement.play().catch(() => {});
+  return String(asset);
+};
+
+const landingSrc = resolveAudioSrc(landingPageAudio);
+const menuSrc = resolveAudioSrc(menuBgmAudio);
+
+const createBgmAudio = () => {
+  if (typeof window === 'undefined' || !landingSrc) return null;
+  const audio = new Audio(landingSrc);
+  audio.preload = 'auto';
+  audio.loop = true;
+  audio.volume = 0.5;
+  return audio;
+};
+
+const createCvBgmAudio = () => {
+  if (typeof window === 'undefined' || !menuSrc) return null;
+  const audio = new Audio(menuSrc);
+  audio.preload = 'auto';
+  audio.loop = true;
+  audio.volume = 0.4;
+  return audio;
+};
+
+// Eagerly pre-buffer BGM audio so it's ready to play instantly on first gesture
+if (typeof window !== 'undefined' && landingSrc) {
+  bgmAudioElement = createBgmAudio();
+}
+if (typeof window !== 'undefined' && menuSrc) {
+  cvBgmAudioElement = createCvBgmAudio();
+}
+
+// Called synchronously from a user gesture to force-start BGM audio
+export const unlockAudio = () => {
+  const ctx = getAudioContext();
+  if (ctx && ctx.state === 'suspended') {
+    ctx.resume().catch(() => {});
   }
+
+  // Only attempt BGM recovery if it was blocked and should be playing
+  if (bgmAutoplayBlocked && isBgmPlaying) {
+    bgmAutoplayBlocked = false;
+    // Destroy the tainted audio element and create a fresh one
+    if (bgmAudioElement) {
+      try { bgmAudioElement.pause(); } catch (e) {}
+      bgmAudioElement = null;
+    }
+    bgmAudioElement = createBgmAudio();
+    if (bgmAudioElement) {
+      bgmAudioElement.play().catch(() => {
+        // Still blocked — will retry on next gesture
+        bgmAutoplayBlocked = true;
+      });
+    }
+  }
+
+  // Handle CV BGM recovery
   if (isCvBgmPlaying && cvBgmAudioElement && cvBgmAudioElement.paused) {
     cvBgmAudioElement.play().catch(() => {});
   }
 };
 
+// Persistent gesture listener — stays active until BGM successfully plays
 if (typeof window !== 'undefined') {
-  window.addEventListener('click', unlockAudio);
-  window.addEventListener('keydown', unlockAudio);
-  window.addEventListener('touchstart', unlockAudio);
-  window.addEventListener('pointerdown', unlockAudio);
+  const gestureHandler = () => {
+    unlockAudio();
+  };
+  ['click', 'pointerdown', 'touchstart', 'keydown'].forEach((evt) => {
+    window.addEventListener(evt, gestureHandler, { passive: true });
+  });
 }
 
 // Landing Gate BGM (landingPage.webm)
 export const startDigimonBGM = () => {
   isBgmPlaying = true;
+  bgmAutoplayBlocked = false;
   stopCVProfileBGM();
+
   const ctx = getAudioContext();
   if (ctx && ctx.state === 'suspended') {
-    ctx.resume();
+    ctx.resume().catch(() => {});
   }
 
   try {
-    if (!bgmAudioElement && typeof window !== 'undefined') {
-      bgmAudioElement = new Audio(landingPageAudio);
-      bgmAudioElement.loop = true;
-      bgmAudioElement.volume = 0.5;
+    if (!bgmAudioElement) {
+      bgmAudioElement = createBgmAudio();
     }
     if (bgmAudioElement) {
       const playPromise = bgmAudioElement.play();
       if (playPromise !== undefined) {
-        playPromise.catch(() => {});
+        playPromise.catch(() => {
+          // Autoplay was blocked by browser policy
+          // Mark as blocked so unlockAudio() knows to recreate the element on next gesture
+          bgmAutoplayBlocked = true;
+        });
       }
     }
-  } catch (e) {}
+  } catch (e) {
+    bgmAutoplayBlocked = true;
+  }
 };
 
 export const stopDigimonBGM = () => {
@@ -160,14 +226,12 @@ export const startCVProfileBGM = () => {
   stopDigimonBGM();
   const ctx = getAudioContext();
   if (ctx && ctx.state === 'suspended') {
-    ctx.resume();
+    ctx.resume().catch(() => {});
   }
 
   try {
-    if (!cvBgmAudioElement && typeof window !== 'undefined') {
-      cvBgmAudioElement = new Audio(menuBgmAudio);
-      cvBgmAudioElement.loop = true;
-      cvBgmAudioElement.volume = 0.4;
+    if (!cvBgmAudioElement) {
+      cvBgmAudioElement = createCvBgmAudio();
     }
     if (cvBgmAudioElement) {
       const playPromise = cvBgmAudioElement.play();
@@ -200,8 +264,39 @@ export const toggleCVProfileBGM = () => {
 
 export const isCVProfileBGMPlaying = () => isCvBgmPlaying;
 
+// Audio readiness tracking — lets UI show loading state while audio buffers
+let bgmReady = false;
+let bgmReadyCallbacks = [];
 
+export const isBgmAudioReady = () => bgmReady;
 
+export const onBgmReady = (callback) => {
+  if (bgmReady) {
+    callback();
+  } else {
+    bgmReadyCallbacks.push(callback);
+  }
+};
 
+const markBgmReady = () => {
+  if (bgmReady) return;
+  bgmReady = true;
+  bgmReadyCallbacks.forEach((cb) => { try { cb(); } catch (e) {} });
+  bgmReadyCallbacks = [];
+};
+
+// Listen for audio buffer readiness on the pre-created element
+if (bgmAudioElement) {
+  if (bgmAudioElement.readyState >= 3) {
+    markBgmReady();
+  } else {
+    bgmAudioElement.addEventListener('canplaythrough', markBgmReady, { once: true });
+    // Fallback timeout — don't block UI forever if audio is slow
+    setTimeout(markBgmReady, 8000);
+  }
+} else {
+  // No audio element — mark ready immediately so splash gate isn't stuck
+  markBgmReady();
+}
 
 

@@ -2,18 +2,34 @@ import React, { useState, useEffect, useRef } from 'react';
 import { FaGamepad, FaDownload, FaExternalLinkAlt, FaTerminal, FaVolumeUp, FaVolumeMute } from 'react-icons/fa';
 import { HiArrowNarrowRight } from 'react-icons/hi';
 import { RESUME_URL, CERTIFICATIONS_DRIVE_URL } from '../../constants/links';
-import { playHoverSound, playClickSound, playDigitalWarpSound, startDigimonBGM, stopDigimonBGM, startCVProfileBGM } from '../../utils/audioEffects';
+import { playHoverSound, playClickSound, playDigitalWarpSound, startDigimonBGM, stopDigimonBGM, startCVProfileBGM, unlockAudio, isBgmAudioReady, onBgmReady } from '../../utils/audioEffects';
 import ShinyText from './ShinyText';
 import GradientText from './GradientText';
 import ScrambleText from './ScrambleText';
 
 const DigimonSplashGate = ({ onEnter }) => {
   const [isWarping, setIsWarping] = useState(false);
+  const [isMounting, setIsMounting] = useState(true);
   const [isMuted, setIsMuted] = useState(false);
   const [typedLog, setTypedLog] = useState('');
+  const [isAudioReady, setIsAudioReady] = useState(isBgmAudioReady());
   const canvasRef = useRef(null);
+  const isWarpingRef = useRef(false);
 
   const fullLogText = 'INITIALIZING MATRIX GATE // DECRYPTING BIOMETRICS // CONNECTING TO ROHMAT DASUKI PORTFOLIO...';
+
+  // Audio readiness listener
+  useEffect(() => {
+    onBgmReady(() => {
+      setIsAudioReady(true);
+    });
+  }, []);
+
+  // Mount entrance transition timer
+  useEffect(() => {
+    const timer = setTimeout(() => setIsMounting(false), 650);
+    return () => clearTimeout(timer);
+  }, []);
 
   // Digimon 3 Matrix Theme BGM Audio Loop
   useEffect(() => {
@@ -22,22 +38,22 @@ const DigimonSplashGate = ({ onEnter }) => {
     } else {
       stopDigimonBGM();
     }
+  }, [isMuted]);
 
+  // Global user interaction listener to unlock audio on first click/gesture
+  useEffect(() => {
     const handleUserInteraction = () => {
+      unlockAudio();
       if (!isMuted) {
         startDigimonBGM();
       }
     };
 
-    window.addEventListener('click', handleUserInteraction);
-    window.addEventListener('keydown', handleUserInteraction);
-    window.addEventListener('pointerdown', handleUserInteraction);
+    const unlockEvents = ['click', 'pointerdown', 'touchstart', 'keydown'];
+    unlockEvents.forEach((evt) => window.addEventListener(evt, handleUserInteraction, { passive: true }));
 
     return () => {
-      stopDigimonBGM();
-      window.removeEventListener('click', handleUserInteraction);
-      window.removeEventListener('keydown', handleUserInteraction);
-      window.removeEventListener('pointerdown', handleUserInteraction);
+      unlockEvents.forEach((evt) => window.removeEventListener(evt, handleUserInteraction));
     };
   }, [isMuted]);
 
@@ -99,9 +115,10 @@ const DigimonSplashGate = ({ onEnter }) => {
 
       const cx = w / 2;
       const cy = h / 2;
+      const speed = isWarpingRef.current ? 45 : 4;
 
       matrixNodes.forEach((node) => {
-        node.z -= 4;
+        node.z -= speed;
         if (node.z <= 0) {
           node.z = w;
           node.x = (Math.random() - 0.5) * w;
@@ -136,19 +153,40 @@ const DigimonSplashGate = ({ onEnter }) => {
   }, []);
 
   const handleStartGate = () => {
+    if (isWarpingRef.current) return;
+    isWarpingRef.current = true;
+    setIsWarping(true);
     stopDigimonBGM();
     playDigitalWarpSound();
-    setIsWarping(true);
+    // Sync with Phase 1 dimensionGateImplode (1.2s) — trigger onEnter partway through
     setTimeout(() => {
       startCVProfileBGM();
       onEnter();
-    }, 850);
+    }, 900);
   };
+
+  // Keyboard Enter shortcut to gate in
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'Enter' && !isWarpingRef.current) {
+        handleStartGate();
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []);
 
   return (
     <div
-      className={`fixed inset-0 z-[99999] bg-[#04070d] text-slate-100 flex flex-col justify-between p-4 sm:p-8 select-none overflow-hidden transition-all ${
-        isWarping ? 'animate-digital-warp-out pointer-events-none' : ''
+      onPointerDown={unlockAudio}
+      onTouchStart={unlockAudio}
+      onClick={unlockAudio}
+      className={`fixed inset-0 z-[99999] bg-[#04070d] text-slate-100 flex flex-col justify-between p-4 sm:p-8 select-none overflow-hidden ${
+        isWarping
+          ? 'animate-digital-warp-out pointer-events-none'
+          : isMounting
+          ? 'animate-digital-warp-in'
+          : ''
       }`}
     >
 
@@ -203,12 +241,21 @@ const DigimonSplashGate = ({ onEnter }) => {
       <div className="relative z-20 max-w-[750px] mx-auto w-full my-auto text-center space-y-5 sm:space-y-6 px-4">
         
         {/* Digimon World 3 Style Status Badge */}
-        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-2xl bg-slate-900/90 border border-cyan-500/50 shadow-xl backdrop-blur-md">
-          <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
-          <span className="text-xs font-mono uppercase tracking-widest text-slate-300">
-            SYSTEM READY • CONNECTING TO OPERATOR
-          </span>
-        </div>
+        {!isAudioReady ? (
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-2xl bg-cyan-950/90 border border-cyan-400/60 shadow-[0_0_25px_rgba(6,182,212,0.35)] backdrop-blur-md">
+            <div className="w-3 h-3 border-2 border-cyan-400 border-t-transparent rounded-full animate-spin" />
+            <span className="text-xs font-mono uppercase tracking-widest text-cyan-300 font-bold">
+              BUFFERING DIGITAL MATRIX AUDIO...
+            </span>
+          </div>
+        ) : (
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-2xl bg-slate-900/90 border border-cyan-500/50 shadow-xl backdrop-blur-md">
+            <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
+            <span className="text-xs font-mono uppercase tracking-widest text-slate-300">
+              SYSTEM READY • CONNECTING TO OPERATOR
+            </span>
+          </div>
+        )}
 
         {/* Hero Identity */}
         <div className="space-y-2">
@@ -245,8 +292,8 @@ const DigimonSplashGate = ({ onEnter }) => {
             <HiArrowNarrowRight className="relative z-10 text-xl group-hover:translate-x-2 transition-transform duration-300" />
           </button>
 
-          <span className="text-[11px] font-mono text-slate-400 tracking-widest animate-pulse">
-            [ PRESS BUTTON OR ENTER TO GATE IN ]
+          <span className="text-[11px] font-mono text-cyan-400/90 tracking-widest animate-pulse">
+            [ CLICK ANYWHERE OR PRESS ENTER TO ACTIVATE AUDIO & GATE IN ]
           </span>
         </div>
 
