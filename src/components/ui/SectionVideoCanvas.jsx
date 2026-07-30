@@ -1,9 +1,11 @@
 import React, { useEffect, useRef } from 'react';
 
-const SectionVideoCanvas = ({ section }) => {
+const SectionVideoCanvas = ({ section, isActive = true }) => {
   const canvasRef = useRef(null);
 
   useEffect(() => {
+    if (!isActive) return;
+
     const canvas = canvasRef.current;
     if (!canvas) return;
 
@@ -22,7 +24,7 @@ const SectionVideoCanvas = ({ section }) => {
 
     // 1. HERO SECTION: COSMIC STARS WARP (60FPS)
     if (section === 'home') {
-      const stars = Array.from({ length: 90 }).map(() => ({
+      const stars = Array.from({ length: 60 }).map(() => ({
         x: Math.random() * width,
         y: Math.random() * height,
         radius: Math.random() * 2 + 1,
@@ -43,8 +45,6 @@ const SectionVideoCanvas = ({ section }) => {
           ctx.beginPath();
           ctx.arc(s.x, s.y, s.radius, 0, Math.PI * 2);
           ctx.fillStyle = s.color;
-          ctx.shadowBlur = 8;
-          ctx.shadowColor = s.color;
           ctx.fill();
         });
         animationFrameId = requestAnimationFrame(drawStars);
@@ -85,7 +85,7 @@ const SectionVideoCanvas = ({ section }) => {
 
     // 3. SKILLS SECTION: SWIRLING BLACK HOLE (60FPS)
     else if (section === 'skills') {
-      const particles = Array.from({ length: 100 }).map(() => ({
+      const particles = Array.from({ length: 65 }).map(() => ({
         radius: Math.random() * 160 + 40,
         angle: Math.random() * Math.PI * 2,
         speed: Math.random() * 0.02 + 0.008,
@@ -111,8 +111,6 @@ const SectionVideoCanvas = ({ section }) => {
           ctx.beginPath();
           ctx.arc(x, y, p.size, 0, Math.PI * 2);
           ctx.fillStyle = p.color;
-          ctx.shadowBlur = 10;
-          ctx.shadowColor = p.color;
           ctx.fill();
         });
 
@@ -120,9 +118,10 @@ const SectionVideoCanvas = ({ section }) => {
         ctx.beginPath();
         ctx.arc(cx, cy, 30, 0, Math.PI * 2);
         ctx.fillStyle = '#000000';
-        ctx.shadowBlur = 25;
+        ctx.shadowBlur = 20;
         ctx.shadowColor = '#a855f7';
         ctx.fill();
+        ctx.shadowBlur = 0;
 
         animationFrameId = requestAnimationFrame(drawBlackHole);
       };
@@ -131,7 +130,7 @@ const SectionVideoCanvas = ({ section }) => {
 
     // 4. PROJECTS SECTION: METEOR SHOWER (60FPS)
     else if (section === 'projects') {
-      const comets = Array.from({ length: 14 }).map(() => ({
+      const comets = Array.from({ length: 10 }).map(() => ({
         x: Math.random() * width + 200,
         y: Math.random() * -200,
         length: Math.random() * 80 + 60,
@@ -186,16 +185,15 @@ const SectionVideoCanvas = ({ section }) => {
         ctx.lineTo(cx + 3, height);
         ctx.strokeStyle = 'rgba(99, 102, 241, 0.6)';
         ctx.lineWidth = 6;
-        ctx.shadowBlur = 20;
-        ctx.shadowColor = '#818cf8';
         ctx.stroke();
 
         ctx.beginPath();
         ctx.arc(cx, cy, size, 0, Math.PI * 2);
         ctx.fillStyle = '#6366f1';
-        ctx.shadowBlur = 35;
+        ctx.shadowBlur = 25;
         ctx.shadowColor = '#38bdf8';
         ctx.fill();
+        ctx.shadowBlur = 0;
 
         animationFrameId = requestAnimationFrame(drawPulsar);
       };
@@ -225,8 +223,6 @@ const SectionVideoCanvas = ({ section }) => {
         ctx.lineTo(cx + Math.cos(radarAngle) * 120, cy + Math.sin(radarAngle) * 120);
         ctx.strokeStyle = '#14b8a6';
         ctx.lineWidth = 2;
-        ctx.shadowBlur = 15;
-        ctx.shadowColor = '#2dd4bf';
         ctx.stroke();
 
         animationFrameId = requestAnimationFrame(drawRadar);
@@ -238,7 +234,9 @@ const SectionVideoCanvas = ({ section }) => {
       cancelAnimationFrame(animationFrameId);
       window.removeEventListener('resize', handleResize);
     };
-  }, [section]);
+  }, [section, isActive]);
+
+  if (!isActive) return null;
 
   return (
     <canvas

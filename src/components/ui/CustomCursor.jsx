@@ -2,11 +2,13 @@ import React, { useEffect, useState, useRef } from 'react';
 import { useActiveSection } from '../../hooks/useActiveSection';
 
 const CustomCursor = () => {
-  const [position, setPosition] = useState({ x: -100, y: -100 });
   const [isHovered, setIsHovered] = useState(false);
   const [particles, setParticles] = useState([]);
   const activeSection = useActiveSection();
   const particleIdRef = useRef(0);
+  const dotRef = useRef(null);
+  const ringRef = useRef(null);
+  const isHoveredRef = useRef(false);
 
   // Disable custom cursor particle calculations on touch/mobile devices
   const isPointerFine = typeof window !== 'undefined' && window.matchMedia('(pointer: fine)').matches;
@@ -14,41 +16,65 @@ const CustomCursor = () => {
   useEffect(() => {
     if (!isPointerFine) return;
 
+    let rafId = null;
+    let lastX = -100;
+    let lastY = -100;
+    let lastParticleTime = 0;
+
+    const updateDOMPositions = () => {
+      const hovered = isHoveredRef.current;
+      if (dotRef.current) {
+        dotRef.current.style.transform = `translate3d(${lastX - 7}px, ${lastY - 7}px, 0) scale(${hovered ? 1.8 : 1})`;
+      }
+      if (ringRef.current) {
+        const offset = hovered ? 28 : 18;
+        ringRef.current.style.transform = `translate3d(${lastX - offset}px, ${lastY - offset}px, 0)`;
+      }
+      rafId = null;
+    };
+
     const onMouseMove = (e) => {
-      const x = e.clientX;
-      const y = e.clientY;
-      setPosition({ x, y });
+      lastX = e.clientX;
+      lastY = e.clientY;
+      if (!rafId) {
+        rafId = requestAnimationFrame(updateDOMPositions);
+      }
 
-      // Spawn 2 cosmic sparkling dust particles on mouse movement
-      const colors = ['#38bdf8', '#c084fc', '#34d399', '#fde047', '#ffffff'];
-      const symbols = ['✦', '✨', '•', '⋆'];
+      // Spawn particle at most once every 70ms to keep state updates minimal
+      const now = Date.now();
+      if (now - lastParticleTime > 70) {
+        lastParticleTime = now;
+        const colors = ['#38bdf8', '#c084fc', '#34d399', '#fde047', '#ffffff'];
+        const symbols = ['✦', '✨', '•', '⋆'];
 
-      const newParticles = Array.from({ length: 2 }).map(() => ({
-        id: particleIdRef.current++,
-        x: x + (Math.random() - 0.5) * 16,
-        y: y + (Math.random() - 0.5) * 16,
-        vx: (Math.random() - 0.5) * 2,
-        vy: (Math.random() - 0.5) * 2 - 0.5,
-        size: Math.random() * 12 + 8,
-        color: colors[Math.floor(Math.random() * colors.length)],
-        symbol: symbols[Math.floor(Math.random() * symbols.length)],
-        life: 1.0,
-      }));
+        const newParticle = {
+          id: particleIdRef.current++,
+          x: lastX + (Math.random() - 0.5) * 16,
+          y: lastY + (Math.random() - 0.5) * 16,
+          vx: (Math.random() - 0.5) * 2,
+          vy: (Math.random() - 0.5) * 2 - 0.5,
+          size: Math.random() * 10 + 6,
+          color: colors[Math.floor(Math.random() * colors.length)],
+          symbol: symbols[Math.floor(Math.random() * symbols.length)],
+          life: 1.0,
+        };
 
-      setParticles((prev) => [...prev.slice(-30), ...newParticles]);
+        setParticles((prev) => [...prev.slice(-15), newParticle]);
+      }
     };
 
     const onMouseOver = (e) => {
-      if (
+      const isTarget =
         e.target.tagName === 'BUTTON' ||
         e.target.tagName === 'A' ||
         e.target.closest('button') ||
         e.target.closest('a') ||
-        e.target.closest('.glass-card')
-      ) {
-        setIsHovered(true);
-      } else {
-        setIsHovered(false);
+        e.target.closest('.glass-card');
+
+      const nextHovered = Boolean(isTarget);
+      if (isHoveredRef.current !== nextHovered) {
+        isHoveredRef.current = nextHovered;
+        setIsHovered(nextHovered);
       }
     };
 
@@ -58,6 +84,7 @@ const CustomCursor = () => {
     return () => {
       window.removeEventListener('mousemove', onMouseMove);
       window.removeEventListener('mouseover', onMouseOver);
+      if (rafId) cancelAnimationFrame(rafId);
     };
   }, [isPointerFine]);
 
@@ -72,11 +99,11 @@ const CustomCursor = () => {
             ...p,
             x: p.x + p.vx,
             y: p.y + p.vy,
-            life: p.life - 0.08,
+            life: p.life - 0.1,
           }))
           .filter((p) => p.life > 0)
       );
-    }, 30);
+    }, 40);
 
     return () => clearInterval(interval);
   }, [isPointerFine, particles.length]);
@@ -149,7 +176,7 @@ const CustomCursor = () => {
               fontSize: `${p.size}px`,
               opacity: p.life,
               transform: `scale(${p.life})`,
-              textShadow: `0 0 8px ${p.color}, 0 0 14px ${p.color}`,
+              textShadow: `0 0 8px ${p.color}`,
             }}
           >
             {p.symbol}
@@ -159,20 +186,22 @@ const CustomCursor = () => {
 
       {/* Main Glowing Center Cursor Dot */}
       <div
+        ref={dotRef}
         className={`fixed top-0 left-0 w-3.5 h-3.5 rounded-full ${theme.dotBg} pointer-events-none z-[9999] transition-transform duration-75 no-print`}
         style={{
-          transform: `translate3d(${position.x - 7}px, ${position.y - 7}px, 0) scale(${isHovered ? 1.8 : 1})`,
+          transform: `translate3d(-100px, -100px, 0)`,
           boxShadow: theme.shadow,
         }}
       />
 
       {/* Outer Magnetic Ring Follower */}
       <div
+        ref={ringRef}
         className={`fixed top-0 left-0 rounded-full border ${theme.ringBorder} ${theme.ringBg} pointer-events-none z-[9998] transition-all duration-300 ease-out no-print ${
           isHovered ? 'w-14 h-14 shadow-lg scale-110' : 'w-9 h-9'
         }`}
         style={{
-          transform: `translate3d(${position.x - (isHovered ? 28 : 18)}px, ${position.y - (isHovered ? 28 : 18)}px, 0)`,
+          transform: `translate3d(-100px, -100px, 0)`,
         }}
       />
     </>

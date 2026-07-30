@@ -38,13 +38,13 @@ const WaterRipple = () => {
     // Spawn ambient periodic ripples
     const intervalId = setInterval(() => {
       addRipple(Math.random() * width, Math.random() * height);
-    }, 1800);
+    }, 2500);
 
     const handleMouseMove = (e) => {
-      if (Math.random() > 0.4) {
+      if (Math.random() > 0.8) {
         const rect = canvas.getBoundingClientRect();
         addRipple(e.clientX - rect.left, e.clientY - rect.top);
-        if (ripples.length > 35) ripples.shift();
+        if (ripples.length > 15) ripples.shift();
       }
     };
     window.addEventListener('mousemove', handleMouseMove, { passive: true });
@@ -66,9 +66,7 @@ const WaterRipple = () => {
         ctx.arc(r.x, r.y, r.radius, 0, Math.PI * 2);
         ctx.strokeStyle = r.color;
         ctx.globalAlpha = r.opacity;
-        ctx.lineWidth = 2;
-        ctx.shadowBlur = 15;
-        ctx.shadowColor = r.color;
+        ctx.lineWidth = 1.5;
         ctx.stroke();
 
         // Inner Echo Ring

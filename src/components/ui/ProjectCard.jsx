@@ -24,56 +24,56 @@ const DigiCodeRings = () => (
 );
 
 const ProjectCard = ({ project, onSelectProject, isEvolving = false, index = 0 }) => {
-  const [stage, setStage] = useState(isEvolving ? "DATA INITIALIZE" : "MEGA");
-  const [animating, setAnimating] = useState(isEvolving);
+  const [stage, setStage] = useState("MEGA FORM");
+  const [animating, setAnimating] = useState(false);
+  const [isVisible, setIsVisible] = useState(!isEvolving);
 
   useEffect(() => {
+    let isMounted = true;
+    const timers = [];
+
     if (isEvolving) {
-      setAnimating(true);
-      setStage("DATA INITIALIZE");
+      // Hide card first before its 1-by-1 digivolution sequence begins
+      setIsVisible(false);
+      setAnimating(false);
 
-      const timer1 = setTimeout(() => {
-        setStage("ROOKIE FORM");
-      }, 600);
+      // Stagger start delay: Card 0 reveals at 0ms, Card 1 at 300ms, Card 2 at 600ms, etc.
+      const startDelay = index * 300;
 
-      const timer2 = setTimeout(() => {
-        setStage("CHAMPION FORM");
-      }, 1200);
+      const mainTimer = setTimeout(() => {
+        if (!isMounted) return;
+        setIsVisible(true);
+        setAnimating(true);
+        setStage("DATA INITIALIZE");
 
-      const timer3 = setTimeout(() => {
-        setStage("ULTIMATE FORM");
-      }, 1800);
+        timers.push(setTimeout(() => isMounted && setStage("ROOKIE FORM"), 400));
+        timers.push(setTimeout(() => isMounted && setStage("CHAMPION FORM"), 800));
+        timers.push(setTimeout(() => isMounted && setStage("ULTIMATE FORM"), 1200));
+        timers.push(setTimeout(() => isMounted && setStage("MEGA FORM"), 1600));
+        timers.push(setTimeout(() => isMounted && setAnimating(false), 1850));
+      }, startDelay);
 
-      const timer4 = setTimeout(() => {
-        setStage("MEGA FORM");
-      }, 2400);
-
-      const timer5 = setTimeout(() => {
-        setAnimating(false);
-      }, 2600);
+      timers.push(mainTimer);
 
       return () => {
-        clearTimeout(timer1);
-        clearTimeout(timer2);
-        clearTimeout(timer3);
-        clearTimeout(timer4);
-        clearTimeout(timer5);
+        isMounted = false;
+        timers.forEach((t) => clearTimeout(t));
       };
     } else {
+      setIsVisible(true);
       setAnimating(false);
       setStage("MEGA FORM");
     }
-  }, [isEvolving]);
-
-  const staggerDelay = `${(index % 6) * 160}ms`;
+  }, [isEvolving, index]);
 
   return (
     <article
-      style={{ animationDelay: staggerDelay }}
       className={`relative glass-card glass-card-hover rounded-3xl overflow-hidden border transition-all duration-700 flex flex-col justify-between group ${
-        animating
-          ? "border-cyan-400/90 shadow-[0_0_50px_rgba(6,182,212,0.5)] animate-digi-evolution-scale"
-          : "border-slate-800/90 hover:border-cyan-500/40 digi-aura-pulse"
+        !isVisible
+          ? "opacity-0 scale-90 translate-y-8 pointer-events-none"
+          : animating
+          ? "opacity-100 scale-100 translate-y-0 border-cyan-400/90 shadow-[0_0_50px_rgba(6,182,212,0.5)] animate-digi-evolution-scale"
+          : "opacity-100 scale-100 translate-y-0 border-slate-800/90 hover:border-cyan-500/40 digi-aura-pulse"
       }`}
     >
       {/* Digivolution Animated Overlay */}

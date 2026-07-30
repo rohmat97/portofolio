@@ -27,9 +27,9 @@ const GravityWells = () => {
       { x: width * 0.25, y: height * 0.65, mass: 2400, color: '#a855f7', pulse: 1.5 },
     ];
 
-    // High Density Particle Swarm (240 Cosmic Sparkles)
+    // Particle Swarm (80 Cosmic Sparkles)
     const colors = ['#38bdf8', '#c084fc', '#34d399', '#fde047', '#f43f5e'];
-    const particles = Array.from({ length: 240 }).map(() => ({
+    const particles = Array.from({ length: 80 }).map(() => ({
       x: Math.random() * width,
       y: Math.random() * height,
       vx: (Math.random() - 0.5) * 2,
@@ -50,8 +50,8 @@ const GravityWells = () => {
       mouseWell.x = mx;
       mouseWell.y = my;
 
-      // Spawn interactive mouse sparks
-      if (Math.random() > 0.3) {
+      // Spawn interactive mouse sparks occasionally
+      if (Math.random() > 0.6) {
         sparkTrails.push({
           x: mx + (Math.random() - 0.5) * 20,
           y: my + (Math.random() - 0.5) * 20,
@@ -61,7 +61,7 @@ const GravityWells = () => {
           size: Math.random() * 3 + 1.5,
           color: colors[Math.floor(Math.random() * colors.length)],
         });
-        if (sparkTrails.length > 35) sparkTrails.shift();
+        if (sparkTrails.length > 15) sparkTrails.shift();
       }
     };
     window.addEventListener('mousemove', handleMouseMove, { passive: true });
@@ -81,7 +81,7 @@ const GravityWells = () => {
         ctx.beginPath();
         ctx.arc(w.x, w.y, 7, 0, Math.PI * 2);
         ctx.fillStyle = w.color;
-        ctx.shadowBlur = 20;
+        ctx.shadowBlur = 15;
         ctx.shadowColor = w.color;
         ctx.fill();
 
@@ -93,6 +93,7 @@ const GravityWells = () => {
         ctx.lineWidth = 1.5;
         ctx.stroke();
         ctx.globalAlpha = 1;
+        ctx.shadowBlur = 0;
       });
 
       // Update & Render Mouse Spark Trail
@@ -100,7 +101,7 @@ const GravityWells = () => {
         const s = sparkTrails[i];
         s.x += s.vx;
         s.y += s.vy;
-        s.life -= 0.03;
+        s.life -= 0.04;
 
         if (s.life <= 0) {
           sparkTrails.splice(i, 1);
@@ -111,13 +112,11 @@ const GravityWells = () => {
         ctx.arc(s.x, s.y, s.size * s.life, 0, Math.PI * 2);
         ctx.fillStyle = s.color;
         ctx.globalAlpha = s.life;
-        ctx.shadowBlur = 12;
-        ctx.shadowColor = s.color;
         ctx.fill();
         ctx.globalAlpha = 1;
       }
 
-      // Update & Render 240 Orbital Particle Swarm
+      // Update & Render Orbital Particle Swarm
       particles.forEach((p) => {
         allWells.forEach((w) => {
           const dx = w.x - p.x;
@@ -147,8 +146,6 @@ const GravityWells = () => {
         ctx.beginPath();
         ctx.arc(p.x, p.y, Math.max(0.5, currentSize), 0, Math.PI * 2);
         ctx.fillStyle = p.color;
-        ctx.shadowBlur = 12;
-        ctx.shadowColor = p.color;
         ctx.fill();
       });
 

@@ -44,7 +44,7 @@ const DynamicSectionBackground = () => {
         }`}
       >
         <div className="relative w-full h-full [mask-image:radial-gradient(circle_at_center,black_35%,transparent_70%)]">
-          <SectionVideoCanvas section="home" />
+          <SectionVideoCanvas section="home" isActive={activeSection === 'home'} />
         </div>
       </div>
 
@@ -55,7 +55,7 @@ const DynamicSectionBackground = () => {
         }`}
       >
         <div className="relative w-full h-full [mask-image:radial-gradient(circle_at_center,black_40%,transparent_75%)]">
-          <SectionVideoCanvas section="about" />
+          <SectionVideoCanvas section="about" isActive={activeSection === 'about'} />
         </div>
       </div>
 
@@ -66,7 +66,7 @@ const DynamicSectionBackground = () => {
         }`}
       >
         <div className="relative w-full h-full [mask-image:radial-gradient(circle_at_center,black_35%,transparent_75%)]">
-          <SectionVideoCanvas section="skills" />
+          <SectionVideoCanvas section="skills" isActive={activeSection === 'skills'} />
         </div>
       </div>
 
@@ -76,7 +76,7 @@ const DynamicSectionBackground = () => {
           activeSection === 'projects' ? 'opacity-70' : 'opacity-0'
         }`}
       >
-        <SectionVideoCanvas section="projects" />
+        <SectionVideoCanvas section="projects" isActive={activeSection === 'projects'} />
       </div>
 
       {/* 5. EXPERIENCE SECTION: 60FPS Quasar Pulsar Laser Beam Animation */}
@@ -86,7 +86,7 @@ const DynamicSectionBackground = () => {
         }`}
       >
         <div className="relative w-full h-full [mask-image:radial-gradient(circle_at_center,black_30%,transparent_70%)]">
-          <SectionVideoCanvas section="experience" />
+          <SectionVideoCanvas section="experience" isActive={activeSection === 'experience'} />
         </div>
       </div>
 
@@ -97,7 +97,7 @@ const DynamicSectionBackground = () => {
         }`}
       >
         <div className="relative w-full h-full [mask-image:radial-gradient(circle_at_center,black_30%,transparent_70%)]">
-          <SectionVideoCanvas section="contact" />
+          <SectionVideoCanvas section="contact" isActive={activeSection === 'contact'} />
         </div>
       </div>
 
